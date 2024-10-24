@@ -1,0 +1,39 @@
+# Dependencias de Node.js
+/node_modules
+/.pnp
+.pnp.js
+
+# Archivos de salida
+/.next
+/out
+
+# Archivos de configuración del entorno
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor de código (Ejemplo: VSCode)
+.vscode/
+.idea/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de construcción de producción
+build
+
+# Archivos relacionados con testing
+/coverage
+*.log
+
+# Otros
+*.swp
+*.swo
