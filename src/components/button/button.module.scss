@@ -1,0 +1,200 @@
+.ButtonComponent {
+  border-radius: 5px;
+  border: none;
+  display: inline-block;
+  color: white;
+  font-size: 12px;
+  // height: 34px;
+  margin: 5px;
+  overflow: hidden;
+  padding: 4px 0;
+  position: relative;
+  text-shadow: 1px 1px #5a5a5a;
+  text-transform: initial;
+  &:hover {
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  }
+
+  &.realistic:active {
+    transform: translateY(8px);
+    box-shadow:
+      #0a6f84 0 0 0,
+      #0a6f84b3 0 0 3px;
+  }
+
+  &.shine:before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100%;
+    background-image: linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0) 30%,
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0) 70%
+    );
+    top: 0;
+    left: -100px;
+    animation: shine 3s infinite linear;
+  }
+
+  @keyframes shine {
+    0% {
+      left: -100px;
+    }
+    20% {
+      left: 100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+
+  &.border {
+    border: 1px solid;
+  }
+
+  &.transparent {
+    background-color: transparent;
+    border-color: white;
+  }
+
+  &.normal {
+    background: #a9a9a9;
+    &.outline {
+      background: transparent;
+      border: 1px solid #0095b3;
+      color: #0095b3;
+      &:hover {
+        background: #0095b3;
+        color: white;
+      }
+    }
+  }
+
+  &.yellow {
+    background: #ff9b51;
+    &.realistic {
+      box-shadow:
+        rgb(226, 125, 46) 0px 5px 2px,
+        rgb(234, 174, 127) 0px 6px 0px;
+    }
+  }
+
+  &.blue {
+    background: #0095b3;
+    &.outline button {
+      $color: #056d82;
+      text-shadow:
+        2px 0 $color,
+        -2px 0 $color,
+        0 2px $color,
+        0 -2px $color,
+        1px 1px $color,
+        -1px -1px $color,
+        1px -1px $color,
+        -1px 1px $color;
+    }
+    &.outline {
+      background: transparent;
+      border: 1px solid #0095b3;
+      color: #0095b3;
+      &:hover {
+        background: #0095b3;
+        color: white;
+      }
+    }
+    &.realistic {
+      box-shadow:
+        #0a6f84 0 5px 2px,
+        #0a6f84b3 0 6px 0px;
+    }
+  }
+
+  &.modal span {
+    font-style: italic;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  &.red {
+    background: #f05f70;
+    &.outline {
+      background: transparent;
+      border: 1px solid #f05f70;
+      color: #f05f70;
+      &:hover {
+        background: #f05f70;
+        color: white;
+      }
+    }
+  }
+
+  &.link {
+    background: transparent;
+    color: #476e96;
+    font-weight: normal;
+    text-decoration: underline;
+    text-shadow: initial;
+    &:hover {
+      box-shadow: initial;
+      :global(button) {
+        background: transparent;
+      }
+    }
+  }
+
+  &.green {
+    background: #53c060;
+  }
+
+  &.disabled {
+    background: #8a8a8a;
+  }
+
+  &.remove {
+    display: none;
+  }
+
+  :global(.MuiButtonBase-root) {
+    // Boton de material UI
+    color: inherit;
+    font-size: inherit;
+    height: 100%;
+    line-height: 14px;
+    margin: initial;
+    padding: 5px 20px;
+  }
+
+  .text {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    svg {
+      margin-left: 5px;
+      transition: 0.2s ease-in;
+    }
+  }
+
+  &.animation:hover {
+    .text svg {
+      transform: translateX(5px);
+    }
+  }
+
+  button {
+    font-family: "Montserrat", sans-serif;
+    span {
+      top: -4px;
+      height: 32px;
+    }
+  }
+  // Iconos dentro del botón
+  :global(svg) {
+    // margin: -2px 2px -2px -2px;
+    // position: relative;
+    // right: -10px;
+  }
+}

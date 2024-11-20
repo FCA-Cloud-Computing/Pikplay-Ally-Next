@@ -1,0 +1,89 @@
+.Coins {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 30px;
+  &.animated {
+    .coin {
+      animation:
+        rotate 0.6s steps(6) 2,
+        appear 2s ease-in-out,
+        pause 5s;
+      // animation-iteration-count: infinite;
+    }
+  }
+  .coin {
+    // background-image: url("/images/sprites/coin-v1.png");
+    background-image: url("/images/icons/coin-v2.svg");
+    // background-image: url("/images/gifs/monedas.png");
+    background-position-x: 0px;
+    background-position-y: 0px;
+    background-size: 210px;
+    border-radius: 50%;
+    display: inline-block;
+    height: 31px;
+    margin: 0 0 0 5px;
+    position: relative;
+    transition: 0.5s linear;
+    width: 31px;
+
+    // coin-v2
+    background-size: 34px;
+    height: 34px;
+    width: 34px;
+  }
+  .multicoin {
+    margin-left: -10px;
+  }
+  .number {
+    border-radius: 5px;
+    display: inline-block;
+    font-weight: bold;
+    height: 20px;
+    margin: 0 0 0 5px;
+    position: relative;
+  }
+
+  label {
+    font-family: revert;
+    font-weight: 500;
+    margin-left: 5px;
+    text-shadow: 2px 2px #cbcbcb;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    background-position-x: 0px;
+  }
+  100% {
+    background-position-x: -179px;
+  }
+}
+
+@keyframes appear {
+  0% {
+    top: 0px;
+  }
+  20% {
+    top: -10px;
+  }
+  40% {
+    top: 0px;
+  }
+  50% {
+    top: -15px;
+  }
+  70% {
+    top: 0px;
+  }
+}
+
+@keyframes pause {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}

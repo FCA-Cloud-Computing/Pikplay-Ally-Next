@@ -1,0 +1,97 @@
+.IACharacter {
+    position: absolute;
+    left: -40px;
+    top: -60px;
+    width: 120px;
+    height: 120px;
+    &:before {
+        background: #0000004d;
+        border-radius: 50%;
+        bottom: 22px;
+        content: "";
+        height: 100px;
+        position: absolute;
+        right: 16px;
+        width: 100px;
+        z-index: -1;
+    }
+    .head {
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: -34px;
+        left: 10px;
+        height: 80px;
+        width: 80px;
+        z-index: 1;
+        &.neutral {
+            background-image: url("/images/ia/2.png");
+        }
+        &.neutral_2 {
+            background-image: url("/images/ia/3.png");
+        }
+        &.happy {
+            animation: abrirCerrar 4s infinite;
+            background-image: url("/images/ia/4.png");
+        }
+        &.happy_2 {
+            background-image: url("/images/ia/1.png");
+        }
+        &.loved {
+            background-image: url("/images/ia/5.png");
+        }
+    }
+    .circle {
+        background: #3e61ac;
+        border: 10px solid #f0ba87;
+        border-radius: 50%;
+        position: relative;
+        overflow: hidden;
+        width: 80px;
+        height: 80px;
+        .body {
+            position: relative;
+            margin-top: 20px;
+            max-height: initial;
+            max-width: initial;
+            height: 120px;
+            width: 120px;
+        }
+        .rightArm {
+            position: absolute;
+        }
+    }
+
+    &.Perfil {
+        // Character en el perfil
+        // margin: 100px 20px 0 0;
+        // position: absolute;
+        height: 170px;
+        left: initial;
+        position: initial;
+        top: initial;
+        width: initial;
+        z-index: 1;
+        &:before {
+            display: none;
+        }
+        .circle {
+            background: transparent;
+            border-color: transparent;
+            overflow: initial;
+        }
+        .head {
+            animation: abrirCerrar 4s infinite;
+        }
+    }
+}
+
+@keyframes abrirCerrar {
+    0%,
+    80% {
+        background-image: url("/images/ia/4.png"); // Ojos abiertos
+    }
+    90% {
+        background-image: url("/images/ia/1.png"); // Ojos cerrados
+    }
+}

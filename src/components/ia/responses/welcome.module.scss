@@ -1,0 +1,19 @@
+.Welcome {
+    li {
+        list-style: none;
+        margin-bottom: 10px;
+        span {
+            margin-right: 5px;
+            padding: 0;
+        }
+    }
+    .normalText {
+        text-shadow: none;
+    }
+    :global(.Coins) {
+        display: inline;
+        position: relative;
+        top: 10px;
+        left: 10px;
+    }
+}

@@ -1,0 +1,134 @@
+.dev_pik_tool {
+  background: black;
+  border-radius: 0 0 4px;
+  color: green;
+  height: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  overflow: hidden;
+  padding: 2px;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  &:hover {
+    height: max-content;
+  }
+}
+
+.AppComponent {
+  &.ready {
+    .main {
+      opacity: 1 !important;
+    }
+  }
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.announcement {
+  background: #fff32cd1;
+  font-size: 12px;
+  padding: 7px 0;
+  text-align: center;
+  @media screen and (max-width: 480px) {
+    bottom: 70px;
+    position: fixed;
+    width: 100%;
+    z-index: 3;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animacionLoading {
+  0% {
+    // transform: rotate(0deg);
+    transform: scaleX(0);
+    left: -140px;
+  }
+  49% {
+    transform: scaleX(0);
+  }
+  50% {
+    transform: scaleX(0);
+    transform: scaleX(-1);
+    left: 160px;
+  }
+  99% {
+    transform: scaleX(-1);
+  }
+  100% {
+    transform: scaleX(0);
+    left: -140px;
+  }
+}
+
+.btn-whatsapp {
+  background: #0196b3;
+  border-radius: 50%;
+  border: none;
+  bottom: 20px;
+  position: fixed;
+  right: 20px;
+  z-index: 5;
+  cursor: pointer;
+  @media screen and (max-width: 480px) {
+    display: none;
+  }
+  &:hover {
+    span {
+      display: block;
+    }
+  }
+  img.we-are-here {
+    left: -18px;
+    max-width: initial;
+    position: absolute;
+    top: -10px;
+    width: 80px;
+  }
+  img {
+    width: 40px;
+  }
+}
+
+.mobile-none {
+  @media screen and (max-width: 480px) {
+    display: none;
+  }
+}
+
+.wrapperBanner {
+  background: #fafafa;
+  height: 60px;
+  margin-bottom: 20px;
+  position: relative;
+  @media screen and (max-width: 480px) {
+    display: none;
+  }
+}

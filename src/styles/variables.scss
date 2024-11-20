@@ -1,0 +1,33 @@
+$desktop: "1024px";
+$tablet: "768px";
+$mobile: "480px";
+$primary-color: #ea4d42;
+$secundary-color: #476e96;
+
+%floatButtons {
+  align-items: center;
+  border-top: 1px solid #e6e6e6;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  @media screen and (min-width: $desktop) {
+  }
+  @media screen and (max-width: $mobile) {
+    background: white;
+    bottom: 60px;
+    left: 0;
+    min-height: 60px;
+    padding: 10px 40px 20px;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+    > button,
+    a > button {
+      display: block;
+      margin: 10px auto 0;
+    }
+  }
+  > button.blue {
+    width: 140px;
+  }
+}

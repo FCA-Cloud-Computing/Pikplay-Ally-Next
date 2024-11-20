@@ -1,0 +1,146 @@
+.IAElement {
+    bottom: 200px;
+    color: white;
+    // left: 40px;
+    position: fixed;
+    right: 20px;
+    transition: 1s ease-in-out;
+    width: 500px;
+    z-index: 9;
+    @media screen and (max-width: 480px) {
+        bottom: 10px;
+        width: 80%;
+    }
+    &:before {
+        background: #0000004d;
+        border-radius: 20px;
+        bottom: 4px;
+        content: "";
+        height: calc(100%);
+        position: absolute;
+        right: -5px;
+        width: 100%;
+        z-index: -1;
+    }
+    &.hide {
+        right: -510px;
+        @media screen and (max-width: 480px) {
+            // left: calc(-100vw + 40px);
+        }
+    }
+    .box {
+        .title {
+            background: #f0ba87;
+            border-radius: 20px 20px 0 0;
+            // box-shadow: inset -4px 2px 11px #b86b22;
+            overflow: hidden;
+            padding: 5px 0 5px 120px;
+            @media screen and (max-width: 480px) {
+                padding: 5px 0 5px 60px;
+            }
+            .hide {
+                background: #ea4d42;
+                border-radius: 50%;
+                box-shadow: 1px 1px #858585;
+                cursor: pointer;
+                float: right;
+                font-weight: bold;
+                line-height: 20px;
+                margin-right: 16px;
+                padding: 1px;
+                position: relative;
+                right: -10px;
+                text-align: center;
+                top: -2px;
+                width: 20px;
+                @media screen and (max-width: 480px) {
+                    top: 0px;
+                }
+            }
+        }
+        .text {
+            background: linear-gradient(270deg, rgba(122, 11, 161, 1) 0%, rgba(48, 149, 179, 1) 100%);
+            border-radius: 0 0 20px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 10px 10px 10px 10px;
+            transition: 1s ease-in-out;
+            @media screen and (max-width: 480px) {
+                height: max-content !important;
+            }
+            .list {
+                display: flex;
+                flex-direction: column;
+                background: #18181870;
+                border-radius: 20px;
+                color: white;
+                font-size: 15px;
+                // font-style: italic;
+                // font-weight: bold;
+                padding: 10px 10px 20px 20px;
+
+                // Border text
+                $color: rgb(46, 46, 46);
+                text-shadow:
+                    2px 0 $color,
+                    -2px 0 $color,
+                    0 2px $color,
+                    0 -2px $color,
+                    1px 1px $color,
+                    -1px -1px $color,
+                    1px -1px $color,
+                    -1px 1px $color;
+                .IAMessage {
+                    max-height: 200px;
+                    overflow-y: scroll;
+                    padding-right: 4px;
+                }
+                .user {
+                    text-align: right;
+                }
+                :global(.highlighted) {
+                    color: #fcfc85;
+                }
+                :global(.highlighted-2) {
+                    color: aquamarine;
+                }
+                :global(.not_shadow) {
+                    text-shadow: none;
+                }
+            }
+            a {
+                color: white;
+                text-decoration: underline;
+            }
+            .buttons {
+                display: flex;
+                justify-content: end;
+                margin: 0px 10px 0 -10px;
+                flex-wrap: wrap;
+                text-align: center;
+                > a,
+                > a > span,
+                > span {
+                    width: 100%;
+                    button {
+                        padding: 6px 4px;
+                        text-align: left;
+                    }
+                }
+            }
+            input {
+                background: transparent;
+                border: none;
+                color: white;
+                border-bottom: #ffffff52 solid 1px;
+                // width: 350px;
+                padding: 5px 0;
+                margin: 20px 0 20px 0;
+                &::placeholder {
+                    color: white;
+                }
+            }
+        }
+    }
+}

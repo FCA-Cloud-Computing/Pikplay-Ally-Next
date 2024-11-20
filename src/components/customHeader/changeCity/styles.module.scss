@@ -1,0 +1,21 @@
+.ChangeCity {
+  position: absolute;
+  right: 30px;
+  top: 10px;
+  p {
+    cursor: pointer;
+    display: flex;
+    font-size: 12px;
+    margin-top: 8px;
+    padding: 0px;
+    :global(svg) {
+      color: grey;
+      margin: 0 5px;
+      position: relative;
+      top: 2px;
+    }
+  }
+  :global(.MuiFormControl-root) {
+    width: 200px;
+  }
+}
