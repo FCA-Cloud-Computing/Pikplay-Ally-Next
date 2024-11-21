@@ -2,7 +2,6 @@ import React from 'react';
 import Button from '../../button/Button'
 import GroupIcon from '@mui/icons-material/Group'
 import MenuBookIcon from '@mui/icons-material/MenuBook'
-import CoinIcon from '../../coinIcon/CoinIcon'
 import CardGiftcardIcon from '@mui/icons-material/CardGiftcard'
 import PaidIcon from '@mui/icons-material/Paid'
 import { motion } from "framer-motion"

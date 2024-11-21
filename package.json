@@ -9,13 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/react": "11.13.3",
-    "@emotion/styled": "11.13.0",
-    "@mui/icons-material": "5.15.4",
-    "@mui/lab": "5.0.0-alpha.160",
-    "@mui/material": "5.15.4",
-    "@mui/styles": "5.15.4",
-    "@mui/x-charts": "6.19.5",
+    "@emotion/react": "11.13.5",
+    "@emotion/styled": "11.13.5",
+    "@mui/icons-material": "6.1.8",
+    "@mui/material": "6.1.8",
+    "@mui/system": "6.1.8",
     "classnames": "2.5.1",
     "framer-motion": "11.11.17",
     "next": "15.0.1",

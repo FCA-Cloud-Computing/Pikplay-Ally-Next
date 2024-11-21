@@ -1,10 +1,8 @@
 import styles from './onboarding.module.scss'
 
 import React, { useEffect } from 'react'
-import Button from '../button/Button'
 import Image from "next/image"
 import { useIAStore } from '../ia/IAstore'
-import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import useSystemStore from '../../hooks/storeSystem'
 import { motion } from 'framer-motion'
 
@@ -81,9 +79,6 @@ const Onboarding = () => {
             <div className={styles.black_bg}></div>
             <Image className={styles.image} src={item.image} width={width || 200} height={height || 200} />
             <div className={styles.html}>{item.html}</div>
-            {/* <span className={styles.isCompleted}>
-            {item.isCompleted && <CheckCircleIcon />}
-            </span> */}
           </motion.div>
         }
         )}
