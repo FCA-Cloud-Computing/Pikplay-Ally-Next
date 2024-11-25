@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@boiseitguru/cookie-cutter": "^0.2.3",
     "@emotion/react": "11.13.5",
     "@emotion/styled": "11.13.5",
     "@mui/icons-material": "6.1.8",
