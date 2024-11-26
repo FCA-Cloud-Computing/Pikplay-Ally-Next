@@ -74,7 +74,6 @@ const Interface = ({
 
   return (
     <section className={`page ${styles.Perfil}`}>
-      <Joyride steps={steps} />
       <div className={styles.content}>
         <div className={classNames('Card', styles['profile-content'])}>
           <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
