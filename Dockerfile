@@ -1,14 +1,17 @@
 # Base image with specific Node.js version
-FROM node:23.2.0-alpine AS base
+FROM node:18
+
+# Instala pnpm globalmente
+RUN npm install -g pnpm
 
 # Set the working directory inside the container
 WORKDIR /usr/src/app
 
 # Copy package.json and package-lock.json for dependency installation
-COPY package*.json ./
+COPY package.json pnpm-lock.yaml ./
 
 # Install dependencies
-RUN npm install
+RUN pnpm install
 
 # Copy the rest of the project files to the working directory
 COPY . .

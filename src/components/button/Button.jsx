@@ -2,7 +2,6 @@ import styles from './button.module.scss'
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import ButtonMat from '@mui/material/Button';
 
 const Button = ({
   animation = false,
@@ -40,7 +39,7 @@ const Button = ({
       style={style}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.9 }}>
-      <ButtonMat>{children}</ButtonMat>
+      <button>{children}</button>
     </motion.span>
   )
 }
