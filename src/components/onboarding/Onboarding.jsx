@@ -107,7 +107,7 @@ const Onboarding = () => {
     <div className={styles.cta}>
       <div className={styles.titleContent}>
         <h2>
-          Únete a nuestro canal de Whastapp
+          Únete a nuestra comunidad
         </h2>
       </div>
       <div className={styles.inputContent}>
