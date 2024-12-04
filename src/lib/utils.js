@@ -62,3 +62,15 @@ export function formatNumber(input) {
   }
   return input
 }
+
+export function snakeToCamel(snake) {
+  return snake.replace(/_([a-z])/g, (_, letter) => letter.toUpperCase());
+}
+
+export function formatNumberWithCommas(number) {
+  if (!number) return
+  return number.toLocaleString('en-US', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
+}
