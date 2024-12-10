@@ -28,7 +28,7 @@ function Transactions() {
     console.log("click");
   };
 
-  const totalProfit = data?.transactions.reduce(
+  const totalProfit = data?.transactions?.reduce(
     (acc, curr) => acc + curr.profit,
     0
   );
@@ -43,7 +43,7 @@ function Transactions() {
       <section className="page min-h-dvh max-w-screen-sm flex flex-col items-center bg-primary p-6 gap-5">
         <Header handleNotification={handleNotification} />
         <Statistics totalProfit={totalProfit} />
-        {data && <ListTransactions transactions={data.transactions} />}
+        {data?.transactions && <ListTransactions transactions={data.transactions} />}
       </section>
     </Layout>
   );

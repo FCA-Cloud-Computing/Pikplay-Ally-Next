@@ -1,5 +1,4 @@
 import React from 'react'
-import Perfil from '../../components/profile/Perfil'
 import Layout from '../../components/layout/Layout'
 import { cookiesToObject } from '../../lib/utils'
 import { useEffect, useState } from 'react'
@@ -28,12 +27,7 @@ const Index = props => {
 
   return (
     <Layout image={image} descripcion={descripcion} title={title} url={url}>
-      <Perfil
-        userLogged={userDataUpdated}
-        isSaving={isSaving}
-        handleSave={() => null}
-        setUserData={setUserData}
-      />
+      Componente de perfil
     </Layout>
   )
 }

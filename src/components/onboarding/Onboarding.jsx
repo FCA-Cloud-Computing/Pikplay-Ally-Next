@@ -5,8 +5,6 @@ import Image from "next/image"
 import { useIAStore } from '../ia/IAstore'
 import useSystemStore from '../../hooks/storeSystem'
 import { motion } from 'framer-motion'
-import SendIcon from '@mui/icons-material/Send'
-import CardProfile from '../profile/components/CardProfile'
 
 const Onboarding = () => {
   const { setStoreValue } = useSystemStore()
@@ -109,13 +107,13 @@ const Onboarding = () => {
     <div className={styles.cta}>
       <div className={styles.titleContent}>
         <h2>
-          Únete a nuestro canal de Whastapp
+          Únete a nuestra comunidad
         </h2>
       </div>
       <div className={styles.inputContent}>
         <input type="text" placeholder='Tú whatsapp aquí' onChange={handleInputChange} value={phoneNumber} />
         <div className={styles.btnSend}>
-          <SendIcon />
+          Enviar
         </div>
       </div>
     </div>
