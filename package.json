@@ -10,11 +10,17 @@
   },
   "dependencies": {
     "@boiseitguru/cookie-cutter": "0.2.3",
+    "@emotion/react": "11.14.0",
+    "@emotion/styled": "11.14.0",
+    "@mui/material": "6.1.10",
     "classnames": "2.5.1",
     "framer-motion": "11.11.17",
+    "moment": "2.30.1",
     "next": "15.0.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-google-recaptcha": "3.1.0",
+    "react-toastify": "10.0.6",
     "sass": "1.81.0",
     "zustand": "5.0.1"
   },
