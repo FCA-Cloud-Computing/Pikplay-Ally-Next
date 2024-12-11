@@ -109,3 +109,15 @@ export function slugify(string, lenght) {
     .replace(/-+$/, ''); // Trim - from end of text
   return lenght ? cadena.substring(0, lenght) : cadena;
 }
+
+export function snakeToCamel(snake) {
+  return snake.replace(/_([a-z])/g, (_, letter) => letter.toUpperCase());
+}
+
+export function formatNumberWithCommas(number) {
+  if (!number) return
+  return number.toLocaleString('en-US', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
+}

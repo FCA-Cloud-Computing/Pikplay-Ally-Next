@@ -63,5 +63,5 @@ export {
   getUsersSrv,
   loginSrv,
   sendCodeSrv,
-  validateTokenSrv,
+  validateTokenSrv
 }
