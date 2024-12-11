@@ -11,7 +11,7 @@ export function Statistics({ totalProfit }) {
   const totalProfitFormatted = formatNumberWithCommas(totalProfit);
   const newTotalProfit = isVisibleProfit
     ? totalProfitFormatted
-    : "*".repeat(totalProfitFormatted.length + 2);
+    : "*".repeat(totalProfitFormatted?.length + 2);
   return (
     <div className="flex items-center gap-3 w-full justify-between">
       <strong className="text-4xl">${newTotalProfit}</strong>
