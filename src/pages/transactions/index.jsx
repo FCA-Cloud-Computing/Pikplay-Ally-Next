@@ -1,4 +1,4 @@
-import { getTransactions } from "@/services/user/transactions";
+import { getTransactions } from "@/services/transactions/transactions";
 import { useState, useEffect } from "react";
 import {
   ListTransactions,
