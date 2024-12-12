@@ -35,7 +35,7 @@ const PreviewUser = () => {
             handleClickImage={IS_MOBILE ? handleClickImage : null}
             picture={picture} />
           {/* TODO */}
-          Icono
+          {/* Icono */}
           <div className={styles.coins} id="PreviewProfile--Coins">
             <CoinIcon coins={coins} />
             {/* <span className={styles.experience}>

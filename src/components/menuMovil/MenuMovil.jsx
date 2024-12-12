@@ -34,14 +34,14 @@ const MenuMovil = () => {
       <ol className={`${styles.main_option}`}>
         <PreviewUser />
       </ol>
-      <motion.ol className={styles.main_option}
+      {/* <motion.ol className={styles.main_option}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.8 }}>
         <Link href='/' as='/'>
           <img src="https://img.icons8.com/?size=512&id=67574&format=png" />
           <span className='f-s-10'>Retro</span>
         </Link>
-      </motion.ol>
+      </motion.ol> */}
       {/* <motion.ol
         className={styles.main_option}
         onClick={() => handleUserMessage('welcome')}

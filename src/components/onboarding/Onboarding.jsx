@@ -5,6 +5,7 @@ import Image from "next/image"
 import { useIAStore } from '../ia/IAstore'
 import useSystemStore from '../../hooks/storeSystem'
 import { motion } from 'framer-motion'
+import Button from '../button/Button'
 
 const Onboarding = () => {
   const { setStoreValue } = useSystemStore()
@@ -111,9 +112,11 @@ const Onboarding = () => {
         </h2>
       </div>
       <div className={styles.inputContent}>
-        <input type="text" placeholder='Tú whatsapp aquí' onChange={handleInputChange} value={phoneNumber} />
+        <input type="text" placeholder='Tu whatsapp aquí' onChange={handleInputChange} value={phoneNumber} />
         <div className={styles.btnSend}>
-          Enviar
+          <Button color='blue'>
+            Enviar
+          </Button>
         </div>
       </div>
     </div>
@@ -121,12 +124,15 @@ const Onboarding = () => {
     <div className={styles.texts}>
       <div className={styles.background}></div>
       <p>
-        La idea inicial de <b>Pikplay Ally</b> es reducir los fraudes en la compra y venta de consolas y videojuegos de manera online.
+        Comprando con aliados de <br />
+        <b>Pikplay Ally</b>  tienes la posibilidad de ganar cashback, esto basicamente es desuentos en otras tiendas aliadas.
+        <br /><br />
+        Tambien invitar a tus amigos y tener un Ranking de puntos los cuales te serviran para aumentar de liga, obtener descuentos y participar en concursos.
       </p>
-      <p>
+      {/* <p>
         Por ello en Pikplay solo encontraras <b>Aliados certificados</b>.
         <br />Tiendas que han sido estudiadas y validadas por nuestro equipo. Tienen nuestro total respaldo y confianza.
-      </p>
+      </p> */}
     </div>
 
     <div className={styles.aliados}>
