@@ -1,12 +1,13 @@
-import { getTransactions } from "@/services/transactions/transactions";
+import "./styles.scss";
+
+import { getTransactions } from "../../services/transactions/transactions";
 import { useState, useEffect } from "react";
 import {
   ListTransactions,
   Header,
   Statistics,
-} from "@/components/transactions";
-import Layout from "@/components/layout/Layout";
-import "./styles.scss";
+} from "../../components/transactions";
+import Layout from "../../components/layout/Layout";
 
 function Transactions() {
   const [data, setData] = useState(null);

@@ -1,4 +1,4 @@
-import CustomFetch from "@/components/fetch/CustomFetch";
+import CustomFetch from "../../components/fetch/CustomFetch";
 
 const { get, post } = CustomFetch();
 

@@ -1,4 +1,4 @@
-import { formatNumberWithCommas } from "@/lib/utils";
+import { formatNumberWithCommas } from "../../lib/utils";
 
 export function ListTransactions({ transactions }) {
   const isPositiveProfit = (transaction) =>

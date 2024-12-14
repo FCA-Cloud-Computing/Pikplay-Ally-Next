@@ -25,25 +25,23 @@ const CustomHeader = () => {
     <div id={styles.CustomHeader}>
       {/* <ChangeCity handleCity={handleCity} /> */}
       <ul>
-        {(!IS_MOBILE || IS_MOBILE) && (
-          <Link href='/'>
-            <motion.span
-              whileTap={{ scale: 0.7 }}>
-              <Image
-                alt='Logo de Pikplay'
-                className={styles.logo}
-                height={43}
-                src='/images/logos/logo.svg'
-                width={160}
-              />
-              {/* <div className={styles.slogan}>
+        <Link href='/'>
+          <motion.span
+            whileTap={{ scale: 0.7 }}>
+            <Image
+              alt='Logo de Pikplay'
+              className={styles.logo}
+              height={43}
+              src='/images/logos/logo.svg'
+              width={160}
+            />
+            {/* <div className={styles.slogan}>
                 <span>
                   Compra y vende como <b>Gamer</b>
                 </span>
               </div> */}
-            </motion.span>
-          </Link>
-        )}
+          </motion.span>
+        </Link>
         {/* TODO Descomentar cuando se implementen los productos */}
         {/* <SearchBox
           inputText={inputText}

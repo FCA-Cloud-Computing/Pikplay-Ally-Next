@@ -1,3 +1,5 @@
+import "react-toastify/scss/main.scss"
+
 import "../styles/globalStyles.scss";
 
 import React, { useEffect, useState } from "react";
