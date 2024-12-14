@@ -1,14 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 import Router from 'next/router'
+import { ToastContainer } from 'react-toastify';
+
 import useSystemStore from '../../hooks/storeSystem.js'
 import Body from './Body.jsx'
 import { useIAStore } from '../ia/IAstore.js'
+import AwardsSummaryModal from '../awardsSummary/AwardsSummary.jsx';
 
 const Layout = (props) => {
   const [isReady, setIsReady] = useState(false)
   const { children, descripcion, image, title, url, mobileMenuHidden } = props
-  const { darkMode, env, setStoreValue, userLogged, notifications, isAwardSummaryModalOpen } = useSystemStore((state => state))
+  const { 
+    darkMode, 
+    env, 
+    isAwardSummaryModalOpen,
+    notifications, 
+    setStoreValue, 
+    userLogged, 
+  } = useSystemStore((state => state))
   const { checkIAMessage, IAMessage, setIsvisible } = useIAStore()
 
   Router.onRouteChangeStart = url => {
@@ -59,6 +69,8 @@ const Layout = (props) => {
         notifications={notifications}
         userLogged={userLogged}
       >
+        <ToastContainer />
+        {isAwardSummaryModalOpen && <AwardsSummaryModal />}
         {children}
       </Body>
     </>
