@@ -15,7 +15,6 @@ const CustomFetch = () => {
   }
 
   const get = async (ctx, path, props = {}) => {
-    console.log('API_URL vale:' + API_URL);
     if (!API_URL) return {
       message: "API_URL no esta definida en el archivo .env",
       status: 404

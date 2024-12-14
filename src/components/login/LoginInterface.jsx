@@ -128,14 +128,14 @@ export default function LoginInterface({
               fullWidth
             />
           </div>
-          {!isCodeSent && env != 'dev' && (
+          {/*!isCodeSent && env != 'dev' && (
             <center className={`m-t-10 ${styles.capchaContent}`}>
               <ReCAPTCHA
                 sitekey='6Ldyz98eAAAAAFCJEbBSdSRqNu4Kn1XqZugCi9Qg'
                 onChange={onChangeReCaptcha}
               />
             </center>
-          )}
+          )*/}
           {
             isCodeSent && (
               <>

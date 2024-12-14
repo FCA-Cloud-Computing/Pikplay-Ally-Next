@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import {
   timeAgo,
 } from '../../lib/utils'
-// import { getNotificationsSrv } from '../../services/user/userService'
+import { getNotificationsSrv } from '../../services/user/userService'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faBell } from '@fortawesome/free-solid-svg-icons'
 import classNames from 'classnames'
@@ -59,12 +59,12 @@ const UserNotifications = () => {
   const handleDeleteNotification = () => { }
 
   const getNotifications = () => {
-    // if (userLogged.uid) {
-    //   getNotificationsSrv()
-    //     .then(res => {
-    //       setStoreValue('notifications', res.data)
-    //     });
-    // }
+    if (userLogged.uid) {
+      getNotificationsSrv()
+        .then(res => {
+          setStoreValue('notifications', res.data)
+        });
+    }
   }
 
   const handleNotification = async ({ coins, disabled, id, link, type }) => {

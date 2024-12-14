@@ -58,8 +58,14 @@ const getExperiencesSrv = async (ctx) => {
   }
 }
 
+const getNotificationsSrv = async () => {
+  const data = await get(null, BASE_URL + "/notifications");
+  return data
+}
+
 export {
   getExperiencesSrv,
+  getNotificationsSrv,
   getUsersSrv,
   loginSrv,
   sendCodeSrv,
