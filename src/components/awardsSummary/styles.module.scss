@@ -58,9 +58,9 @@
         width: calc(100% - 50px);
         z-index: 0;
         @media screen and (max-width: 480px) {
-            left: 14px;
+            left: 12px;
             top: 15px;
-            width: 264px;
+            width: 266px;
         }
         &::before {
             background-image: url(/images/backgrounds/campo-bg.jpeg);
