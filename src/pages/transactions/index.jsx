@@ -10,30 +10,17 @@ import "./styles.scss";
 import { useTransactionsStore } from "@/store/transactions.store";
 
 function Transactions() {
-  const [data, setData] = useState(null);
+  const { transactions, getTransactionsStore } = useTransactionsStore();
 
   useEffect(() => {
-    const fetchTransactions = async () => {
-      try {
-        const res = await getTransactions();
-        setData(res);
-      } catch (error) {
-        console.error("Error fetching transactions:", error);
-      }
-    };
-
-    fetchTransactions();
+    getTransactionsStore();
   }, []);
-
-  // const { transactions } = useTransactionsStore();
 
   const handleNotification = () => {
     console.log("click");
   };
 
-  console.log(data);
-
-  const totalProfit = data?.trasactions.reduce(
+  const totalProfit = transactions.reduce(
     (acc, curr) => acc + curr.experience,
     0
   );
@@ -48,7 +35,7 @@ function Transactions() {
       <section className="page min-h-dvh max-w-screen-sm flex flex-col items-center bg-primary p-6 gap-5">
         <Header handleNotification={handleNotification} />
         <Statistics totalProfit={totalProfit} />
-        {data?.trasactions && <ListTransactions transactions={data.trasactions} />}
+        <ListTransactions transactions={transactions} />
       </section>
     </Layout>
   );

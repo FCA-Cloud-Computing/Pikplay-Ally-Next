@@ -31,7 +31,7 @@ export function Statistics({ totalProfit }) {
         />
       </button>
       <ModalTransactions label="+">
-        <FormTransactions role="clienta" user="Alvaro" />
+        <FormTransactions role="client" />
       </ModalTransactions>
     </div>
   );

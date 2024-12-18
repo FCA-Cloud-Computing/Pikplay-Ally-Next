@@ -1,6 +1,6 @@
 export function ListTransactions({ transactions }) {
   return (
-    <ul className="flex flex-col gap-3 w-full">
+    <ul className="flex gap-3 w-full flex-col-reverse">
       {transactions.map((transaction) => (
         <li
           key={transaction.orderId}

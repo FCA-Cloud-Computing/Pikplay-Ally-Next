@@ -95,7 +95,7 @@ export default function handler(req, res) {
   if (req.method === 'GET') {
     const response = {
       code: 200,
-      transactions: transactions,
+      data: transactions,
     };
     res.status(200).json(response);
   } else if (req.method === 'POST') {

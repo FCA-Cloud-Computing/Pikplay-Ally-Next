@@ -7,14 +7,17 @@ import { useState } from "react";
 import uploadFile from "@/services/uploadFile";
 import { useRef } from "react";
 
-export const FormClient = ({ user }) => {
+export const FormClient = () => {
   const [fileUploaded, setFileUploaded] = useState(false);
   const file = useRef();
+  const userId = "Alvaro";
+  const transactionId = 123;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(file.current)
-    await uploadFile(file.current, user);
+    await uploadFile(file.current, `${userId}/${transactionId}`);
+    file.current = null;
+    setFileUploaded(false);
   };
 
   const handleChange = (event) => {

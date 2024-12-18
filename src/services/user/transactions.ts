@@ -10,7 +10,7 @@ const getTransactions = async () => {
 }
 
 const addTransaction = async (transaction) => {
-  const data = await post({ headers: { 'Content-Type': 'application/json' } }, BASE_URL, transaction);
+  const data = await post({ headers: { 'Content-Type': 'application/json' } }, `${BASE_URL}/${transaction.orderId}`, transaction);
   return data;
 }
 

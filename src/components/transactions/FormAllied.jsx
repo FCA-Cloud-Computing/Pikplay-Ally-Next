@@ -2,13 +2,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { schema } from "@/models/form.model";
 import { InputTransactions } from "./InputTransactions";
-import { addTransaction } from "@/services/user/transactions";
+import { useTransactionsStore } from "@/store/transactions.store";
 
 export const FormAllied = () => {
+  const { addTransactionStore } = useTransactionsStore();
   const {
     control,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     resolver: zodResolver(schema),
     mode: "onBlur",
@@ -22,8 +24,9 @@ export const FormAllied = () => {
     },
   });
 
-  const onSubmit = (transaction) => {
-    addTransaction(transaction);
+  const onSubmit = (newTransaction) => {
+    addTransactionStore(newTransaction);
+    reset();
   };
 
   return (
