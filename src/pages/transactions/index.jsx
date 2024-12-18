@@ -7,6 +7,7 @@ import {
 } from "@/components/transactions";
 import Layout from "@/components/layout/Layout";
 import "./styles.scss";
+import { useTransactionsStore } from "@/store/transactions.store";
 
 function Transactions() {
   const [data, setData] = useState(null);
@@ -24,12 +25,16 @@ function Transactions() {
     fetchTransactions();
   }, []);
 
+  // const { transactions } = useTransactionsStore();
+
   const handleNotification = () => {
     console.log("click");
   };
 
-  const totalProfit = data?.transactions?.reduce(
-    (acc, curr) => acc + curr.profit,
+  console.log(data);
+
+  const totalProfit = data?.trasactions.reduce(
+    (acc, curr) => acc + curr.experience,
     0
   );
 
@@ -43,7 +48,7 @@ function Transactions() {
       <section className="page min-h-dvh max-w-screen-sm flex flex-col items-center bg-primary p-6 gap-5">
         <Header handleNotification={handleNotification} />
         <Statistics totalProfit={totalProfit} />
-        {data?.transactions && <ListTransactions transactions={data.transactions} />}
+        {data?.trasactions && <ListTransactions transactions={data.trasactions} />}
       </section>
     </Layout>
   );

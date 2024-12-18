@@ -5,6 +5,7 @@ import Eye from "../../../public/images/icons/eye.svg";
 import EyeSlash from "../../../public/images/icons/eye-slash.svg";
 import ModalTransactions from "../modal/ModalTransactions";
 import { FormTransactions } from "./FormTransactions";
+import CoinIcon from "../coinIcon/CoinIcon";
 
 export function Statistics({ totalProfit }) {
   const [isVisibleProfit, setisVisibleProfit] = useState(true);
@@ -14,7 +15,10 @@ export function Statistics({ totalProfit }) {
     : "*".repeat(totalProfitFormatted.length + 2);
   return (
     <div className="flex items-center gap-3 w-full justify-between">
-      <strong className="text-4xl">${newTotalProfit}</strong>
+      <strong className="text-4xl flex items-center gap-1">
+        <CoinIcon />
+        {newTotalProfit}
+      </strong>
       <button
         onClick={() => setisVisibleProfit(!isVisibleProfit)}
         className="grow"
@@ -27,7 +31,7 @@ export function Statistics({ totalProfit }) {
         />
       </button>
       <ModalTransactions label="+">
-        <FormTransactions role="clienta" />
+        <FormTransactions role="clienta" user="Alvaro" />
       </ModalTransactions>
     </div>
   );

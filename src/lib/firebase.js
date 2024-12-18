@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import { getStorage } from "firebase/storage";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -13,11 +14,17 @@ const firebaseConfig = {
   storageBucket: "pikplay-72843.firebasestorage.app",
   messagingSenderId: "1095528210985",
   appId: "1:1095528210985:web:39d7a6f1277a4451caf238",
-  measurementId: "G-5L0TTHX1CT"
+  measurementId: "G-5L0TTHX1CT",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+let analytics;
 
-export default app;
+if (typeof window !== "undefined") {
+  analytics = getAnalytics(app);
+}
+
+const storage = getStorage(app)
+
+export { app, analytics, storage };
