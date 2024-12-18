@@ -6,6 +6,7 @@ import { useIAStore } from '../ia/IAstore'
 import useSystemStore from '../../hooks/storeSystem'
 import { motion } from 'framer-motion'
 import Button from '../button/Button'
+import { height } from '@mui/system'
 
 const Onboarding = () => {
   const { setStoreValue } = useSystemStore()
@@ -17,17 +18,24 @@ const Onboarding = () => {
       image: "/images/ia/character-full.svg",
       isCompleted: true,
       messageCode: 'onboarding',
+      imageStyle: {},
     },
     {
       background: "https://i.pinimg.com/564x/f4/d4/b9/f4d4b991d2bccaf2202b8a07bae108de.jpg",
       html: <>¿Que son las <span className={styles.yellow}>Pikcoins?</span></>,
-      image: "/images/others/coins-onboarding.svg",
+      image: "/images/icons/coin-v2.svg",
+      imageStyle: {
+        width: 70,
+      },
       messageCode: "pikcoins",
     },
     {
       background: "https://i.pinimg.com/564x/f4/d4/b9/f4d4b991d2bccaf2202b8a07bae108de.jpg",
       html: <>Alcanza la <span className={styles.green}>liga</span> <br />más top</>,
       image: "/images/icons/liga-oro-hiervas.svg",
+      imageStyle: {
+        width: 110,
+      },
       messageCode: "ranking",
     },
     {
@@ -35,7 +43,10 @@ const Onboarding = () => {
       html: <>¡Refiere y gana!</>,
       image: "/images/icons/gif.svg",
       messageCode: "referrals",
-      imageStyle: { width: 70, height: 81 }
+      imageStyle: {
+        marginTop: "-26px",
+        width: 66,
+      }
     },
     // {
     //   background: "https://i.pinimg.com/564x/f4/d4/b9/f4d4b991d2bccaf2202b8a07bae108de.jpg",
@@ -89,7 +100,7 @@ const Onboarding = () => {
     <div className={styles.items}>
       {
         items.map((item, ind) => {
-          const { height, width } = item?.imageStyle || {}
+          const { imageStyle, imageStyle: { height = 200, width = 200 } } = item || {}
           return <motion.div
             className={`${styles.item} ${ind < 1 && styles.active}`}
             key={ind}
@@ -98,7 +109,13 @@ const Onboarding = () => {
             whileTap={{ scale: 0.7 }}>
             {/* <Image className={styles.background} src={item.background} width={564} height={564} /> */}
             <div className={styles.black_bg}></div>
-            <Image className={styles.image} src={item.image} width={width || 200} height={height || 200} />
+            <Image
+              className={styles.image}
+              src={item.image}
+              style={imageStyle || {}}
+              height={height}
+              width={width}
+            />
             <div className={styles.html}>{item.html}</div>
           </motion.div>
         }

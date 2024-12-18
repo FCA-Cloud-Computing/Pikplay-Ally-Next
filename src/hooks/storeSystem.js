@@ -1,5 +1,6 @@
 import cookieCutter from '@boiseitguru/cookie-cutter'
 import { create } from 'zustand';
+import { logout } from '../lib/utils';
 
 const initialNotification = {
   nid: 0,
@@ -25,13 +26,10 @@ const defaultUserLogged = {
   picture: 'https://files.idyllic.app/files/static/308631?width=256&optimizer=image',
 };
 
-const logout = (set) => {
-  localStorage.clear()
+const initialLoginStorage = (set) => {
   set({ userLogged: { uid: null } })
-  set({ notifications: [initialNotification] })
-  cookieCutter.set('X-Auth-Token', null)
-  cookieCutter.set('User-ID', null)
-  cookieCutter.set('userLogged', { uid: 0 })
+  set({ notifications: [initialNotification] })  
+  logout()
 }
 
 const useSystemStore = create((set, get) => ({
@@ -41,7 +39,7 @@ const useSystemStore = create((set, get) => ({
   isAwardSummaryModalOpen: false,
   isOnboardingProcess: false,
   awardsSummaryModalHTML: null,
-  logout: () => logout(set),
+  logout: () => initialLoginStorage(set),
   notifications: [initialNotification],
   newNotifications: true,
   userLogged: loadFromLocalStorage('userLogged') || defaultUserLogged,

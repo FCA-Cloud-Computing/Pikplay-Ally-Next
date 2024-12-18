@@ -35,6 +35,9 @@ const ProfileSummaryExperience = (props) => {
   return (
     <div className={classNames("ProfileSummaryExperience", { [styles.ProfileSummaryExperience]: true })}>
       <div>
+        {/* <div>
+          Name
+        </div> */}
         <div className={`shine ${styles[league]} ${league == 'oro' && 'starsFallingDown'} ${styles.full_name}`}>
           <span>{name}</span>
           {/* <div className={styles.icons}>
