@@ -7,25 +7,26 @@ import ModalTransactions from "../modal/ModalTransactions";
 import { FormTransactions } from "./FormTransactions";
 import CoinIcon from "../coinIcon/CoinIcon";
 
-export function Statistics({ totalProfit }) {
-  const [isVisibleProfit, setisVisibleProfit] = useState(true);
-  const totalProfitFormatted = formatNumberWithCommas(totalProfit);
-  const newTotalProfit = isVisibleProfit
-    ? totalProfitFormatted
-    : "*".repeat(totalProfitFormatted.length + 2);
+export function Statistics({ totalExperience }) {
+  const [isVisibleExperience, setisVisibleExperience] = useState(true);
+  const totalExperienceFormatted = formatNumberWithCommas(totalExperience);
+  const newTotalExperience = isVisibleExperience
+    ? totalExperienceFormatted
+    : "*".repeat(totalExperienceFormatted.length + 2);
+    
   return (
     <div className="flex items-center gap-3 w-full justify-between">
       <strong className="text-4xl flex items-center gap-1">
         <CoinIcon />
-        {newTotalProfit}
+        {newTotalExperience}
       </strong>
       <button
-        onClick={() => setisVisibleProfit(!isVisibleProfit)}
+        onClick={() => setisVisibleExperience(!isVisibleExperience)}
         className="grow"
       >
         <Image
-          src={isVisibleProfit ? Eye : EyeSlash}
-          alt={`${isVisibleProfit ? "Ocultar" : "Mostrar"} contraseña`}
+          src={isVisibleExperience ? Eye : EyeSlash}
+          alt={`${isVisibleExperience ? "Ocultar" : "Mostrar"} contraseña`}
           width={20}
           height={20}
         />
