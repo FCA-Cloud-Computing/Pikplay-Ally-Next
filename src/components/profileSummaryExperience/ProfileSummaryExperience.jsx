@@ -1,10 +1,9 @@
 import styles from './profileSummaryExperience.module.scss'
 
 import React, { useEffect, useState } from 'react'
-import { Tooltip } from '@mui/material'
-import Zoom from '@mui/material/Zoom'
-import { animatePrince, formatNumber } from '../../lib/utils'
 import classNames from 'classnames'
+
+import { animatePrince, formatNumber } from '../../lib/utils'
 import CoinIcon from '../coinIcon/CoinIcon'
 import ProfileImage from '../profileImage/ProfileImage'
 import useSystemStore from '../../hooks/storeSystem'
@@ -66,27 +65,13 @@ const ProfileSummaryExperience = (props) => {
                 <CoinIcon coins={coins} />
               </span>
               <span className={styles.label}>
-                <div className={styles.name}>Nivel</div>
-                21
-              </span>
-              <span className={styles.label}>
                 <div className={styles.name}>Compras</div>
                 5
-              </span>
-              <span className={styles.label}>
-                <div className={styles.name}>Ventas</div>
-                2
               </span>
               <span className={styles.label}>
                 <div className={styles.name}>Antiguedad</div>
                 4 meses
               </span>
-              <Tooltip TransitionComponent={Zoom} title="Última conexión">
-                <span className={styles.label}>
-                  <div className={styles.name}>U.C.</div>
-                  Ayer
-                </span>
-              </Tooltip>
             </div>
           </div>}
         </div>
@@ -98,7 +83,8 @@ const ProfileSummaryExperience = (props) => {
 export default ProfileSummaryExperience
 
 const ExperienceBar = (props) => {
-  const { exp } = props;
+  // const { exp } = props;
+  const exp = 200
   const [currentExp, setCurrentExp] = useState(exp)
   const [widtBar, setWidthBar] = useState("0%")
 
@@ -120,7 +106,7 @@ const ExperienceBar = (props) => {
         <div className={classNames("indicator", { [styles.indicator]: true })} style={{ width: widtBar }}>
           <label>
             <span className='number'>{formatNumber(currentExp)}</span>
-            &nbsp;/ 1.000 EXP
+            &nbsp;/&nbsp;1.000 EXP
           </label>
         </div>
       </div>

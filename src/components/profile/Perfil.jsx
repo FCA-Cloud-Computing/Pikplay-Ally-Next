@@ -4,10 +4,10 @@ import React, { useState, useEffect } from 'react'
 // import VARS from '../../lib/variables'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import CustomFetch from '../fetch/CustomFetch'
-import Joyride from 'react-joyride'
-import { toast } from 'react-toastify'
+// import Joyride from 'react-joyride'
+// import { toast } from 'react-toastify'
 // import { interestsList } from '../../lib/utils'
-import { Alert } from '@mui/material';
+// import { Alert } from '@mui/material';
 import { ChargingStation, EditNote, NotificationAdd, NotificationImportant, Notifications, NotificationsActive, Person, PhonelinkLockOutlined, PowerOffOutlined } from '@mui/icons-material'
 import {
   Box,
@@ -128,9 +128,9 @@ const Interface = ({
 
   return (
     <section className={`page ${styles.Perfil}`}>
-      <Joyride steps={steps} />
+      {/* <Joyride steps={steps} /> */}
       <div className={styles.content}>
-        <div className={classNames('Card', styles['profile-content'])}>
+        <div className={classNames('', styles['profile-content'])}>
           {/* <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
             <Tabs
               value={tabValue}
