@@ -12,7 +12,7 @@ const OnboardingPage = () => {
         title={title}
         url={url}>
         <Onboarding />
-    </Layout>   
+    </Layout>
 }
 
 export default OnboardingPage

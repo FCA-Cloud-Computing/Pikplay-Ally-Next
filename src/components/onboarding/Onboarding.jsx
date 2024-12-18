@@ -5,6 +5,7 @@ import Image from "next/image"
 import { useIAStore } from '../ia/IAstore'
 import useSystemStore from '../../hooks/storeSystem'
 import { motion } from 'framer-motion'
+import SendIcon from '@mui/icons-material/Send'
 
 const Onboarding = () => {
   const { setStoreValue } = useSystemStore()
