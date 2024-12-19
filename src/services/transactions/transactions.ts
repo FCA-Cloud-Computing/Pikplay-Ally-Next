@@ -2,7 +2,7 @@ import CustomFetch from "../../components/fetch/CustomFetch";
 
 const { get, post } = CustomFetch();
 
-const BASE_URL = "/api/transactions";
+const BASE_URL = "/transactions";
 
 const getTransactions = async () => {
   const url = BASE_URL

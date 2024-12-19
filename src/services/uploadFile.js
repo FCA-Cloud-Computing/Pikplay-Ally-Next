@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved */
 import { ref, uploadBytes, getDownloadURL, getStorage } from "firebase/storage";
-import { app, storage } from "@/lib/firebase";
+import { app, storage } from "../lib/firebase";
 
 async function uploadFileSrv(entity, file, folder = "undefined") {
   try {
@@ -20,4 +20,4 @@ async function uploadFileSrv(entity, file, folder = "undefined") {
   }
 }
 
-export default uploadFile;
+export default uploadFileSrv;

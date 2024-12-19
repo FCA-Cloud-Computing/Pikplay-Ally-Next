@@ -1,5 +1,4 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import clsx from "clsx";
 import { styled, css } from "@mui/system";
 import { Modal as BaseModal } from "@mui/base/Modal";
@@ -45,11 +44,6 @@ const Backdrop = React.forwardRef((props, ref) => {
 });
 
 Backdrop.displayName = "Backdrop";
-
-Backdrop.propTypes = {
-  className: PropTypes.string.isRequired,
-  open: PropTypes.bool,
-};
 
 const Modal = styled(BaseModal)`
   position: fixed;

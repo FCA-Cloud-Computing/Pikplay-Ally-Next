@@ -1,10 +1,6 @@
-import { formatNumberWithCommas } from "../../lib/utils";
-
 export function ListTransactions({ transactions }) {
-  const isPositiveProfit = (transaction) =>
-    transaction.profit > 0 ? "text-green-500" : "text-red-500";
   return (
-    <ul className="flex flex-col gap-3 w-full">
+    <ul className="flex gap-3 w-full flex-col-reverse">
       {transactions.map((transaction) => (
         <li
           key={transaction.orderId}
@@ -19,14 +15,14 @@ export function ListTransactions({ transactions }) {
           </picture>
           <div className="grow flex flex-col pl-2">
             <strong className="font-semibold">{transaction.customer}</strong>
-            <span className="text-sm text-gray-400">{transaction.created}</span>
+            <span className="text-sm text-gray-400">{transaction.purchaseDate}</span>
           </div>
           <div className="flex flex-col items-center">
             <strong className="text-sm font-semibold">
-              ${formatNumberWithCommas(transaction.total)}
+              {transaction.allied}
             </strong>
-            <span className={` ${isPositiveProfit(transaction)} text-sm`}>
-              ${formatNumberWithCommas(transaction.profit)}
+            <span className="text-sm text-green-500">
+              EXP {(transaction.experience)}
             </span>
           </div>
         </li>
