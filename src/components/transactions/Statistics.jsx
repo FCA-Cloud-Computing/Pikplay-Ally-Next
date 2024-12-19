@@ -1,11 +1,11 @@
 import Image from "next/image";
 import { useState } from "react";
-import { formatNumberWithCommas } from "@/lib/utils";
 import Eye from "../../../public/images/icons/eye.svg";
 import EyeSlash from "../../../public/images/icons/eye-slash.svg";
 import ModalTransactions from "../modal/ModalTransactions";
 import { FormTransactions } from "./FormTransactions";
 import CoinIcon from "../coinIcon/CoinIcon";
+import { formatNumberWithCommas } from "../../lib/utils";
 
 export function Statistics({ totalExperience }) {
   const [isVisibleExperience, setisVisibleExperience] = useState(true);

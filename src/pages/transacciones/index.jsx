@@ -1,13 +1,14 @@
-import { getTransactions } from "@/services/user/transactions";
+import "./styles.scss";
+
+import { getTransactions } from "../../services/user/transactions";
 import { useState, useEffect } from "react";
 import {
   ListTransactions,
   Header,
   Statistics,
-} from "@/components/transactions";
-import Layout from "@/components/layout/Layout";
-import { useTransactionsStore } from "@/store/transactions.store";
-import "./styles.scss";
+} from "../../components/transactions";
+import Layout from "../../components/layout/Layout";
+import { useTransactionsStore } from "../../store/transactions.store";
 
 function Transactions() {
   const { transactions, getTransactionsStore } = useTransactionsStore();

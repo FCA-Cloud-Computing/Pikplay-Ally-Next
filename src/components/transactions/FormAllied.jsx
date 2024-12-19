@@ -1,8 +1,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { schema } from "@/models/form.model";
+import { schema } from "../../models/form.model";
 import { InputTransactions } from "./InputTransactions";
-import { useTransactionsStore } from "@/store/transactions.store";
+import { useTransactionsStore } from "../../store/transactions.store";
 
 export const FormAllied = () => {
   const { addTransactionStore } = useTransactionsStore();

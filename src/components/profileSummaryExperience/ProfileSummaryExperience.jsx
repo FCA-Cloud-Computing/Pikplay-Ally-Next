@@ -6,7 +6,7 @@ import Zoom from '@mui/material/Zoom'
 import { animatePrince, formatNumber } from '../../lib/utils'
 import classNames from 'classnames'
 import CoinIcon from '../coinIcon/CoinIcon'
-import ProfileImage from '../profileImage/ProfileImage'
+// import ProfileImage from '../profileImage/ProfileImage'
 import useSystemStore from '../../hooks/storeSystem'
 
 const ProfileSummaryExperience = (props) => {
@@ -46,7 +46,7 @@ const ProfileSummaryExperience = (props) => {
         <div className={`${styles[league]} ${styles.box}`} style={{ background: backgroundColor }}>
           <div asd={backgroundImage} className={styles.bg} style={{ backgroundImage: `url( ${backgroundImage})` }}></div>
           <div className={styles.left}>
-            <ProfileImage picture={picture} />
+            {/* <ProfileImage picture={picture} /> */}
             <br />
             <div className={styles.experience_status}>
               <ExperienceBar {...{ exp: experienceValue }} />

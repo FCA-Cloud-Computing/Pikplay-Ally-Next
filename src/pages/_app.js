@@ -1,10 +1,12 @@
-import '../styles/globalStyles.scss'
+import "react-toastify/scss/main.scss"
 
-import React, { useEffect, useState } from 'react'
+import "../styles/globalStyles.scss";
 
-const MyApp = props => {
-  const { Component, pageProps, router } = props
-  return (<Component {...pageProps} key={router.name} />)
-}
+import React, { useEffect, useState } from "react";
 
-export default MyApp
+const MyApp = (props) => {
+  const { Component, pageProps, router } = props;
+  return <Component {...pageProps} key={router.name} />;
+};
+
+export default MyApp;

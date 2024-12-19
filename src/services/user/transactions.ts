@@ -1,8 +1,8 @@
-import CustomFetch from "@/components/fetch/CustomFetch";
+import CustomFetch from "../../components/fetch/CustomFetch";
 
 const { get, post } = CustomFetch();
 
-const BASE_URL = "/api/transactions";
+const BASE_URL = "/transactions";
 
 const getTransactions = async () => {
   const data = await get({ headers: { 'Content-Type': 'application/json' } }, BASE_URL);

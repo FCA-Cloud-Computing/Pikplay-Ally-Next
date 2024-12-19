@@ -1,7 +1,8 @@
-import { getTransactions } from "@/services/user/transactions";
 import { create } from "zustand";
 import { persist, devtools } from "zustand/middleware";
-import { addTransaction } from "@/services/user/transactions";
+
+import { getTransactions } from "../services/user/transactions";
+import { addTransaction } from "../services/user/transactions";
 
 export const useTransactionsStore = create(
   devtools(

@@ -4,7 +4,7 @@ import { styled } from "@mui/material/styles";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { Button } from "@mui/material";
 import { useState } from "react";
-import uploadFile from "@/services/uploadFile";
+import uploadFile from "../../services/uploadFile";
 import { useRef } from "react";
 
 export const FormClient = () => {

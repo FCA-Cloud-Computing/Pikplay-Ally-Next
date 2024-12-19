@@ -1,5 +1,5 @@
 import { ref, uploadBytes, getDownloadURL, getStorage } from "firebase/storage";
-import { app, storage } from "@/lib/firebase";
+import { app, storage } from "../lib/firebase";
 
 async function uploadFile(file, folder = "userNoDefined") {
   try {

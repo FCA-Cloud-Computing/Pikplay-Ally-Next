@@ -3,12 +3,15 @@ import styles from './layout.module.scss'
 
 import React from 'react'
 import Link from 'next/link'
-import classNames from 'classnames'
-import IA from '../ia/IA'
 import Image from 'next/image'
-import CustomHeader from '../customHeader/CustomHeader.tsx'
-import useSystemStore from '../../hooks/storeSystem.js'
+import classNames from 'classnames'
+
+// Customs
+import IA from '../ia/IA'
+import CustomHeader from '../customHeader/CustomHeader'
 import MenuMovil from '../menuMovil/MenuMovil'
+
+import useSystemStore from '../../hooks/storeSystem.js'
 
 const Body = ({
   children,
