@@ -14,5 +14,4 @@ const addTransaction = async (transaction) => {
   return data;
 }
 
-
 export { getTransactions, addTransaction }
