@@ -1,10 +1,11 @@
+/* eslint-disable import/no-unresolved */
 import { ref, uploadBytes, getDownloadURL, getStorage } from "firebase/storage";
 import { app, storage } from "../lib/firebase";
 
-async function uploadFile(file, folder = "userNoDefined") {
+async function uploadFileSrv(entity, file, folder = "undefined") {
   try {
     // Crea una referencia al archivo en el storage
-    const storageRef = ref(storage, `invoices/${folder}/${file.name}`);
+    const storageRef = ref(storage, `${entity}/${folder}/${file.name}`);
     // Sube el archivo
     const snapshot = await uploadBytes(storageRef, file);
 
@@ -19,4 +20,4 @@ async function uploadFile(file, folder = "userNoDefined") {
   }
 }
 
-export default uploadFile;
+export default uploadFileSrv;

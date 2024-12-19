@@ -26,6 +26,8 @@ const IA = (props) => {
         }
     };
 
+    console.log(IAHTMLMessage);
+
     return <div className={`${styles.IAElement} ${!isVisible ? styles.hide : null} `}>
         <div className={styles.box}>
             <div className={styles.title}>
@@ -35,8 +37,8 @@ const IA = (props) => {
             <div className={styles.text}>
                 <div className={styles.list}>
                     {IAHTMLMessage && IAHTMLMessage}
-                    {IAMessage && <p className={styles.IAMessage}>{IAMessage}</p>}
-                    {IAHTMLSecondMessage && IAHTMLSecondMessage}
+                    {IAMessage && <p className={styles.IAMessage} dangerouslySetInnerHTML={{ __html: IAMessage }}></p>}
+                    {IAHTMLSecondMessage && <p className={styles.IAMessage} dangerouslySetInnerHTML={{ __html: IAHTMLSecondMessage }}></p>}
                     <motion.div
                         animate="visible"
                         className={styles.buttons}

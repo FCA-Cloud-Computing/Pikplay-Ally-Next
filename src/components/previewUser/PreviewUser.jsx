@@ -8,7 +8,7 @@ import { IS_MOBILE } from '../../lib/variables'
 import useSystemStore from '../../hooks/storeSystem'
 import UserNotifications from '../userNotifications/UserNotifications'
 import Button from '../button/Button'
-// const ProfileImage = dynamic(() => import('../profileImage/ProfileImage'), { ssr: false })
+const ProfileImage = dynamic(() => import('../profileImage/ProfileImage'), { ssr: false })
 const MenuMobileOptions = dynamic(() => import('./MenuMobileOptions'), { ssr: false })
 
 const PreviewUser = () => {
@@ -29,11 +29,11 @@ const PreviewUser = () => {
       `}>
       {userLogged?.uid ? (
         <div>
-          {/* <ProfileImage
+          <ProfileImage
             suppressHydrationWarning={true}
             className="previewUser"
             handleClickImage={IS_MOBILE ? handleClickImage : null}
-            picture={picture} /> */}
+            picture={picture} />
           {/* TODO */}
           {/* Icono */}
           <div className={styles.coins} id="PreviewProfile--Coins">

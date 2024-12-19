@@ -19,15 +19,15 @@
         width: 200px;
         &.bronce {
             background: linear-gradient(45deg, #cecdd2, #9b9b9d);
-            border: 2px solid #9b9b9d;
+            // border: 2px solid #9b9b9d;
         }
         &.plata {
             background: linear-gradient(45deg, #cecdd2, #9b9b9d);
-            border: 2px solid #9b9b9d;
+            // border: 2px solid #9b9b9d;
         }
         &.oro {
             background: linear-gradient(45deg, #f4c376, #ba7821);
-            border: 2px solid #c1812e;
+            // border: 2px solid #c1812e;
         }
         &:before {
             background: #959595;
@@ -41,7 +41,15 @@
             z-index: -1;
         }
         span {
-            text-shadow: 2px 1px 3px #565656;
+            text-shadow:
+                2px 0 #2e2e2e,
+                -2px 0 #2e2e2e,
+                0 2px #2e2e2e,
+                0 -2px #2e2e2e,
+                1px 1px #2e2e2e,
+                -1px -1px #2e2e2e,
+                1px -1px #2e2e2e,
+                -1px 1px #2e2e2e;
         }
 
         .icons {
@@ -65,16 +73,16 @@
         border-radius: 20px;
         box-shadow: inset 5px 5px 4px #505050;
         color: white;
-        display: flex;
-        height: 409px;
+        // display: flex;
+        // height: 409px;
         margin-bottom: 20px;
         padding: 20px 20px 0 20px;
         position: relative;
         transition: 1s ease-in-out;
-        width: 300px;
+        width: 260px;
         @media screen and (max-width: 480px) {
             padding: 20px 0px 0 0px;
-            width: initial;
+            // width: initial;
         }
 
         &::before {
@@ -92,8 +100,10 @@
         .bg {
             // background-image: url(https://t4.ftcdn.net/jpg/03/85/05/53/360_F_385055380_RnAWgJUqaJzqgh8i3aeleBFULJkLoVM6.jpg);
             // background-image: url(https://image.slidesdocs.com/responsive-images/background/purple-gradient-mosaic-character-wind-game-cartoon-powerpoint-background_7de580b73e__960_540.jpg);
-            background-size: cover;
+            // background-size: cover;
+            background-image: url(/images/backgrounds/tetris-texture.png);
             background-position: center;
+            background-size: 320px;
             border-radius: inherit;
             content: "";
             height: 100%;
@@ -127,7 +137,7 @@
         }
 
         .right {
-            width: 380px;
+            width: 200px;
             @media screen and (max-width: 480px) {
                 width: initial;
             }
@@ -146,22 +156,36 @@
             flex-direction: column;
             flex-wrap: wrap;
             justify-content: center;
+            padding: 0 20px;
         }
 
         .label {
-            background: #11495d;
-            border-radius: 4px;
+            border-bottom: 1px solid #11495d61;
+            // border-radius: 4px;
             display: inline-block;
-            font-size: 12px;
+            font-size: 14px;
             margin: 10px 10px 20px 10px;
-            padding: 2px 6px;
+            padding: 2px 6px 5px;
             position: relative;
             text-align: right;
             .name {
-                font-size: 12px;
+                font-size: 14px;
                 position: absolute;
-                top: -20px;
+                top: 2px;
                 left: 0;
+                text-shadow:
+                    2px 0 #2e2e2e,
+                    -2px 0 #2e2e2e,
+                    0 2px #2e2e2e,
+                    0 -2px #2e2e2e,
+                    1px 1px #2e2e2e,
+                    -1px -1px #2e2e2e,
+                    1px -1px #2e2e2e,
+                    -1px 1px #2e2e2e;
+            }
+            :global(.Coins) {
+                float: right;
+                margin-top: -14px;
             }
         }
 
@@ -180,7 +204,7 @@
     border-radius: 5px;
     box-shadow: inset 4px 5px 8px #29292961;
     height: 16px;
-    width: 100%;
+    width: 90%;
     .bar {
         border-radius: 5px;
         box-shadow: inset 4px 5px 8px #29292900;

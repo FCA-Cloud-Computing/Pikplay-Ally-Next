@@ -1,6 +1,7 @@
 import React from "react";
-import styles from "./CardProfile.module.scss";
 import Image from "next/image";
+
+import styles from "./CardProfile.module.scss";
 
 interface Props {
   name: string;

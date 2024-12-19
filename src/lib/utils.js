@@ -1,4 +1,5 @@
-import confetti from 'canvas-confetti'
+import cookieCutter from '@boiseitguru/cookie-cutter';
+import confetti from 'canvas-confetti';
 
 export const animatePrince = (HTMLElement, targetNumber, fromNumber) => {
   var target = parseFloat(fromNumber);
@@ -23,8 +24,9 @@ export const animatePrince = (HTMLElement, targetNumber, fromNumber) => {
   }
 };
 
-export function cookiesToObject(cookies) {
+export function cookiesToObject(cookies = '') {
   // Tested in getServerSideProps
+  // debugger;
   const cookiesArray = cookies.split(';');
   const cookiesObject = {};
   cookiesArray.forEach((cookie) => {
@@ -117,10 +119,10 @@ export function snakeToCamel(snake) {
 }
 
 export function formatNumberWithCommas(number) {
-  if (!number) return
+  if (!number) return;
   return number.toLocaleString('en-US', {
     minimumFractionDigits: 2,
-    maximumFractionDigits: 2
+    maximumFractionDigits: 2,
   });
 }
 
@@ -128,14 +130,14 @@ export function startConfetti() {
   var count = 200;
   var defaults = {
     origin: { y: 0.7 },
-    zIndex: 1301
+    zIndex: 1301,
   };
 
   function fire(particleRatio, opts) {
     confetti({
       ...defaults,
       ...opts,
-      particleCount: Math.floor(count * particleRatio)
+      particleCount: Math.floor(count * particleRatio),
     });
   }
 
@@ -149,17 +151,37 @@ export function startConfetti() {
   fire(0.35, {
     spread: 100,
     decay: 0.91,
-    scalar: 0.8
+    scalar: 0.8,
   });
   fire(0.1, {
     spread: 120,
     startVelocity: 25,
     decay: 0.92,
-    scalar: 1.2
+    scalar: 1.2,
   });
   fire(0.1, {
     spread: 120,
     startVelocity: 45,
   });
-  confetti({ ...defaults })
+  confetti({ ...defaults });
+}
+
+export function getCookies(ctx = { req: { cookies: {} } }) {
+  let headers = {};
+  // Obteniendo cookies del lado del server. Generalmente vienen en el ctx.req.cookies
+  // console.log("cookieCutter", cookieCutter ? cookieCutter.get("User-ID") : "no existe cuttier");
+  // console.log("ctx", ctx?.req.cookies["X-Auth-Token"]);
+  // debugger;
+  headers['User-ID'] = ctx?.req?.cookies['User-ID'] || (typeof window != 'undefined' && cookieCutter.get('User-ID')) || null;
+  headers['X-Auth-Token'] = ctx?.req?.cookies['X-Auth-Token'] || (typeof window != 'undefined' && cookieCutter.get('X-Auth-Token')) || null;
+  return headers;
+}
+
+export function logout() {
+  if (typeof localStorage != 'undefined') {
+    localStorage.clear();
+    cookieCutter.set('X-Auth-Token', null);
+    cookieCutter.set('User-ID', null);
+    cookieCutter.set('userLogged', { uid: 0 });
+  }
 }
