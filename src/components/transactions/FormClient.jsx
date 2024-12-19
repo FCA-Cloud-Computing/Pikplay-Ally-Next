@@ -15,7 +15,7 @@ export const FormClient = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await uploadFile(file.current, `${userId}/${transactionId}`);
+    await uploadFile("invoices", file.current, `${userId}/${transactionId}`);
     file.current = null;
     setFileUploaded(false);
   };
