@@ -46,7 +46,8 @@ const ProfileSummaryExperience = (props) => {
           </div> */}
         </div>
         <div className={`${styles[league]} ${styles.box}`} style={{ background: backgroundColor }}>
-          <div asd={backgroundImage} className={styles.bg} style={{ backgroundImage: `url( ${backgroundImage})` }}></div>
+          {/* <div asd={backgroundImage} className={styles.bg} style={{ backgroundImage: `url( ${backgroundImage})` }}></div> */}
+          <div asd={backgroundImage} className={styles.bg}></div>
           <div className={styles.left}>
             <ProfileImage picture={picture} />
             <br />
