@@ -1,6 +1,9 @@
 import { create } from "zustand";
 import { persist, devtools } from "zustand/middleware";
 
+import { getTransactions } from "../services/user/transactions";
+import { addTransaction } from "../services/user/transactions";
+
 export const useTransactionsStore = create(
   devtools(
     persist(
@@ -8,25 +11,21 @@ export const useTransactionsStore = create(
         return {
           transactions: [],
 
-          addTransaction: (transaction) => {
-            set((state) => ({
-              transactions: [...state.transactions, transaction],
-            }));
+          getTransactionsStore: async () => {
+            try {
+              const res = await getTransactions();
+              set((state) => ({
+                transactions: res.data
+              }));
+            } catch (error) {
+              console.error("Error fetching transactions:", error);
+            }
           },
 
-          removeTransaction: (orderId) => {
+          addTransactionStore: (transaction) => {
+            addTransaction(transaction);
             set((state) => ({
-              transactions: state.transactions.filter(
-                (transaction) => transaction.orderId !== orderId
-              ),
-            }));
-          },
-          
-          updateTransaction: (orderId, updatedTransaction) => {
-            set((state) => ({
-              transactions: state.transactions.map((transaction) =>
-                transaction.orderId === orderId ? updatedTransaction : transaction
-              ),
+              transactions: [...state.transactions, transaction],
             }));
           },
         }

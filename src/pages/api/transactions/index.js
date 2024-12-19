@@ -1,89 +1,109 @@
-export default function handler(req, res) {
-  const response = {
-    code: 200,
-    transactions: [
-      {
-        orderId: 1,
-        created: "2021-08-15",
-        customer: "John Smith",
-        total: 45000.75,
-        profit: 15000.25,
-        updated: "2021-08-16",
-      },
-      {
-        orderId: 2,
-        created: "2021-09-02",
-        customer: "Jane Doe",
-        total: 120000.50,
-        profit: 40000.20,
-        updated: "2021-09-02",
-      },
-      {
-        orderId: 3,
-        created: "2021-10-10",
-        customer: "Michael Brown",
-        total: 300000.99,
-        profit: 100000.33,
-        updated: "2021-10-11",
-      },
-      {
-        orderId: 4,
-        created: "2021-11-20",
-        customer: "Emily Johnson",
-        total: 600000.00,
-        profit: 200000.00,
-        updated: "2021-11-21",
-      },
-      {
-        orderId: 5,
-        created: "2021-12-05",
-        customer: "Chris Lee",
-        total: 75000.88,
-        profit: 25000.22,
-        updated: "2021-12-06",
-      },
-      {
-        orderId: 6,
-        created: "2022-01-15",
-        customer: "Samantha Davis",
-        total: 950000.45,
-        profit: 316666.82,
-        updated: "2022-01-16",
-      },
-      {
-        orderId: 7,
-        created: "2022-02-22",
-        customer: "Daniel Martinez",
-        total: 360000.25,
-        profit: 120000.10,
-        updated: "2022-02-23",
-      },
-      {
-        orderId: 8,
-        created: "2022-03-12",
-        customer: "Sophia Wilson",
-        total: 410000.73,
-        profit: 136666.91,
-        updated: "2022-03-13",
-      },
-      {
-        orderId: 9,
-        created: "2022-04-01",
-        customer: "James Anderson",
-        total: 510000.67,
-        profit: 170000.22,
-        updated: "2022-04-02",
-      },
-      {
-        orderId: 10,
-        created: "2022-05-19",
-        customer: "Olivia Clark",
-        total: 290000.44,
-        profit: 96666.81,
-        updated: "2022-05-20",
-      },
-    ],
-  };
+let transactions = [
+  {
+    customer: "John Smith",
+    productName: "Laptop",
+    productDescription: "High-end gaming laptop",
+    experience: 450,
+    purchaseDate: "2021-08-15",
+    orderId: 1,
+    allied: "TechStore",
+  },
+  {
+    customer: "Jane Doe",
+    productName: "Smartphone",
+    productDescription: "Latest model smartphone",
+    experience: 600,
+    purchaseDate: "2021-09-02",
+    orderId: 2,
+    allied: "MobileWorld",
+  },
+  {
+    customer: "Michael Brown",
+    productName: "Tablet",
+    productDescription: "10-inch screen tablet",
+    experience: 750,
+    purchaseDate: "2021-10-10",
+    orderId: 3,
+    allied: "GadgetHub",
+  },
+  {
+    customer: "Emily Johnson",
+    productName: "Smartwatch",
+    productDescription: "Waterproof smartwatch",
+    experience: 900,
+    purchaseDate: "2021-11-20",
+    orderId: 4,
+    allied: "WatchStore",
+  },
+  {
+    customer: "Chris Lee",
+    productName: "Headphones",
+    productDescription: "Noise-cancelling headphones",
+    experience: 300,
+    purchaseDate: "2021-12-05",
+    orderId: 5,
+    allied: "AudioShop",
+  },
+  {
+    customer: "Samantha Davis",
+    productName: "Camera",
+    productDescription: "DSLR camera",
+    experience: 950,
+    purchaseDate: "2022-01-15",
+    orderId: 6,
+    allied: "CameraWorld",
+  },
+  {
+    customer: "Daniel Martinez",
+    productName: "Monitor",
+    productDescription: "4K monitor",
+    experience: 800,
+    purchaseDate: "2022-02-22",
+    orderId: 7,
+    allied: "ScreenStore",
+  },
+  {
+    customer: "Sophia Wilson",
+    productName: "Printer",
+    productDescription: "Wireless printer",
+    experience: 700,
+    purchaseDate: "2022-03-12",
+    orderId: 8,
+    allied: "PrintShop",
+  },
+  {
+    customer: "James Anderson",
+    productName: "Router",
+    productDescription: "High-speed router",
+    experience: 650,
+    purchaseDate: "2022-04-01",
+    orderId: 9,
+    allied: "NetworkHub",
+  },
+  {
+    customer: "Olivia Clark",
+    productName: "Keyboard",
+    productDescription: "Mechanical keyboard",
+    experience: 500,
+    purchaseDate: "2022-05-19",
+    orderId: 10,
+    allied: "KeyStore",
+  },
+];
 
-  res.status(200).json(response);
+export default function handler(req, res) {
+  if (req.method === 'GET') {
+    const response = {
+      code: 200,
+      data: transactions,
+    };
+    res.status(200).json(response);
+  } else if (req.method === 'POST') {
+    const newTransaction = req.body;
+    newTransaction.orderId = transactions.length + 1;
+    transactions.push(newTransaction);
+    res.status(201).json({ code: 201, message: 'Transaction added successfully' });
+  } else {
+    res.status(405).json({ code: 405, message: 'Method not allowed' });
+  }
 }

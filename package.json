@@ -20,6 +20,8 @@
     "@mui/x-charts": "7.23.0",
     "canvas-confetti": "1.9.3",
     "classnames": "2.5.1",
+    "clsx": "2.1.1",
+    "firebase": "11.0.2",
     "framer-motion": "11.11.17",
     "moment": "2.30.1",
     "next": "15.0.1",
@@ -40,7 +42,6 @@
     "eslint": "8.57.1",
     "eslint-config-next": "15.0.1",
     "postcss": "8.4.47",
-    "tailwindcss": "3.4.15",
-    "typescript": "5.7.2"
+    "tailwindcss": "3.4.15"
   }
 }
