@@ -27,22 +27,6 @@ export const useTransactionsStore = create(
               transactions: [...state.transactions, transaction],
             }));
           },
-
-          removeTransaction: (orderId) => {
-            set((state) => ({
-              transactions: state.transactions.filter(
-                (transaction) => transaction.orderId !== orderId
-              ),
-            }));
-          },
-          
-          updateTransaction: (orderId, updatedTransaction) => {
-            set((state) => ({
-              transactions: state.transactions.map((transaction) =>
-                transaction.orderId === orderId ? updatedTransaction : transaction
-              ),
-            }));
-          },
         }
       }
     , { name: "transactions" })

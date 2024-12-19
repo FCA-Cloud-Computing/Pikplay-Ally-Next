@@ -6,8 +6,8 @@ import {
   Statistics,
 } from "@/components/transactions";
 import Layout from "@/components/layout/Layout";
-import "./styles.scss";
 import { useTransactionsStore } from "@/store/transactions.store";
+import "./styles.scss";
 
 function Transactions() {
   const { transactions, getTransactionsStore } = useTransactionsStore();
