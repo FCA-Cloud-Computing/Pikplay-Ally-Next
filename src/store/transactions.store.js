@@ -14,7 +14,7 @@ export const useTransactionsStore = create(
           getTransactionsStore: async () => {
             try {
               const res = await getTransactions();
-              set((state) => ({
+              set((_) => ({
                 transactions: res.data
               }));
             } catch (error) {
