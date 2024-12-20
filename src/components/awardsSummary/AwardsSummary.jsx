@@ -11,7 +11,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import useSystemStore from '../../hooks/storeSystem';
 
 const AwardsSummary = ({ callback }) => {
-  const gainedCoins = 5
+  const gainedCoins = 10
   const currentUserCoins = 10
   const { awardsSummaryModalHTML } = useSystemStore()
 
@@ -40,31 +40,29 @@ const AwardsSummary = ({ callback }) => {
 
   return (
     <>
-      <div>
-        <motion.div
-          initial={{ y: '-200px' }}
-          animate={{
-            y: 0,
-          }}
-          transition={{
-            delay: .5
-          }}
-          className={styles.title}>
-          ¡Recoje tus recompensas!
-        </motion.div>
-        <motion.div
-          initial={{ x: '0px', y: '600px' }}
-          animate={{
-            x: 0,
-            y: 200
-          }}
-          transition={{
-            delay: .2
-          }}
-          className={styles.subtitle}>
-          Recibiste tus primeros creditos, ¡sigue así!
-        </motion.div>
-      </div>
+      <motion.div
+        initial={{ y: '-200px' }}
+        animate={{
+          y: 0,
+        }}
+        transition={{
+          delay: .5
+        }}
+        className={styles.title}>
+        ¡Recoje tus recompensas!
+      </motion.div>
+      <motion.div
+        initial={{ x: '0px', y: '600px' }}
+        animate={{
+          x: 0,
+          y: 200
+        }}
+        transition={{
+          delay: .2
+        }}
+        className={styles.subtitle}>
+        Recibiste tus primeros creditos, ¡sigue así!
+      </motion.div>
       <div className={styles.box}>
         {/* <img src="/images/type_notification/coupon_gift_available.png" alt="bronze" /> */}
         <p className={styles.description}>
@@ -87,7 +85,7 @@ const AwardsSummary = ({ callback }) => {
             shine>
             Ir a mi perfil
           </Button> */}
-          {/* 
+        {/* 
           <Button
             className={styles.main_button}
             color="blue"
