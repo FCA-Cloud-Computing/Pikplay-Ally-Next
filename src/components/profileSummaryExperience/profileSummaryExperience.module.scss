@@ -41,15 +41,16 @@
             z-index: -1;
         }
         span {
+            $color: #7a7a7a;
             text-shadow:
-                2px 0 #2e2e2e,
-                -2px 0 #2e2e2e,
-                0 2px #2e2e2e,
-                0 -2px #2e2e2e,
-                1px 1px #2e2e2e,
-                -1px -1px #2e2e2e,
-                1px -1px #2e2e2e,
-                -1px 1px #2e2e2e;
+                2px 0 $color,
+                -2px 0 $color,
+                0 2px $color,
+                0 -2px $color,
+                1px 1px $color,
+                -1px -1px $color,
+                1px -1px $color,
+                -1px 1px $color;
         }
 
         .icons {
