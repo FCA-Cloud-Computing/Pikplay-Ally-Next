@@ -85,7 +85,7 @@ const UserNotifications = () => {
     const value = event.target.files[0]
     if (value) {
       const urlImage = await uploadFile("profile", value, `${uid}`);
-      updateProfileSrv(null, uid, urlImage)
+      updateProfileSrv(null, uid, { picture: urlImage })
     }
   }
 

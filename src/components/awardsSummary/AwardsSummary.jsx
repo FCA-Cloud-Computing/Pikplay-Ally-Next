@@ -42,7 +42,7 @@ const AwardsSummary = ({ callback }) => {
     <>
       <div>
         <motion.div
-          initial={{ y: '200px' }}
+          initial={{ y: '-200px' }}
           animate={{
             y: 0,
           }}
@@ -50,18 +50,19 @@ const AwardsSummary = ({ callback }) => {
             delay: .5
           }}
           className={styles.title}>
-          ¡Nueva liga!
+          ¡Recoje tus recompensas!
         </motion.div>
         <motion.div
-          initial={{ x: '-200px' }}
+          initial={{ x: '0px', y: '600px' }}
           animate={{
             x: 0,
+            y: 200
           }}
           transition={{
             delay: .2
           }}
           className={styles.subtitle}>
-          BRONCE
+          Recibiste tus primeros creditos, ¡sigue así!
         </motion.div>
       </div>
       <div className={styles.box}>
