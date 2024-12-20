@@ -17,7 +17,7 @@ async function uploadFileSrv(
     // Obtén la URL de descarga del archivo subido
     const downloadURL = await getDownloadURL(snapshot.ref);
     // Agrega la URL de descarga al documento de la transacción
-    await addInvoice({ invoices: downloadURL }, transactionId);
+    await addInvoice({ invoice_url: downloadURL }, transactionId);
 
     console.log("Archivo subido exitosamente. URL:", downloadURL);
   } catch (error) {

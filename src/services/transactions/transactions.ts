@@ -1,6 +1,6 @@
 import CustomFetch from "../../components/fetch/CustomFetch";
 
-const { get, post } = CustomFetch();
+const { get, post, put } = CustomFetch();
 
 const BASE_URL = "/transactions";
 
@@ -16,8 +16,8 @@ const addTransaction = async (transaction) => {
 }
 
 const addInvoice = async (invoice, idTransaction) => {
-  const url = `${BASE_URL}/update/${idTransaction}`
-  const data = await post({ headers: { 'Content-Type': 'application/json' } }, url, invoice);
+  const url = `${BASE_URL}/${idTransaction}`
+  const data = await put({ headers: { 'Content-Type': 'application/json' } }, url, invoice);
   return data;
 }
 
