@@ -53,10 +53,9 @@ const sendCodeSrv = async (ctx, phone) => {
   return data;
 };
 
-const updateProfileSrv = async (ctx, uid, data) => {
+const updateProfileSrv = (ctx, uid, data) => {
   const path = BASE_URL + `/${uid}/update`;
-  const response = await post(ctx, path, data);
-  return response;
+  return post(ctx, path, data);
 };
 
 const getExperiencesSrv = async (ctx) => {

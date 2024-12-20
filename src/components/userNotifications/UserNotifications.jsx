@@ -86,6 +86,9 @@ const UserNotifications = () => {
     if (value) {
       const urlImage = await uploadFile("profile", value, `${uid}`);
       updateProfileSrv(null, uid, { picture: urlImage })
+        .then(data => {
+          setStoreValue('userLogged', { ...userLogged, picture: urlImage })
+        })
     }
   }
 

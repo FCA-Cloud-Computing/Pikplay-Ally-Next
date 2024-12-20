@@ -49,7 +49,7 @@ const AwardsSummary = ({ callback }) => {
           delay: .5
         }}
         className={styles.title}>
-        ¡Recoje tus recompensas!
+        ¡Recoge tus recompensas!
       </motion.div>
       <motion.div
         initial={{ x: '0px', y: '600px' }}
@@ -107,6 +107,12 @@ const AwardsSummaryModal = (props) => {
     return <Slide direction="left" ref={ref} {...props} />;
   })
 
+  const handleCloseModal = () => {
+    setStoreValue('isAwardSummaryModalOpen', false)
+    setStoreValue('isOpenPreviewProfile', false)
+    setStoreValue('isGainFirstcoinsPictureProfile', false)
+  }
+
   const callback = (number) => {
     // setTimeout(() => {
     setPage([number, 1])
@@ -116,7 +122,7 @@ const AwardsSummaryModal = (props) => {
   return <Dialog
     open={true}
     TransitionComponent={Transition}
-    onClose={() => setStoreValue('isAwardSummaryModalOpen', false)}
+    onClose={handleCloseModal}
     className={styles.Dialog}>
     <DialogContent>
       <div id="AwardsSummary" className={styles.AwardsSummary}>

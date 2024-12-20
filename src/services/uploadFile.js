@@ -3,7 +3,6 @@ import { ref, uploadBytes, getDownloadURL, getStorage } from "firebase/storage";
 import { app, storage } from "../lib/firebase";
 
 async function uploadFileSrv(entity, file, folder = "undefined") {
-  debugger;
   try {
     // Crea una referencia al archivo en el storage
     const storageRef = ref(storage, `${entity}/${folder}/${file.name}`);
