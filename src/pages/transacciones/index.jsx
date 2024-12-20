@@ -1,7 +1,5 @@
 import "./styles.scss";
-
-import { getTransactions } from "../../services/user/transactions";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import {
   ListTransactions,
   Header,
@@ -15,17 +13,17 @@ function Transactions() {
   useEffect(() => {
     getTransactionsStore();
   }, [getTransactionsStore]);
-  
+
   const handleNotification = () => {
     console.log("click");
   };
-  
+
   const totalCredits = transactions.reduce(
     (acc, curr) => acc + curr.credits,
     0
   );
-  console.log(totalCredits)
-  
+  console.log(transactions);
+
   const image = "";
   const descripcion = "";
   const title = "Transacciones";

@@ -3,9 +3,11 @@ import { useForm } from "react-hook-form";
 import { schema } from "../../models/form.model";
 import { InputTransactions } from "./InputTransactions";
 import { useTransactionsStore } from "../../store/transactions.store";
+import useSystemStore from "../../hooks/storeSystem";
 
 export const FormAllied = () => {
   const { addTransactionStore } = useTransactionsStore();
+  const { userLogged } = useSystemStore();
   const {
     control,
     handleSubmit,
@@ -15,17 +17,17 @@ export const FormAllied = () => {
     resolver: zodResolver(schema),
     mode: "onBlur",
     defaultValues: {
-      customer: "",
-      productName: "",
-      productDescription: "",
+      description: "",
       experience: "",
-      purchaseDate: "",
-      allied: "",
+      credits: "",
+      purchase_date: "",
+      client_document: "",
     },
   });
 
   const onSubmit = (newTransaction) => {
-    addTransactionStore(newTransaction);
+    console.log({ ...newTransaction, uid: userLogged.uid });
+    // addTransactionStore(newTransaction);
     reset();
   };
 
@@ -39,51 +41,43 @@ export const FormAllied = () => {
         className="p-4 flex flex-col gap-2"
       >
         <InputTransactions
-          name="allied"
+          name="description"
           control={control}
-          label="Nombre del aliado"
-          placeholder="KFC, McDonalds..."
+          label="Descripción del producto"
+          placeholder="Pizza sin jamón"
           type="text"
-          error={errors.allied}
-        />
-        <InputTransactions
-          name="customer"
-          control={control}
-          label="Nombre del cliente"
-          type="text"
-          error={errors.customer}
-          placeholder="John Doe.."
-        />
-        <InputTransactions
-          name="productName"
-          control={control}
-          label="Nombre del producto"
-          placeholder="Pizza XXL, CocaCola 3lt..."
-          type="text"
-          error={errors.productName}
+          error={errors.description}
         />
         <InputTransactions
           name="experience"
           control={control}
           label="Experiencia por la compra"
+          placeholder="150 EXP"
           type="number"
-          placeholder="EXP 150"
           error={errors.experience}
         />
         <InputTransactions
-          name="purchaseDate"
+          name="credits"
+          control={control}
+          label="Créditos por la compra"
+          type="number"
+          error={errors.credits}
+          placeholder="10, 5, 3.."
+        />
+        <InputTransactions
+          name="purchase_date"
           control={control}
           label="Fecha de compra"
           type="date"
-          error={errors.purchaseDate}
+          error={errors.purchase_date}
         />
         <InputTransactions
-          name="productDescription"
+          name="client_document"
           control={control}
-          label="Descripción del producto"
-          placeholder="Pizza sin jamón"
-          type="text"
-          error={errors.productDescription}
+          label="Documento del cliente"
+          placeholder="CC 103242252"
+          type="number"
+          error={errors.client_document}
         />
         <button
           type="submit"

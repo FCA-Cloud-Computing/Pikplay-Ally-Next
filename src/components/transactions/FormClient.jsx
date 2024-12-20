@@ -9,11 +9,12 @@ import { useRef } from "react";
 
 export const FormClient = ({ uid, transactionId }) => {
   const [fileUploaded, setFileUploaded] = useState(false);
-  const file = useRef();
+  const file = useRef(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await uploadFile("invoices", file.current, `${uid}/${transactionId}`);
+    if (!file.current) return
+    await uploadFile("invoices", file.current, `${uid}/${transactionId}`, transactionId);
     file.current = null;
     setFileUploaded(false);
   };

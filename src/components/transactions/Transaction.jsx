@@ -1,14 +1,14 @@
 import Image from "next/image";
 import ModalTransactions from "../modal/ModalTransactions";
-import { Modal } from "@mui/material";
 import { FormClient } from "./FormClient";
+import { TRANSACTION_STATUS } from "../../consts/transactions.js";
 
 export function Transaction({ transaction }) {
   return (
     <article
       key={transaction.id}
       className={`flex bg-[#1f6a9080] ${
-        transaction.status === 1 ? "opacity-70" : ""
+        transaction.status === TRANSACTION_STATUS.SUCCESS ? "opacity-70" : ""
       } rounded-md`}
     >
       <section className="flex flex-col gap-1 bg-[#0d0e39d3] rounded-l-md p-2 items-center justify-between">
@@ -22,7 +22,9 @@ export function Transaction({ transaction }) {
         <strong
           className={`text-[0.75rem] font-bold bg-primary px-2 py-1 rounded-md w-fit`}
         >
-          {transaction.status === 0 ? "Pendiente" : "Completada"}
+          {transaction.status === TRANSACTION_STATUS.PENDING
+            ? "Pendiente"
+            : "Completada"}
         </strong>
       </section>
       <section className="flex flex-col p-2 grow gap-2">
@@ -46,12 +48,17 @@ export function Transaction({ transaction }) {
           <span className="text-[0.7rem] text-gray-400 font-semibold rounded-md w-fit">
             {transaction.seller.city} {transaction.createdAt.slice(0, 10)}
           </span>
-          <ModalTransactions
-            label="Subir comprobante"
-            className="w-full text-[0.7rem] text-white bg-primary px-2 py-1 rounded-md"
-          >
-            <FormClient transactionId={transaction.id} uid={transaction.uid} />
-          </ModalTransactions>
+          {transaction.status === TRANSACTION_STATUS.PENDING && (
+            <ModalTransactions
+              label="Subir comprobante"
+              className="w-full text-[0.7rem] text-white bg-primary px-2 py-1 rounded-md"
+            >
+              <FormClient
+                transactionId={transaction.id}
+                uid={transaction.uid}
+              />
+            </ModalTransactions>
+          )}
         </footer>
       </section>
     </article>
