@@ -10,6 +10,7 @@ import { useTransactionsStore } from "../../store/transactions.store";
 
 function Transactions() {
   const { transactions, getTransactionsStore } = useTransactionsStore();
+
   useEffect(() => {
     getTransactionsStore();
   }, [getTransactionsStore]);
@@ -22,7 +23,6 @@ function Transactions() {
     (acc, curr) => acc + curr.credits,
     0
   );
-  console.log(transactions);
 
   const image = "";
   const descripcion = "";

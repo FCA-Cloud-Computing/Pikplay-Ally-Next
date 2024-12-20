@@ -34,4 +34,12 @@ export const schema = z.object({
       if (isNaN(numberValue)) throw new Error("El documento del cliente deben ser un número");
       return numberValue;
     }),
+    amount: z
+    .string()
+    .min(1, "El monto total es obligatorio")
+    .transform((val) => {
+      const numberValue = parseFloat(val);
+      if (isNaN(numberValue)) throw new Error("El monto total debe ser un número");
+      return numberValue;
+    }),
 });

@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image";
 import ModalTransactions from "../modal/ModalTransactions";
 import { FormClient } from "./FormClient";
@@ -30,7 +32,7 @@ export function Transaction({ transaction }) {
       <section className="flex flex-col p-2 grow gap-2">
         <header className="flex justify-between items-center">
           <strong className="text-sm font-semibold">
-            {transaction.seller.name}
+            {transaction.seller?.name}
           </strong>
           <div className="flex gap-2">
             <span className="text-[0.7rem] text-green-500 font-semibold">
@@ -46,7 +48,7 @@ export function Transaction({ transaction }) {
         </p>
         <footer className="flex justify-between items-center flex-wrap gap-2">
           <span className="text-[0.7rem] text-gray-400 font-semibold rounded-md w-fit">
-            {transaction.seller.city} {transaction.createdAt.slice(0, 10)}
+            {transaction.seller?.city} {transaction.createdAt?.slice(0, 10)}
           </span>
           {transaction.status === TRANSACTION_STATUS.PENDING && (
             <ModalTransactions

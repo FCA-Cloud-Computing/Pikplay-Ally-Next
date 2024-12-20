@@ -6,7 +6,7 @@ import { useTransactionsStore } from "../../store/transactions.store";
 import useSystemStore from "../../hooks/storeSystem";
 
 export const FormAllied = () => {
-  const { addTransactionStore } = useTransactionsStore();
+  const { transactions, addTransactionStore } = useTransactionsStore();
   const { userLogged } = useSystemStore();
   const {
     control,
@@ -22,12 +22,12 @@ export const FormAllied = () => {
       credits: "",
       purchase_date: "",
       client_document: "",
+      amount: "",
     },
   });
 
   const onSubmit = (newTransaction) => {
-    console.log({ ...newTransaction, uid: userLogged.uid });
-    // addTransactionStore(newTransaction);
+    addTransactionStore({ ...newTransaction, uid: userLogged.uid, client_document: 1234 });
     reset();
   };
 
@@ -78,6 +78,14 @@ export const FormAllied = () => {
           placeholder="CC 103242252"
           type="number"
           error={errors.client_document}
+        />
+        <InputTransactions
+          name="amount"
+          control={control}
+          label="Monto total de la factura"
+          placeholder="$1200, $5000, $3000.."
+          type="number"
+          error={errors.amount}
         />
         <button
           type="submit"

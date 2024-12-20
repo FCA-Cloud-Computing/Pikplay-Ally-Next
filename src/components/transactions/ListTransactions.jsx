@@ -1,3 +1,5 @@
+"use client";
+
 import { Transaction } from "./Transaction";
 
 export function ListTransactions({ transactions }) {

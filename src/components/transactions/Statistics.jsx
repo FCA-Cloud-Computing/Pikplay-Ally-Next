@@ -6,15 +6,15 @@ import ModalTransactions from "../modal/ModalTransactions";
 import CoinIcon from "../coinIcon/CoinIcon";
 import { formatNumberWithCommas } from "../../lib/utils";
 import { FormAllied } from "./FormAllied";
+import useSystemStore from "../../hooks/storeSystem";
 
 export function Statistics({ totalCredits }) {
+  const { userLogged } = useSystemStore();
   const [isVisibleCredits, setisVisibleCredits] = useState(true);
   const totalCreditsFormatted = formatNumberWithCommas(totalCredits);
   const newTotalCredits = isVisibleCredits
-  ? totalCreditsFormatted
-  : "*".repeat(totalCreditsFormatted.length + 2);
-  const role = "client";
-  
+    ? totalCreditsFormatted
+    : "*".repeat(totalCreditsFormatted.length + 2);
   return (
     <div className="flex items-center gap-3 w-full justify-between">
       <strong className="text-4xl flex items-center gap-1">
@@ -32,7 +32,7 @@ export function Statistics({ totalCredits }) {
           height={20}
         />
       </button>
-      {role !== "clieant" && (
+      {userLogged.rol === "client" && (
         <ModalTransactions label="+">
           <FormAllied />
         </ModalTransactions>

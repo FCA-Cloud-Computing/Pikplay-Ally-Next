@@ -20,11 +20,16 @@ export const useTransactionsStore = create(
             }
           },
 
-          addTransactionStore: (transaction) => {
-            addTransaction(transaction);
-            set((state) => ({
-              transactions: [...state.transactions, transaction],
-            }));
+          addTransactionStore: async (transaction) => {
+            try {
+              await addTransaction(transaction);
+              const res = await getTransactions();
+              set((_) => ({
+                transactions: res.data
+              }));
+            } catch (error) {
+              console.error("Error fetching transactions:", error);
+            }
           },
         }
       }
