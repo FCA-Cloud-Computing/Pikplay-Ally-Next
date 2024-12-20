@@ -71,9 +71,9 @@ const PerfilPage = props => {
 export const getServerSideProps = async ctx => {
   const respValidate = await validateTokenSrv(ctx)
   const { data, code: statusCode } = respValidate
-  if (!respValidate.error && statusCode == 200) {
+  if (statusCode == 200) { // Correct validate
     const uid = cookiesToObject(ctx.req.headers?.cookie)['User-ID']
-    const userInfoFromServer = await getUsersSrv(ctx, uid)
+    // const userInfoFromServer = await getUsersSrv(ctx, uid)
     if (statusCode === 403) {
       return {
         redirect: {

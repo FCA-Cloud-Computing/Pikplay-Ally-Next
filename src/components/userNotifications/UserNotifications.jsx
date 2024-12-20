@@ -1,17 +1,17 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable jsx-a11y/alt-text */
 import styles from './userNotifications.module.scss'
 
-import React, { useEffect, useState } from 'react'
-import {
-  timeAgo,
-} from '../../lib/utils'
-import { getNotificationsSrv } from '../../services/user/userService'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faBell } from '@fortawesome/free-solid-svg-icons'
+import React, { useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import moment from 'moment'
 import Router from 'next/router'
+
+import { getNotificationsSrv, updateProfileSrv } from '../../services/user/userService'
 import CoinIcon from '../coinIcon/CoinIcon'
 import useSystemStore from '../../hooks/storeSystem.js'
+import uploadFile from "../../services/uploadFile";
 
 const { motion } = require('framer-motion')
 
@@ -19,6 +19,9 @@ moment.locale('es-CO')
 
 const UserNotifications = () => {
   const { userLogged, notifications, setStoreValue } = useSystemStore((state => state))
+  const { uid } = userLogged
+  const [fileUploaded, setFileUploaded] = useState(false);
+  const fileInputRef = useRef(null);
   // const user = useSelector(state => state.user)
   // const notifications = useSelector(state => state.notifications) //.filter(item => item.closed == 0)
   // const [deleteNotification] = useMutation(DELETE_NOTIFICATION, {
@@ -60,15 +63,16 @@ const UserNotifications = () => {
 
   const getNotifications = () => {
     if (userLogged.uid) {
-      getNotificationsSrv()
+      getNotificationsSrv(userLogged.uid)
         .then(res => {
           setStoreValue('notifications', res.data)
         });
     }
   }
 
-  const handleNotification = async ({ coins, disabled, id, link, type }) => {
-    if (coins && !disabled) {
+  const handleNotification = async (item) => {
+    const { coins, id, link, type } = item
+    if (coins) {
       // reclamarCoins(coins, id)
       setStoreValue('isAwardSummaryModalOpen', true)
     } else {
@@ -77,9 +81,13 @@ const UserNotifications = () => {
     if (link) Router.push(link)
   }
 
-  useEffect(() => {
-    getNotifications()
-  }, [])
+  const handlerInputFile = async (event) => {
+    const value = event.target.files[0]
+    if (value) {
+      const urlImage = await uploadFile("profile", value, `${uid}`);
+      updateProfileSrv(null, uid, urlImage)
+    }
+  }
 
   const container = {
     hidden: { opacity: 1, scale: 1, x: "-100vw" },
@@ -102,6 +110,10 @@ const UserNotifications = () => {
     }
   };
 
+  useEffect(() => {
+    getNotifications()
+  }, [])
+
   return (
     <div className={`UserNotifications ${styles.UserNotifications}`}>
       <div className={styles.options}>
@@ -116,18 +128,19 @@ const UserNotifications = () => {
         initial="hidden"
         variants={container}>
         {notifications && notifications.map(
-          ({
-            closed,
-            closed: disabled,
-            coins,
-            created,
-            detail,
-            id,
-            link,
-            status,
-            type,
-          }) => {
-            created = moment(created).fromNow()
+          (item) => {
+            const {
+              claimed,
+              coins,
+              createdAt,
+              description,
+              id,
+              link,
+              status,
+              type,
+            } = item
+
+            const created = moment(createdAt).fromNow()
             const srcNotificationImg =
               type === 'COUPON_GIFT_AVAILABLE'
                 ? '/images/type_notification/coupon_gift_available.png'
@@ -143,7 +156,7 @@ const UserNotifications = () => {
                 key={id}
                 variants={item}
                 onClick={() =>
-                  !disabled && handleNotification({ coins, disabled, id, link, type })
+                  !claimed && handleNotification(item)
                 }>
                 {/* {!disabled && <FontAwesomeIcon icon={faCircle} />} */}
                 {/* <Image
@@ -154,9 +167,9 @@ const UserNotifications = () => {
                   width={48}
                 /> */}
                 <small>
-                  hace {timeAgo("2024-09-12T16:30:00-05:00")}
+                  hace {created}
                 </small>
-                <span>{detail}</span>
+                <span>{description}</span>
                 {coins && <CoinIcon isLabel={false} coins={coins} />}
                 {!coins && <div className={styles.content_close}></div>}
               </motion.li>
@@ -165,6 +178,8 @@ const UserNotifications = () => {
           },
         )}
       </motion.ul>
+      <input onChange={handlerInputFile} ref={fileInputRef} type="file" style={{ display: 'none' }} />
+      <img onClick={() => fileInputRef.current.click()} style={{ borderRadius: '5px' }} src="/images/banners/gana_tus.png" />
     </div>
   )
 }

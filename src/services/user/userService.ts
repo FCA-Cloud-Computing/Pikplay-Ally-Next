@@ -40,14 +40,23 @@ const validateTokenSrv = async (ctx) => {
       data: {},
     };
   }
-  const data = await post(ctx, path, {});
-  return data;
+  // const data = await post(ctx, path, {});
+  return {
+    code: 200,
+    data: {},
+  };
 };
 
 const sendCodeSrv = async (ctx, phone) => {
   const path = BASE_URL + '/login';
   const data = await post(ctx, path, { phone });
   return data;
+};
+
+const updateProfileSrv = async (ctx, uid, data) => {
+  const path = BASE_URL + `/${uid}/update`;
+  const response = await post(ctx, path, data);
+  return response;
 };
 
 const getExperiencesSrv = async (ctx) => {
@@ -68,9 +77,9 @@ const getExperiencesSrv = async (ctx) => {
   }
 };
 
-const getNotificationsSrv = async () => {
-  const data = await get(null, BASE_URL + '/notifications');
+const getNotificationsSrv = async (uid) => {
+  const data = await get(null, BASE_URL + `/${uid}/notifications`);
   return data;
 };
 
-export { getExperiencesSrv, getNotificationsSrv, getUsersSrv, loginSrv, sendCodeSrv, validateTokenSrv };
+export { getExperiencesSrv, getNotificationsSrv, getUsersSrv, loginSrv, sendCodeSrv, validateTokenSrv, updateProfileSrv };
