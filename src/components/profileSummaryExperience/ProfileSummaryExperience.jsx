@@ -22,7 +22,7 @@ const ProfileSummaryExperience = (props) => {
     name,
     picture,
     coins,
-    league,
+    league = 'oro',
   } = userInfoData ? userInfoData : userLogged
   useEffect(() => {
     const element = document.querySelector('.ProfileSummaryExperience .number-coins')
