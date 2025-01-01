@@ -51,6 +51,15 @@ export function convertResponse(response) {
   return response;
 }
 
+export function isEmpty(obj) {
+  // Validating json is not empty, string is not empty and array is not empty
+  if (obj === null || obj === undefined) return true;
+  if (typeof obj === "string" && obj.trim() === "") return true;
+  if (Array.isArray(obj) && obj.length === 0) return true;
+  if (typeof obj === "object" && Object.keys(obj).length === 0) return true;
+  return false;
+}
+
 export function formatNumber(input) {
   input = String(input);
   let num = input.replace(/\./g, '');
