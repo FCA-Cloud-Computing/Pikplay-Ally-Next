@@ -67,7 +67,7 @@ export default function LoginInterface({
             Solo con tu número de teléfono puedes crear tu cuenta y empezar a ganar <b>¡Pikcoins!</b>
           </DialogContentText>
           {/* Fields */}
-          {!isCodeSent && <TextField
+          {/* {!isCodeSent && <TextField
             defaultValue={onboardingName}
             fullWidth
             id="loginModal__name"
@@ -75,7 +75,7 @@ export default function LoginInterface({
             margin='dense'
             onKeyUp={e => setName(e.target.value)}
             type='text'
-          />}
+          />} */}
           <div
             className={styles.contryAndPhone}
             style={{ display: isCodeSent ? 'none' : 'flex' }}>

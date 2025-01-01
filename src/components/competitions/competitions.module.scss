@@ -1,0 +1,316 @@
+.CompetitionsComponent {
+  .activeIcon {
+    background: #4ab405;
+    border-radius: 50%;
+    display: inline-block;
+    height: 10px;
+    margin-right: 8px;
+    width: 10px;
+  }
+
+  .left {
+    width: 800px;
+    @media screen and (max-width: 480px) {
+      width: auto;
+    }
+    .alert {
+      .btnUpdateDashboard {
+        background-color: transparent;
+        border: none;
+        text-decoration: underline;
+      }
+    }
+    .controlAvailablenumbers {
+      span {
+        font-size: 14px;
+      }
+    }
+  }
+
+  section.page {
+    h2 {
+      display: block;
+      margin-top: 80px;
+      width: 140px;
+    }
+    margin: 0 auto;
+    width: 1100px;
+    @media screen and (max-width: 480px) {
+      margin: 90px auto 0;
+      width: auto;
+    }
+  }
+  .list {
+    @media screen and (max-width: 480px) {
+      display: block;
+    }
+    .active,
+    .done {
+      border-radius: 20px;
+      column-gap: 20px;
+      display: flex;
+      justify-content: center;
+      margin: 0 auto;
+      // padding: 20px 20px 20px 80px;
+      position: relative;
+      width: 600px;
+      @media screen and (max-width: 480px) {
+        flex-direction: column;
+        margin-bottom: 20px;
+        // padding: 20px 20px 20px 80px;
+        width: initial;
+      }
+    }
+  }
+
+  .CompetitionsList {
+    .ads {
+      column-gap: 20px;
+      display: flex;
+      margin: 0 0 15px 0;
+      @media screen and (max-width: 480px) {
+        display: block;
+      }
+      .item {
+        @media screen and (max-width: 480px) {
+          display: block;
+          margin: 0 auto 10px;
+          width: max-content;
+        }
+
+        img {
+          border-radius: 10px;
+          display: block;
+          width: 260px;
+        }
+      }
+    }
+
+    .CompetitionItem {
+      margin: 0;
+      padding: 10px;
+      background: linear-gradient(90deg, #6098fb 0%, #76a2ea 100%);
+      color: white;
+      font-size: 14px;
+      position: relative;
+      // width: 200px;
+      @media screen and (max-width: 480px) {
+        margin: 0 auto 20px;
+      }
+      h2 a {
+        color: white;
+        line-height: 22px;
+      }
+      img {
+        // bottom: -50px;
+        // position: absolute;
+      }
+      &:nth-of-type(2) {
+        background: linear-gradient(90deg, #fab674 0%, #efba89 100%);
+        .availableNumbers {
+          background-color: #e27d2e;
+        }
+      }
+
+      .availableNumbers {
+        background-color: #3c68b1;
+        border-radius: 50%;
+        margin-left: 5px;
+        padding: 5px;
+      }
+      .seller {
+        column-gap: 10px;
+        display: flex;
+        // left: -20px;
+        position: relative;
+        width: 100%;
+        img {
+          border-radius: 50%;
+          position: relative;
+          top: 6px;
+        }
+        .calification svg {
+          color: #fad426;
+        }
+      }
+      button.award {
+        display: block;
+        margin: 30px auto 10px;
+      }
+      .actions {
+        column-gap: 10px;
+        display: flex;
+        justify-content: center;
+        margin-top: 15px;
+      }
+    }
+    .active {
+      // background: #3095b3;
+      // margin-right: 20px;
+      h3 {
+        color: white;
+      }
+    }
+    .done {
+      background: #d0d0d0;
+      h3 {
+        color: #7f7f7f;
+      }
+    }
+  }
+
+  // Detalle de un concurso
+  .CompetitionDetail {
+    column-gap: 40px;
+    display: flex;
+    @media screen and (max-width: 480px) {
+      flex-direction: column-reverse;
+    }
+    .seller {
+      margin-top: 10px;
+      img {
+        border-radius: 50%;
+        width: 60px;
+      }
+      :global(.fa-star) {
+        color: #fad426;
+      }
+    }
+
+    p {
+      margin-left: 10px;
+    }
+
+    .description {
+      display: flex;
+      justify-content: space-between;
+      @media screen and (max-width: 480px) {
+        display: block;
+      }
+      > div {
+        align-items: center;
+        column-gap: 4px;
+        display: flex;
+        margin: 4px 0;
+      }
+      .availableNumbers {
+        background-color: #3c68b1;
+        border-radius: 50%;
+        color: white;
+        line-height: 20px;
+        padding: 5px;
+        text-align: center;
+        width: 20px;
+      }
+      .actions {
+        button {
+          display: block;
+        }
+      }
+    }
+
+    .contentItems {
+      align-items: center;
+      height: max-content;
+      justify-content: center;
+      padding: 8px 0;
+      .item {
+        align-items: center;
+        background: #2eb4a769;
+        border-radius: 8px;
+        border: dashed 1px #3095b3;
+        cursor: pointer;
+        display: flex;
+        height: 40px;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        margin: 5px;
+        width: 40px;
+        &.selected {
+          background: #f89b52;
+          border: 1px solid #f89b52;
+          color: white;
+        }
+        &.blocked {
+          background: #c93530;
+          border: none;
+          color: white;
+          // color: white;
+          // display: block;
+          // font-size: 12px;
+          // height: 60px;
+          // text-align: center;
+          // width: 60px;
+        }
+        &.takenByMe::after {
+          background: #3095b3;
+          border-radius: 50%;
+          content: "";
+          font-size: 12px;
+          height: 8px;
+          position: absolute;
+          right: 3px;
+          top: 4px;
+          width: 8px;
+          // .number {
+          //   color: white;
+          //   left: 15px;
+          //   position: absolute;
+          //   text-align: center;
+          //   text-shadow: 1px 1px #818181;
+          //   top: 5px;
+          // }
+        }
+      }
+    }
+    .actions {
+      column-gap: 10px;
+      display: flex;
+      margin: 20px 10px 20px;
+    }
+  }
+
+  .news {
+    background: #f4f4f4;
+    font-size: 12px;
+    height: 18px;
+    margin: 20px 0 10px 0;
+    position: relative;
+    width: 600px;
+    @media screen and (max-width: 480px) {
+      margin: 10px 0 20px;
+    }
+    > span:nth-of-type(1) {
+      position: absolute;
+      // background: white;
+      width: 200px;
+      z-index: 1;
+      background: rgb(46, 48, 61);
+      background: linear-gradient(270deg, rgba(46, 48, 61, 0) 3%, rgba(255, 255, 255, 1) 20%);
+      @media screen and (max-width: 480px) {
+        padding: 2px 6px;
+        width: 160px;
+      }
+    }
+    .content {
+      display: inline;
+    }
+    .user {
+      color: green;
+      margin-right: 10px;
+    }
+    .item {
+      border-right: 4px solid #dedede;
+      margin-right: 10px;
+      padding-right: 10px;
+    }
+  }
+}
+
+.AdminActions {
+  padding-top: 20px;
+  > button {
+    float: right;
+  }
+}
