@@ -1,12 +1,12 @@
 /* eslint-disable import/no-unresolved */
-import { ref, uploadBytes, getDownloadURL, getStorage } from "firebase/storage";
-import { storage } from "../lib/firebase";
-import { addInvoice } from "./transactions/transactions";
+import { ref, uploadBytes, getDownloadURL, getStorage } from 'firebase/storage';
+import { storage } from '../lib/firebase';
+import { addInvoice } from './transactions/transactions';
 
 async function uploadFileSrv(
-  entity,
+  entity, // this can be "invoices" or "profile"
   file,
-  folder = "undefined",
+  folder = 'undefined',
   transactionId
 ) {
   try {
@@ -17,11 +17,11 @@ async function uploadFileSrv(
     // Obtén la URL de descarga del archivo subido
     const downloadURL = await getDownloadURL(snapshot.ref);
     // Agrega la URL de descarga al documento de la transacción
-    await addInvoice({ invoice_url: downloadURL }, transactionId);
-
-    console.log("Archivo subido exitosamente. URL:", downloadURL);
+    if (entity === 'invoice') await addInvoice({ invoice_url: downloadURL }, transactionId);
+    console.log('Archivo subido exitosamente. URL:', downloadURL);
+    return downloadURL;
   } catch (error) {
-    console.error("Error al subir archivo:", error);
+    console.error('Error al subir archivo:', error);
     throw error;
   }
 }
