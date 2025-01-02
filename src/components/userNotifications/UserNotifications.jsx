@@ -120,7 +120,7 @@ const UserNotifications = () => {
 
   useEffect(() => {
     // Setting banner picture profile to true if there is a notification with cid 1 (profile image completed)
-    notifications.filter(item => item.cid === 1).length > 0 && setBannerPictureProfile(true)
+    notifications.filter(item => item.cid === 1).length == 0 && setBannerPictureProfile(true)
   }, [notifications])
 
   return (
@@ -189,8 +189,10 @@ const UserNotifications = () => {
           },
         )}
       </motion.ul>
-      <input onChange={handlerInputFile} ref={fileInputRef} type="file" style={{ display: 'none' }} />
-      <img onClick={() => fileInputRef.current.click()} style={{ borderRadius: '5px' }} src="/images/banners/gana_tus.png" />
+      {bannerPictureProfile && <>
+        <input onChange={handlerInputFile} ref={fileInputRef} type="file" style={{ display: 'none' }} />
+        <img onClick={() => fileInputRef.current.click()} style={{ borderRadius: '5px' }} src="/images/banners/gana_tus.png" />
+      </>}
     </div>
   )
 }
