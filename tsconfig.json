@@ -29,7 +29,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "src/actions/redemptionCredits.js"  ],
   "exclude": [
     "node_modules"
   ]
