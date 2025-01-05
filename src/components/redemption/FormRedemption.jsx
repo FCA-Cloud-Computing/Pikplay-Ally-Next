@@ -6,8 +6,9 @@ import {
   initialStateRedemptionCredits,
   redemptionCredits,
 } from "../../actions/redemptionCredits";
+import { TotalCoins } from "../coins/TotalCoins";
 
-export function FormRedemption() {
+export function FormRedemption({ className, coins }) {
   const [state, actionState, isPending] = useActionState(
     redemptionCredits,
     initialStateRedemptionCredits
@@ -22,7 +23,7 @@ export function FormRedemption() {
   return (
     <form
       action={actionState}
-      className="flex flex-col items-center gap-5"
+      className={`flex flex-col gap-5 rounded-md ${className}`}
       ref={form}
     >
       <label htmlFor="credits" className="text-lg font-bold">
@@ -36,9 +37,10 @@ export function FormRedemption() {
         onChange={handleChange}
         step={1}
         name="credits"
-        className="bg-transparent w-full p-2 border-b-2 border-b-slate-400"
-        placeholder="Valor de la redención"
+        className="bg-transparent w-full p-2 text-lg border-b-2 border-b-slate-400"
+        placeholder="$149"
       />
+      <TotalCoins coins={coins} isHidden={false} className="text-2xl" />
       <DialogRedemption
         isPending={isPending}
         label="Redimir"

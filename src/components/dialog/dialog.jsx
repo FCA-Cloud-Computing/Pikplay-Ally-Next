@@ -30,7 +30,7 @@ export function DialogRedemption({
   return (
     <>
       <button
-        disabled={isPending ? true : false}
+        disabled={isPending || !credits ? true : false}
         type="button"
         onClick={handleOpen}
         className={`border border-white/50 w-full px-4 py-2 rounded-md hover:bg-white/50 transition duration-300 ${
