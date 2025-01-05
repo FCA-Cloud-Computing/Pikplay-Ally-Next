@@ -1,33 +1,28 @@
-"use client";
-
 import Layout from "../../components/layout/Layout";
 import { FormRedemption } from "../../components/redemption/FormRedemption";
 import { useActionState } from "react";
-import { redemptionCredits } from "../../actions/redemptionCredits";
+import {
+  initialStateRedemptionCredits,
+  redemptionCredits,
+} from "../../actions/redemptionCredits";
 import "./styles.scss";
-
-const initialState = {
-  success: false,
-  error: null,
-  result: null,
-};
+import { AlertDialog } from "../../components/dialog/dialog";
 
 function CreditRedemptionPage() {
-  const [{ success, error, result }, actionState, isPending] = useActionState(
+  const [{ success, credits }, actionState, isPending] = useActionState(
     redemptionCredits,
-    initialState
+    initialStateRedemptionCredits
   );
+
   return (
     <Layout title="Redención de créditos">
-      <section className="page max-w-screen-sm flex flex-col items-center bg-primary z-90 p-6 gap-5 text-secondary justify-center">
+      <section className="page max-w-screen-sm flex flex-col items-center h-mobile z-90 p-6 gap-5 text-secondary justify-center">
         <FormRedemption actionState={actionState} isPending={isPending} />
-        {error && (
-          <div className="bg-red-500 text-white p-3 rounded-lg">{error.message}</div>
-        )}
         {success && (
-          <div className="bg-green-500 text-white p-3 rounded-lg">
-            {result}
-          </div>
+          <AlertDialog
+            title={`¿Estás seguro que quieres redimir ${credits} créditos?`}
+            description="Una vez redimidos, no podrás recuperarlos."
+          />
         )}
       </section>
     </Layout>
