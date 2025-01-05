@@ -10,14 +10,8 @@ export const initialStateRedemptionCredits = {
 
 export async function redemptionCredits(prevState, data) {
   const credits = data.get("credits");
-  if (!credits) {
-    toast("Debe especificar el número de creditos a redimir.");
-    return {
-      success: false,
-      credits: null,
-    };
-  }
   try {
+    toast("Créditos redimidos correctamente.");
     // LLAMADA A API PARA REDIMIR CRÉDITOS ...
     return {
       success: true,

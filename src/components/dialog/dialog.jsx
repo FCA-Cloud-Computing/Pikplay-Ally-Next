@@ -6,15 +6,39 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
-export function AlertDialog({ title, description }) {
-  const [open, setOpen] = React.useState(true);
+export function DialogRedemption({
+  title,
+  description,
+  label,
+  isPending,
+  ref,
+  credits,
+}) {
+  const [open, setOpen] = React.useState(false);
 
-  const handleClose = () => {
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (isSubmit) => {
     setOpen(false);
+    if (isSubmit === true) {
+      ref.current.requestSubmit();
+    }
   };
 
   return (
-    <React.Fragment>
+    <>
+      <button
+        disabled={isPending ? true : false}
+        type="button"
+        onClick={handleOpen}
+        className={`border border-white/50 w-full px-4 py-2 rounded-md hover:bg-white/50 transition duration-300 ${
+          credits ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        {label}
+      </button>
       <Dialog
         open={open}
         onClose={handleClose}
@@ -29,11 +53,11 @@ export function AlertDialog({ title, description }) {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancelar</Button>
-          <Button onClick={handleClose} autoFocus>
+          <Button onClick={() => handleClose(true)} autoFocus>
             Aceptar
           </Button>
         </DialogActions>
       </Dialog>
-    </React.Fragment>
+    </>
   );
 }
