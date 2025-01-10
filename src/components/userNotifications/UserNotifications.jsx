@@ -89,6 +89,7 @@ const UserNotifications = () => {
       updateProfileSrv(null, uid, { picture: urlImage })
         .then(data => {
           setStoreValue('userLogged', { ...userLogged, picture: urlImage })
+          getNotifications() // Actualizar notificaciones
         })
     }
   }

@@ -1,14 +1,23 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import styles from './onboarding.module.scss'
 
 import React, { useEffect, useState } from 'react'
 import Image from "next/image"
-import { useIAStore } from '../ia/IAstore'
-import useSystemStore from '../../hooks/storeSystem'
 import { motion } from 'framer-motion'
-import Button from '../button/Button'
 import { height } from '@mui/system'
+import Link from 'next/link'
+import { toast } from 'react-toastify'
+
+// Custom
+import Button from '../button/Button'
+import CoinIcon from '../coinIcon/CoinIcon'
+import MESSAGES from '../../consts/messages'
+import useSystemStore from '../../hooks/storeSystem'
+import { getUsersSrv, saveLeadSrv, } from '../../services/user/userService'
+import { useIAStore } from '../ia/IAstore'
 
 const Onboarding = () => {
+  const { ONBOARDING_LEAD_DUPLICATED, ONBOARDING_LEAD_SUCCESS } = MESSAGES
   const { setStoreValue } = useSystemStore()
   const [phoneNumber, setPhoneNumber] = useState("")
   const items = [
@@ -83,7 +92,16 @@ const Onboarding = () => {
     }
 
     setPhoneNumber(formattedNumber);
-  };
+  }
+
+  const saveLead = async () => {
+    const res = await saveLeadSrv(null, phoneNumber)
+    if (!res.error) {
+      setPhoneNumber('')
+      toast(ONBOARDING_LEAD_SUCCESS, { type: 'success' })
+    } else if (res.errorCode == 409) toast(ONBOARDING_LEAD_DUPLICATED, { type: 'info' })
+    else toast('Error al inscribirte, intentalo más tarde', { type: 'error' })
+  }
 
   useEffect(() => {
     // handleUserMessage('onboarding', {})
@@ -131,7 +149,7 @@ const Onboarding = () => {
       <div className={styles.inputContent}>
         <input type="text" placeholder='Tu whatsapp aquí' onChange={handleInputChange} value={phoneNumber} />
         <div className={styles.btnSend}>
-          <Button color='blue'>
+          <Button color='blue' onClick={saveLead}>
             Enviar
           </Button>
         </div>
@@ -142,9 +160,11 @@ const Onboarding = () => {
       <div className={styles.background}></div>
       <p>
         Comprando con aliados de <br />
-        <b>Pikplay Ally</b>  tienes la posibilidad de ganar cashback, esto basicamente es desuentos en otras tiendas aliadas.
+        <b>Pikplay</b> tienes la posibilidad de ganar <b>Cashback</b><CoinIcon />,
+        <br />esto basicamente es desuentos en otras tiendas aliadas.
         <br /><br />
-        Tambien invitar a tus amigos y tener un Ranking de puntos los cuales te serviran para aumentar de liga, obtener descuentos y participar en concursos.
+        Tambien invitar a tus amigos y tener un Ranking de puntos los cuales te serviran para aumentar de liga, obtener descuentos
+        y participar en concursos.
       </p>
       {/* <p>
         Por ello en Pikplay solo encontraras <b>Aliados certificados</b>.
@@ -155,14 +175,16 @@ const Onboarding = () => {
     <div className={styles.aliados}>
       <h2>Aliados</h2>
       <div className={styles.items}>
-        <div className="Card">
-          <img src='/images/users/bluepanther.jpg' />
-          <p>
-            <b>Bluepanther</b>
-            <div>Gaming</div>
-            Medellín, Colombia
-          </p>
-        </div>
+        <Link href='/blue-panther'>
+          <div className="Card">
+            <img src='/images/users/bluepanther.jpg' />
+            <p>
+              <b>Bluepanther</b>
+              <div>Gaming</div>
+              Medellín, Colombia
+            </p>
+          </div>
+        </Link>
         <div className="Card">
           <img src='/images/users/hiro.jpeg' />
           <p>

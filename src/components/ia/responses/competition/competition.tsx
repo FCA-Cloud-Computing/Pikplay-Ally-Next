@@ -17,14 +17,14 @@ const handleYes = async (handleUserMessage, set, options, setStoreValue) => {
     return
   }
   const resp = await postCompetitionMemberSrv(null, competitionID, number, uid);
-  const { htmlChallengeObtained, nowCompleted } = resp.challengeUpdated
-  if (nowCompleted) {
-    // Setting on true the award modal
-    setTimeout(() => {
-      setStoreValue('awardsSummaryModalHTML', htmlChallengeObtained)
-      setStoreValue('isAwardSummaryModalOpen', true)
-    }, 4000)
-  }
+  // const { htmlChallengeObtained, nowCompleted } = resp.challengeUpdated
+  // if (nowCompleted) {
+  //   // Setting on true the award modal
+  //   setTimeout(() => {
+  //     setStoreValue('awardsSummaryModalHTML', htmlChallengeObtained)
+  //     setStoreValue('isAwardSummaryModalOpen', true)
+  //   }, 4000)
+  // }
   if (resp.message == 'Number already taken') {
     handleUserMessage('competition/yes/taken', set, options)
   } else {
@@ -40,6 +40,9 @@ const Options = ({ handleUserMessage, set, options }) => {
   if (!uid && element) element.click()
   const { liberarNumero, getCompetitions } = useCompetitions();
   return <>
+    <Button color='blue' onClick={() => handleYes(handleUserMessage, set, options, setStoreValue)}>
+      Si
+    </Button>
     <Link target='_BLANK' href='https://api.whatsapp.com/send?phone=573113306911&text=Quisiera adquirir este número de ahora y próximos sorteos'>
       <Button color='transparent' disabled border>
         &nbsp;Casar número
@@ -48,13 +51,10 @@ const Options = ({ handleUserMessage, set, options }) => {
     </Link>
     <Link target='_BLANK' href='https://api.whatsapp.com/send?phone=573113306911&text=Tengo dudas sobre el sorteo'>
       <Button color='transparent' border>
-        &nbsp;Envíar mensaje
+        &nbsp;Envíar mensaje&nbsp;
         <MessageOutlined className='icon' />
       </Button>
     </Link>
-    <Button color='blue' onClick={() => handleYes(handleUserMessage, set, options, setStoreValue)}>
-      Si
-    </Button>
   </>
 }
 

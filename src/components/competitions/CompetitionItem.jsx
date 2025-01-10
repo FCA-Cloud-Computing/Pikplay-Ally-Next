@@ -21,8 +21,7 @@ const CompetitionItem = ({ competition, ind }) => {
     key={ind}
     // onClick={() => competition.isActive ? handleCompetitionClick(competition.slug) : goToastNotAvailable}
     whileHover={{ scale: 1.1 }}
-    animate={{ y: 0 }}
-  >
+    animate={{ y: 0 }}>
     <h2>
       <Link href={link}>{competition.title}</Link>
     </h2>

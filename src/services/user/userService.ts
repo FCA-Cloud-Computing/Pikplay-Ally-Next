@@ -12,6 +12,13 @@ const getUsersSrv = async (ctx, uid) => {
   return data;
 };
 
+const saveLeadSrv = (ctx, phone) => {
+  const path = BASE_URL + '/lead/save';
+  return post(ctx, path, {
+    phone,
+  });
+};
+
 const loginSrv = async (ctx: any, phone: string, code: number, name: string) => {
   const path = BASE_URL + '/login';
   try {
@@ -81,4 +88,4 @@ const getNotificationsSrv = async (uid) => {
   return data;
 };
 
-export { getExperiencesSrv, getNotificationsSrv, getUsersSrv, loginSrv, sendCodeSrv, validateTokenSrv, updateProfileSrv };
+export { getExperiencesSrv, getNotificationsSrv, getUsersSrv, saveLeadSrv, loginSrv, sendCodeSrv, validateTokenSrv, updateProfileSrv };

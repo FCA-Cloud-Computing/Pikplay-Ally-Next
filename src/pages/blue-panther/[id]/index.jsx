@@ -73,30 +73,18 @@ const ConcursoDetailPage = (props) => {
           <h1 className="main">{competitionDetail.title}</h1>
         </div>
         <Card>
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            aria-label='basic tabs example'
-            indicatorColor='primary'>
-            <Tab label={competitionDetail ? 'Organiza: BluePanther' : 'Listado de Concursos'} />
-            <Tab label='Administrar' />
-          </Tabs>
-          <TabPanel value={value} index={0}>
-            <CompetitionDetail
-              {...{
-                competitions,
-                competitionDetail,
-                competitionMembers,
-                setCompetitionMembers,
-                setSelectedNumber,
-                selectedNumber,
-                userPicture,
-                uidLogged,
-              }}
-            />
-          </TabPanel>
-          <TabPanel value={value} index={1}>
-          </TabPanel>
+          <CompetitionDetail
+            {...{
+              // competitions,
+              competitionDetail,
+              competitionMembers,
+              setCompetitionMembers,
+              setSelectedNumber,
+              selectedNumber,
+              userPicture,
+              uidLogged,
+            }}
+          />
         </Card>
       </section>
     </Layout>
