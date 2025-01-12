@@ -18,7 +18,7 @@ function CreditRedemptionPage() {
       <section className="page max-w-screen-sm flex flex-col items-center h-mobile z-90 p-6 text-secondary justify-center">
         {true || result?.verification_code ? (
           <FormRedemption
-            coins={120402.03}
+            coins={120402.03} // TOOD: Sacar totalCoins de la API/Store
             actionState={actionState}
             isPending={isPending}
           />
