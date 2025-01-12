@@ -4,6 +4,7 @@ import { schema } from "../../models/form.model";
 import { InputTransactions } from "./InputTransactions";
 import { useTransactionsStore } from "../../store/transactions.store";
 import useSystemStore from "../../hooks/storeSystem";
+import Button from "../button/Button";
 
 export const FormAllied = () => {
   const { transactions, addTransactionStore } = useTransactionsStore();
@@ -23,11 +24,16 @@ export const FormAllied = () => {
       purchase_date: "",
       client_document: "",
       amount: "",
+      redemption_code: "",
     },
   });
 
   const onSubmit = (newTransaction) => {
-    addTransactionStore({ ...newTransaction, uid: userLogged.uid, client_document: 1234 });
+    addTransactionStore({
+      ...newTransaction,
+      uid: userLogged.uid,
+      client_document: 1234,
+    });
     reset();
   };
 
@@ -87,12 +93,22 @@ export const FormAllied = () => {
           type="number"
           error={errors.amount}
         />
-        <button
+        <InputTransactions
+          name="redemption_code"
+          control={control}
+          label="Código de redención (opcional)"
+          placeholder="123-AS3-24V-D22"
+          type="string"
+          error={errors.redemption_code}
+        />
+        <Button
+          color="blue"
+          className="transition duration-300 w-full text-center text-sm"
           type="submit"
-          className="border-white/50 hover:bg-white transition duration-300 hover:text-black border py-2 w-full rounded-md mt-4"
+          realistic
         >
           Crear transacción
-        </button>
+        </Button>
       </form>
     </>
   );
