@@ -16,19 +16,25 @@ const handleYes = async (handleUserMessage, set, options, setStoreValue) => {
     element.click()
     return
   }
-  const resp = await postCompetitionMemberSrv(null, competitionID, number, uid);
-  // const { htmlChallengeObtained, nowCompleted } = resp.challengeUpdated
-  // if (nowCompleted) {
-  //   // Setting on true the award modal
-  //   setTimeout(() => {
-  //     setStoreValue('awardsSummaryModalHTML', htmlChallengeObtained)
-  //     setStoreValue('isAwardSummaryModalOpen', true)
-  //   }, 4000)
-  // }
-  if (resp.message == 'Number already taken') {
-    handleUserMessage('competition/yes/taken', set, options)
-  } else {
-    handleUserMessage('competition/yes', set, options)
+  try {
+    const { data: { messageTop }, message } = await postCompetitionMemberSrv(null, competitionID, number, uid);
+    setStoreValue('messageTop', messageTop)
+
+    // const { htmlChallengeObtained, nowCompleted } = resp.challengeUpdated
+    // if (nowCompleted) {
+    //   // Setting on true the award modal
+    //   setTimeout(() => {
+    //     setStoreValue('awardsSummaryModalHTML', htmlChallengeObtained)
+    //     setStoreValue('isAwardSummaryModalOpen', true)
+    //   }, 4000)
+    // }
+    if (message == 'Number already taken') {
+      handleUserMessage('competition/yes/taken', set, options)
+    } else {
+      handleUserMessage('competition/yes', set, options)
+    }
+  } catch {
+    alert('Error 500')
   }
 }
 

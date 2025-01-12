@@ -88,4 +88,13 @@ const getNotificationsSrv = async (uid) => {
   return data;
 };
 
-export { getExperiencesSrv, getNotificationsSrv, getUsersSrv, saveLeadSrv, loginSrv, sendCodeSrv, validateTokenSrv, updateProfileSrv };
+export { 
+  getExperiencesSrv, 
+  getNotificationsSrv, 
+  getUsersSrv, 
+  // getTopMessagesSrv,
+  saveLeadSrv, 
+  loginSrv, 
+  sendCodeSrv, 
+  validateTokenSrv, 
+  updateProfileSrv };

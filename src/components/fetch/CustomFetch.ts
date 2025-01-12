@@ -1,5 +1,4 @@
-import { error } from 'console';
-import { convertResponse, getCookies } from '../../lib/utils';
+import { convertResponse, getCookies } from '@/lib/utils';
 
 const CustomFetch = () => {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;

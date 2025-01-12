@@ -32,7 +32,6 @@ const MenuMobileOptions = () => {
     const userLoggedOriginal = {
       ...userLogged
     }
-    debugger;
     setStoreValue('userLoggedOriginal', userLoggedOriginal)
     setStoreValue('userLogged', {
       uid: 120,

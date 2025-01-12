@@ -178,7 +178,7 @@ const UserNotifications = () => {
                 <small>
                   hace {created}
                 </small>
-                <span>{description}</span>
+                <div dangerouslySetInnerHTML={{ __html: description }} />
                 {image && <picture className={styles.picture}>
                   <img src={image} />
                 </picture>}

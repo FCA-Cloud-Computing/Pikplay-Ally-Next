@@ -33,21 +33,24 @@ const initialLoginStorage = (set) => {
 }
 
 const useSystemStore = create((set, get) => ({
+  awardsSummaryModalHTML: null,
   darkMode: true,
   env: 'dev',
   experiences: [],
-  isAwardSummaryModalOpen: false,
+  isAwardSummaryModalOpen: false, // Modal de premios
   isOnboardingProcess: false,
-  awardsSummaryModalHTML: null,
-  logout: () => initialLoginStorage(set),
+  leftMenuBar: {
+    isShow: false,
+  },
+  messageTop: null, // Banner flotante que se muestra debajo del menu
   notifications: [initialNotification],
   newNotifications: true,
   userLogged: loadFromLocalStorage('userLogged') || defaultUserLogged,
   perfilPage: {
     messageIA: null,
   },
+  logout: () => initialLoginStorage(set),
   setStoreValue: (property, value) => {
-    console.log('-------- 🚓 LOGGING -------- setStoreValue', property, value);
     localStorage.setItem([property], JSON.stringify(value));
     set({ [property]: value });
   },
