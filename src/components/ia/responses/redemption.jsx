@@ -9,14 +9,22 @@ const HTML = <></>;
 
 const Options = ({ handleUserMessage, set, options }) => {
   const { setIsvisible } = useIAStore();
-  const handleClick = () => {
+  const redemptionClick = () => {
     setIsvisible(false);
     options.form.current.requestSubmit();
   };
+  const cancelClick = () => {
+    setIsvisible(false);
+  };
   return (
-    <Button color="blue" type="submit" realistic onClick={handleClick}>
-      Redimir
-    </Button>
+      <div className="flex items-center gap-2">
+        <Button color="blue" type="submit" onClick={redemptionClick}>
+          Redimir
+        </Button>
+        <Button color="red" type="button" onClick={cancelClick}>
+          Cancelar
+        </Button>
+      </div>
   );
 };
 
