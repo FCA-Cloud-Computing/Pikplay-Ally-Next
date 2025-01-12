@@ -1,4 +1,4 @@
-import { convertResponse, getCookies } from '../../lib/utils';
+import { convertResponse, getCookies } from '@/lib/utils';
 
 const CustomFetch = () => {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
@@ -75,11 +75,12 @@ const CustomFetch = () => {
           const formated = convertResponse(json);
           return formated;
         }
-        const msg = `res.ok fue false, el path fue ${path}`
+        const msg = `res.ok false en path: ${path}`;
         return {
           msg,
-          error: true
-        }
+          error: true,
+          errorCode: res.status,
+        };
       })
       .catch((error) => {
         console.error(`Error al obtener datos desde el servicio para la ruta ${path} method GET}`);
@@ -117,11 +118,12 @@ const CustomFetch = () => {
           const formated = convertResponse(json);
           return formated;
         }
-        const msg = `res.ok fue false, el path fue ${path}`
+        const msg = `res.ok false en path: ${path}`;
         return {
           msg,
-          error: true
-        }
+          error: true,
+          errorCode: res.status,
+        };
       })
       .catch((error) => {
         console.error(`Error al obtener datos desde el servicio para la ruta ${path} method PUT}`);

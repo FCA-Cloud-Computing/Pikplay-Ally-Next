@@ -67,11 +67,14 @@
       &.closed {
         display: none;
       }
+
       &:not(.read) {
         border-left: 2px solid #3095b3;
         border-radius: 0;
       }
-      &.read { // leidas
+
+      &.read {
+        // leidas
         opacity: 0.5 !important;
       }
       // &.open {
@@ -80,20 +83,24 @@
       > * {
         flex: 1;
       }
+
       &:nth-of-type(1) {
         // margin-top: 30px;
       }
+
       i {
         display: block;
         font-weight: 600;
         margin-top: 10px;
       }
+
       .content_close {
         svg {
           color: blue;
           margin-left: 8px;
         }
       }
+
       span {
         align-items: center;
         column-gap: 10px;
@@ -102,16 +109,22 @@
         font-size: 12px;
         flex: 5;
       }
+
       svg {
         height: 8px;
         width: 8px;
       }
+
       button {
         height: 35px;
         padding: 0;
         :global(svg) {
           margin-left: 0 !important;
         }
+      }
+
+      .image {
+        border-radius: 6px;
       }
     }
   }

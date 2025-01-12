@@ -8,9 +8,9 @@ import { PieChart } from '@mui/x-charts'
 import { pieArcLabelClasses } from '@mui/x-charts/PieChart'
 
 const Grafica = ({
-  freeNumbers,
-  paidNumbers,
-  takenNumbers,
+  freeNumbers = 10,
+  paidNumbers = 2,
+  takenNumbers = 3,
 }) => {
   return <PieChart
     legend={{ hidden: true }}

@@ -8,23 +8,23 @@ import { IS_MOBILE } from '../../lib/variables'
 import useSystemStore from '../../hooks/storeSystem'
 import UserNotifications from '../userNotifications/UserNotifications'
 import Button from '../button/Button'
+
 const ProfileImage = dynamic(() => import('../profileImage/ProfileImage'), { ssr: false })
 const MenuMobileOptions = dynamic(() => import('./MenuMobileOptions'), { ssr: false })
 
 const PreviewUser = () => {
-  const { userLogged } = useSystemStore((state => state))
-  const [isOpenPreviewProfile, setIsOpenPreviewProfile] = useState(false)
+  const { userLogged, leftMenuBar, leftMenuBar: { isShow }, setStoreValue } = useSystemStore((state => state))
   const { picture, name, coins } = userLogged || {}
 
   const handleClickImage = () => {
-    setIsOpenPreviewProfile(!isOpenPreviewProfile)
+    setStoreValue('leftMenuBar', { ...leftMenuBar, isShow: !isShow })
   }
 
   return (
     <div
       className={`
       ${styles.PreviewUser} PreviewUser
-      ${isOpenPreviewProfile ? styles.actived : null}
+      ${isShow ? styles.actived : null}
       ${userLogged.uid ? styles.userLogged : null}
       `}>
       {userLogged?.uid ? (
@@ -44,12 +44,12 @@ const PreviewUser = () => {
             </span> */}
           </div>
           <div className={styles.bg_white}></div>
-          {isOpenPreviewProfile && <>
+          {isShow && <>
             <MenuMobileOptions />
             <UserNotifications />
-            <Button realistic className={styles.close_button} color="blue" onClick={() => setIsOpenPreviewProfile(false)}>Cerrar</Button>
+            <Button realistic className={styles.close_button} color="blue" onClick={() => setStoreValue('leftMenuBar', { isShow: false })}>Cerrar</Button>
           </>}
-          <div className={styles.elementToCloseBgBlack} onClick={() => setIsOpenPreviewProfile(false)}></div>
+          {/* <div className={styles.elementToCloseBgBlack} onClick={() => setStoreValue('leftMenuBar', false)}></div> */}
         </div>
       ) : (
         <Login />

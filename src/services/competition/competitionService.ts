@@ -11,7 +11,7 @@ const getEnvVariablesSrv = async (ctx, slug = null) => {
 }
 
 const postCompetitionMemberSrv = async (ctx, competitionID, number, uid) => {
-  const path = '/competition-members/register'
+  const path = `/competition-members/${competitionID}/register`
   return post(ctx, path, { competitionID, number, uid })
 }
 

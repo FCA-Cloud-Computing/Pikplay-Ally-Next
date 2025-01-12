@@ -163,6 +163,7 @@
   .CompetitionDetail {
     column-gap: 40px;
     display: flex;
+    padding: 10px 20px;
     @media screen and (max-width: 480px) {
       flex-direction: column-reverse;
     }

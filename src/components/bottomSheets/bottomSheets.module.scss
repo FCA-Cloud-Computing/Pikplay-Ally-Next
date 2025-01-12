@@ -5,7 +5,7 @@
     color: white;
     height: max-content;
     opacity: 0;
-    padding: 10px 20px;
+    padding: 10px 20px 90px 20px;
     position: absolute;
     right: 0;
     top: 59px;
@@ -17,14 +17,14 @@
         bottom: -240px;
         box-sizing: border-box;
         left: 0px;
-        padding: 10px 0 20px;
+        padding: 10px 20px 90px 20px;
         position: fixed;
         right: initial;
         top: initial;
         width: 100%;
         z-index: 4;
         &.active {
-            bottom: 50px;
+            bottom: 0px;
         }
     }
     &.active {

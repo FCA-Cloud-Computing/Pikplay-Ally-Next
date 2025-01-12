@@ -192,7 +192,7 @@ const CompetitionDetail = (props) => {
           <img src="https://pikplay-bucket.nyc3.cdn.digitaloceanspaces.com/users/1716992297692-bluepanther-image.jpeg" alt="" />
         </div>
         <p>
-          <b>BluePanther&apos;s</b>
+          <b>{seller.name}</b>
           <div className={styles.calification}>
             {[1, 1, 1].map(item => <FontAwesomeIcon className='icon stars' icon={faStar} />)}
           </div>
@@ -219,7 +219,7 @@ const CompetitionDetail = (props) => {
           </span>
         </div>
         <div>
-          <small>Liberación de cupos el {competitionDetail?.dateReleaseQuotas}</small>
+          {competitionDetail?.description}
         </div>
       </p>
       <Divider />

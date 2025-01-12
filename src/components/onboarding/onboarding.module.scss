@@ -200,6 +200,12 @@ section.Onboarding {
             right: -160px;
             z-index: -1;
         }
+        :global(.Coins) {
+            display: inline-block;
+            margin: -6px 0 0 -8px;
+            position: absolute;
+            transform: scale(0.7);
+        }
     }
     .aliados {
         margin: 0 0 40px;
