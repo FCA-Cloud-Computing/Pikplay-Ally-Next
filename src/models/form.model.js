@@ -18,13 +18,13 @@ export const schema = z.object({
     .string()
     .min(1, "Los créditos son obligatorios")
     .transform((val) => parseNumber(val, "Los créditos deben ser un número")),
-  purchase_date: z
+  purchaseDate: z
     .string()
     .refine(
       (date) => !isNaN(new Date(date).getTime()),
       "Debe ser una fecha válida"
     ),
-  client_document: z
+  clientDocument: z
     .string()
     .min(1, "El documento del cliente es obligatorio")
     .transform((val) => parseNumber(val, "El documento del cliente deben ser un número")),
@@ -32,7 +32,7 @@ export const schema = z.object({
     .string()
     .min(1, "El monto total es obligatorio")
     .transform((val) => parseNumber(val, "El monto total debe ser un número")),
-  redemption_code: z
+  redemptionCode: z
     .string()
     .optional(),
 });

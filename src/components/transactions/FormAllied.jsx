@@ -21,10 +21,10 @@ export const FormAllied = () => {
       description: "",
       experience: "",
       credits: "",
-      purchase_date: "",
-      client_document: "",
+      purchaseDate: "",
+      clientDocument: "",
       amount: "",
-      redemption_code: "",
+      redemptionCode: "",
     },
   });
 
@@ -32,7 +32,7 @@ export const FormAllied = () => {
     addTransactionStore({
       ...newTransaction,
       uid: userLogged.uid,
-      client_document: 1234,
+      clientDocument: 1234,
     });
     reset();
   };
@@ -71,19 +71,19 @@ export const FormAllied = () => {
           placeholder="10, 5, 3.."
         />
         <InputTransactions
-          name="purchase_date"
+          name="purchaseDate"
           control={control}
           label="Fecha de compra"
           type="date"
-          error={errors.purchase_date}
+          error={errors.purchaseDate}
         />
         <InputTransactions
-          name="client_document"
+          name="clientDocument"
           control={control}
           label="Documento del cliente"
           placeholder="CC 103242252"
           type="number"
-          error={errors.client_document}
+          error={errors.clientDocument}
         />
         <InputTransactions
           name="amount"
@@ -94,12 +94,12 @@ export const FormAllied = () => {
           error={errors.amount}
         />
         <InputTransactions
-          name="redemption_code"
+          name="redemptionCode"
           control={control}
           label="Código de redención (opcional)"
           placeholder="123-AS3-24V-D22"
           type="string"
-          error={errors.redemption_code}
+          error={errors.redemptionCode}
         />
         <Button
           color="blue"
