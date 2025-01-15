@@ -10,6 +10,9 @@ module.exports = {
     ],
     theme: {
         extend: {
+            height: {
+                "mobile": "calc(100dvh - 180px)"
+            },
             backgroundImage: {
                 'transactions': "url(/images/backgrounds/tetris-texture.png)",
             },

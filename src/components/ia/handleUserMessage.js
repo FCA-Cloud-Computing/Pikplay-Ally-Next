@@ -3,6 +3,7 @@ import { Message as IAMessageWelcome, Options as IAOptionsWelcome, HTML as HTMLw
 import { HTMLOnboarding, Message as IAMessageOnboarding, Options as IAOptionsOnboarding, HTMLOnboardingNameSaved } from './responses/onboarding/onboarding';
 import { Message as IAMessageDefault, Options as IAOptionsDefault } from './responses/default';
 import { HtmlMessage as IAHtmlMessagePikcoins, Message as IAMessagePikcoins, Options as IAOptionsPikcoins, Height as IAcontainerHeightPikcoins } from './responses/pikcoins';
+import { HTML as IAHtmlMessageRedemption, Message as IAMessageRedemption, Options as IAOptionsRedemption } from './responses/redemption';
 
 // Competitions
 import { Message as IAMessageCompetition, Options as IAOptionsCompetition } from './responses/competition/competition';
@@ -93,6 +94,12 @@ export const handleUserMessage = async (mensaje, set, options) => {
       IAMessageSelected = IAMessagePikcoins;
       IAOptionsSelected = IAOptionsPikcoins;
       containerHeightSelected = IAcontainerHeightPikcoins;
+      break;
+
+    case 'redemption':
+      IAHTMLMessageSelected = IAHtmlMessageRedemption;
+      IAMessageSelected = IAMessageRedemption(options.credits);
+      IAOptionsSelected = IAOptionsRedemption;
       break;
 
     default:
