@@ -22,14 +22,20 @@
         "name": "next"
       }
     ],
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+    }
   },
   "include": [
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "src/actions/redemptionCredits.js"  ],
+    "**/*.tsx",
+    "src/actions/redemptionCredits.js"
+  ],
   "exclude": [
     "node_modules"
   ]

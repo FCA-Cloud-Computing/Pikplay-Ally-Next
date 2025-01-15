@@ -54,9 +54,9 @@ export function convertResponse(response) {
 export function isEmpty(obj) {
   // Validating json is not empty, string is not empty and array is not empty
   if (obj === null || obj === undefined) return true;
-  if (typeof obj === "string" && obj.trim() === "") return true;
+  if (typeof obj === 'string' && obj.trim() === '') return true;
   if (Array.isArray(obj) && obj.length === 0) return true;
-  if (typeof obj === "object" && Object.keys(obj).length === 0) return true;
+  if (typeof obj === 'object' && Object.keys(obj).length === 0) return true;
   return false;
 }
 
@@ -128,7 +128,7 @@ export function snakeToCamel(snake) {
 }
 
 export function formatNumberWithCommas(number) {
-  if (typeof number !== "number") return;
+  if (typeof number !== 'number') return;
   return number.toLocaleString('en-US', {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
@@ -136,6 +136,7 @@ export function formatNumberWithCommas(number) {
 }
 
 export function startConfetti() {
+  if (typeof window == 'undefined') return;
   var count = 200;
   var defaults = {
     origin: { y: 0.7 },

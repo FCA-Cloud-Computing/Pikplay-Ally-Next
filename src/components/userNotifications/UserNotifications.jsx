@@ -22,6 +22,7 @@ const UserNotifications = () => {
   const { uid } = userLogged
   const [fileUploaded, setFileUploaded] = useState(false);
   const fileInputRef = useRef(null);
+  const [bannerPictureProfile, setBannerPictureProfile] = useState(false);
   // const user = useSelector(state => state.user)
   // const notifications = useSelector(state => state.notifications) //.filter(item => item.closed == 0)
   // const [deleteNotification] = useMutation(DELETE_NOTIFICATION, {
@@ -88,6 +89,7 @@ const UserNotifications = () => {
       updateProfileSrv(null, uid, { picture: urlImage })
         .then(data => {
           setStoreValue('userLogged', { ...userLogged, picture: urlImage })
+          getNotifications() // Actualizar notificaciones
         })
     }
   }
@@ -117,6 +119,11 @@ const UserNotifications = () => {
     getNotifications()
   }, [])
 
+  useEffect(() => {
+    // Setting banner picture profile to true if there is a notification with cid 1 (profile image completed)
+    notifications.filter(item => item.cid === 1).length == 0 && setBannerPictureProfile(true)
+  }, [notifications])
+
   return (
     <div className={`UserNotifications ${styles.UserNotifications}`}>
       <div className={styles.options}>
@@ -137,6 +144,7 @@ const UserNotifications = () => {
               coins,
               createdAt,
               description,
+              image,
               id,
               link,
               status,
@@ -158,9 +166,7 @@ const UserNotifications = () => {
                 className={classNames('Card', { [styles.read]: status })}
                 key={id}
                 variants={item}
-                onClick={() =>
-                  !claimed && handleNotification(item)
-                }>
+                onClick={() => !claimed && handleNotification(item)}>
                 {/* {!disabled && <FontAwesomeIcon icon={faCircle} />} */}
                 {/* <Image
                   alt='icon-notification'
@@ -172,17 +178,22 @@ const UserNotifications = () => {
                 <small>
                   hace {created}
                 </small>
-                <span>{description}</span>
-                {coins && <CoinIcon isLabel={false} coins={coins} />}
-                {!coins && <div className={styles.content_close}></div>}
+                <div dangerouslySetInnerHTML={{ __html: description }} />
+                {image && <picture className={styles.picture}>
+                  <img src={image} />
+                </picture>}
+                {coins && <CoinIcon hideNumber />}
+                {/* {!coins && <div className={styles.content_close}></div>} */}
               </motion.li>
               // </Tooltip>
             )
           },
         )}
       </motion.ul>
-      <input onChange={handlerInputFile} ref={fileInputRef} type="file" style={{ display: 'none' }} />
-      <img onClick={() => fileInputRef.current.click()} style={{ borderRadius: '5px' }} src="/images/banners/gana_tus.png" />
+      {bannerPictureProfile && <>
+        <input onChange={handlerInputFile} ref={fileInputRef} type="file" style={{ display: 'none' }} />
+        <img onClick={() => fileInputRef.current.click()} style={{ borderRadius: '5px' }} src="/images/banners/gana_tus.png" />
+      </>}
     </div>
   )
 }

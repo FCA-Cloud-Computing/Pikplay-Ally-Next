@@ -65,6 +65,23 @@
                 width: 40px;
             }
         }
+
+        input {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 14px;
+
+            text-shadow:
+                2px 0 #2e2e2e,
+                -2px 0 #2e2e2e,
+                0 2px #2e2e2e,
+                0 -2px #2e2e2e,
+                1px 1px #2e2e2e,
+                -1px -1px #2e2e2e,
+                1px -1px #2e2e2e,
+                -1px 1px #2e2e2e;
+        }
     }
 
     .box {

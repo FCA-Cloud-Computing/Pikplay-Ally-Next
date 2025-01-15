@@ -1,3 +1,4 @@
+/* eslint-disable no-empty-pattern */
 import { Message as IAMessageWelcome, Options as IAOptionsWelcome, HTML as HTMLwelcome } from './responses/welcome';
 import { HTMLOnboarding, Message as IAMessageOnboarding, Options as IAOptionsOnboarding, HTMLOnboardingNameSaved } from './responses/onboarding/onboarding';
 import { Message as IAMessageDefault, Options as IAOptionsDefault } from './responses/default';
@@ -29,7 +30,6 @@ export const handleUserMessage = async (mensaje, set, options) => {
   var HTML, Message, Options;
 
   switch (mensaje) {
-    // Competitions
     case 'competition/admin':
       IAMessageSelected = 'Que deseas hacer?';
       IAOptionsSelected = IAOptionsCompetition_Admin;
@@ -58,7 +58,7 @@ export const handleUserMessage = async (mensaje, set, options) => {
     // End competitions
 
     case 'ranking':
-      var {} = ({ HTML, Message, Options } = await import('./responses/ranking.jsx'));
+      var { } = ({ HTML, Message, Options } = await import('./responses/ranking.jsx'));
       IAHTMLMessageSelected = HTML;
       IAMessageSelected = Message;
       IAOptionsSelected = Options;
@@ -121,7 +121,7 @@ export const handleUserMessage = async (mensaje, set, options) => {
       IAExpression: IAExpressionSelected,
       IAHTMLMessage: IAHTMLMessageSelected,
       IAHTMLSecondMessage: IAHTMLSecondMessageSelected,
-      containerHeight: containerHeightSelected,
+      containerHeight: containerHeightSelected
     });
   }, 1000);
 };

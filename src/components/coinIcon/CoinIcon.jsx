@@ -37,8 +37,7 @@ const CoinIcon = ({ coins, isLabel, hideNumber, multicoin, textColor }) => {
       {!hideNumber && (
         <span
           className={`f-s-14 ${styles.number} number`}
-          style={{ color: textColor ? textColor : "#e5961d" }}
-        >
+          style={{ color: textColor ? textColor : "#e5961d" }}>
           {formatNumber(coins)}
         </span>
       )}

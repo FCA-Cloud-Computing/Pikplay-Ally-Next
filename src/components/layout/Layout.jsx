@@ -7,21 +7,23 @@ import useSystemStore from '../../hooks/storeSystem.js'
 import Body from './Body.jsx'
 import { useIAStore } from '../ia/IAstore.js'
 import AwardsSummaryModal from '../awardsSummary/AwardsSummary.jsx';
+import MessagesTop from '../messagesTop/MessagesTop.jsx';
 
 const Layout = (props) => {
   const [isReady, setIsReady] = useState(false)
   const { children, descripcion, image, title, url, mobileMenuHidden } = props
-  const { 
-    darkMode, 
-    env, 
+  const {
+    darkMode,
+    env,
     isAwardSummaryModalOpen,
-    notifications, 
-    setStoreValue, 
-    userLogged, 
+    notifications,
+    setStoreValue,
+    userLogged,
   } = useSystemStore((state => state))
   const { checkIAMessage, IAMessage, setIsvisible } = useIAStore()
 
   Router.onRouteChangeStart = url => {
+    setStoreValue('leftMenuBar', { isShow: false }) // Ocultando menu izquierdo cuando se cambia de URL
     setIsvisible(false) // Ocultando a la IA
     if (url.includes('perfil')) { // Si va al perfil y no esta logueado
       if (!userLogged?.uid) Router.push('/?action=play-button&origin=onboarding')
@@ -61,15 +63,14 @@ const Layout = (props) => {
         <meta httpEquiv='ScreenOrientation' content='autoRotate:disabled' />
         <link rel='alternate' href={url} hrefLang='es-CO' />
         <link rel='canonical' href={url} />
-        <link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.min.css"></link>
       </Head>
       <Body
         isReady={isReady}
         mobileMenuHidden={mobileMenuHidden}
         notifications={notifications}
-        userLogged={userLogged}
-      >
+        userLogged={userLogged}>
         <ToastContainer />
+        <MessagesTop />
         {isAwardSummaryModalOpen && <AwardsSummaryModal />}
         {children}
       </Body>

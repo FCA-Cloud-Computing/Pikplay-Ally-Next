@@ -11,7 +11,13 @@ import { useIAStore } from '../ia/IAstore'
 
 const MenuMobileOptions = () => {
   const router = useRouter()
-  const { darkMode, userLogged, logout, setStoreValue } = useSystemStore((state => state))
+  const {
+    darkMode,
+    logout,
+    setStoreValue,
+    userLogged,
+    userLoggedOriginal
+  } = useSystemStore((state => state))
   const { name, coins } = userLogged
   const {
     handleUserMessage,
@@ -20,6 +26,22 @@ const MenuMobileOptions = () => {
   const handleLogout = () => {
     logout()
     router.push('/?action=logout')
+  }
+
+  const changeToSellerUser = () => {
+    const userLoggedOriginal = {
+      ...userLogged
+    }
+    setStoreValue('userLoggedOriginal', userLoggedOriginal)
+    setStoreValue('userLogged', {
+      uid: 120,
+      name: 'Blackpanther',
+      picture: '/images/bluepanther/profile.jpg',
+    })
+  }
+
+  const changeToOriginalUser = () => {
+    setStoreValue('userLogged', userLoggedOriginal)
   }
 
   const container = {
@@ -58,12 +80,6 @@ const MenuMobileOptions = () => {
       </Link>
     </motion.ol>
     <motion.ol variants={item}>
-      <Link href='/usuario/me' as='/usuario/me'>
-        Soy vendedor
-        <br />
-      </Link>
-    </motion.ol>
-    <motion.ol variants={item}>
       <Link href='/transacciones' as='/transacciones'>
         Transacciones
       </Link>
@@ -86,7 +102,16 @@ const MenuMobileOptions = () => {
     <motion.ol variants={item} onClick={() => handleLogout()}>
       Salir
     </motion.ol>
-  </motion.div>
+    {userLogged.rol == 'admin' && <>
+      <motion.ol variants={item} onClick={changeToSellerUser}>
+        Cambiar a Seller
+      </motion.ol>
+      <motion.ol variants={item} onClick={changeToOriginalUser}>
+        Cambiar a Usuario
+      </motion.ol>
+    </>
+    }
+  </motion.div >
 }
 
 export default MenuMobileOptions

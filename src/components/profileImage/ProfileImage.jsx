@@ -6,8 +6,7 @@ const ProfileImage = ({ className, handleClickImage, picture }) => {
   return (
     <picture
       className={`${styles.ProfileImage} ${styles[className]}`}
-      onClick={handleClickImage}
-    >
+      onClick={handleClickImage}>
       <img src={picture || "/images/users/user1.jpg"} />
     </picture>
   );

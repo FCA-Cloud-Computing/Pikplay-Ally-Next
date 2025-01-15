@@ -7,11 +7,10 @@ import { faDiceFive } from '@fortawesome/free-solid-svg-icons'
 
 // Cutoms components
 import useSystemStore from '../../hooks/storeSystem'
-import { competitionsStore } from '../../components/competitions/hooks/competitionsStore'
+import { useCompetitionsStore } from '../../components/competitions/hooks/useCompetitions'
 import Layout from '../../components/layout/Layout'
 import CompetitionsList from '../../components/competitions/CompetitionsList'
 import useCompetitions from '../../components/competitions/hooks/useCompetitions'
-import CompetitionDetail from '../../components/competitions/CompetitionDetail'
 import { isEmpty } from '../../lib/utils'
 
 // MUI
@@ -23,6 +22,7 @@ import { ArrowBackIosNewOutlined } from '@mui/icons-material'
 import { TrafficRounded } from '@mui/icons-material'
 import { green } from '@mui/material/colors'
 import Skeleton from '@mui/material/Skeleton'
+import ItemCard from '../../components/itemCard/ItemCard'
 
 const ConcursosPage = () => {
   const {
@@ -36,7 +36,7 @@ const ConcursosPage = () => {
     isLoading
   } = useCompetitions()
 
-  const { competitionDetail, setCompetitionDetail } = competitionsStore()
+  const { competitionDetail, set } = useCompetitionsStore()
   const { userLogged: { picture: userPicture, uid: uidLogged } } = useSystemStore()
 
   const [value, setValue] = useState(0)
@@ -64,6 +64,39 @@ const ConcursosPage = () => {
         )}
       </div>
     )
+  }
+
+  const productData = {
+    accept_changes: true,
+    cashback_available: true,
+    certificate: true,
+    city: 'Bogotá',
+    description: 'Concurso de la mejor foto',
+    descuento: 0,
+    destacada: true,
+    following: true,
+    handleFavorite: () => { },
+    handleShare: () => { },
+    iconFavorite: true,
+    id: 1,
+    images: [{ url: 'https://via.placeholder.com/150', id: 1 }, { url: 'https://via.placeholder.com/150', id: 2 }],
+    image_1: 'https://via.placeholder.com/150',
+    is_new: true,
+    likes: ['user1', 'user2'],
+    logDetalle: 'logDetalle',
+    price: 100000,
+    quantity: 1,
+    sale_price: 90000,
+    slug: 'slug',
+    special_title: 'special_title',
+    tags: ['tag1', 'tag2'],
+    tipo_coleccion: 'tipo_coleccion',
+    title: 'title',
+    type: 'type',
+    user: 'user',
+    user_name: 'user_name',
+    user_picture: 'https://via.placeholder.com/150',
+    user_transactions: 1
   }
 
   return (
@@ -105,6 +138,11 @@ const ConcursosPage = () => {
               </div>}
             </TabPanel>
           </Card>
+
+          {/* Card para mostrar algunos productos del Seller */}
+          {/* <Card>
+            <ItemCard {...productData} />
+          </Card> */}
         </section>
       </Layout>
     </div >

@@ -1,7 +1,30 @@
+// Config recomendada por ChatGPT para Next JS
 {
-  // "extends": "eslint:recommended",
-  "extends": "next/core-web-vitals",
+  "root": true,
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:react-hooks/recommended", "next/core-web-vitals"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "rules": {
-    "import/no-unresolved": "error"
+    "react/react-in-jsx-scope": "off", // Next.js ya importa React automáticamente
+    "jsx-a11y/anchor-is-valid": "off", // Next.js gestiona los enlaces con <Link>
+    "no-unused-vars": "warn",
+    "semi": ["off"],
+    "quotes": ["error", "single"],
+    "comma-dangle": ["error", "never"]
   }
 }

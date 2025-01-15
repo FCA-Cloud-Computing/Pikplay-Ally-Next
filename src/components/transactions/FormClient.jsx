@@ -49,8 +49,7 @@ export const FormClient = ({ uid, transactionId }) => {
           variant="contained"
           className="w-full"
           tabIndex={-1}
-          startIcon={<CloudUploadIcon />}
-        >
+          startIcon={<CloudUploadIcon />}>
           {fileUploaded ? "Archivo cargado" : "Subir comprobante de pago"}
           <VisuallyHiddenInput
             type="file"
@@ -61,8 +60,7 @@ export const FormClient = ({ uid, transactionId }) => {
         </Button>
         <button
           type="submit"
-          className="border-white/50 hover:bg-white transition duration-300 hover:text-black border py-2 w-full rounded-md mt-4"
-        >
+          className="border-white/50 hover:bg-white transition duration-300 hover:text-black border py-2 w-full rounded-md mt-4">
           Crear transacción
         </button>
       </form>

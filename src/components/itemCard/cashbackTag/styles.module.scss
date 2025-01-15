@@ -1,0 +1,43 @@
+.CashbackTag {
+  .apply_cashback {
+    background: radial-gradient(circle, #fee960 0%, #feb724 100%) !important;
+    border-radius: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px 0 #1717172e;
+    color: #e8830f;
+    font-size: 10px;
+    font-weight: bold;
+    margin: 0 10px;
+    padding: 5px 10px 5px 18px;
+    position: relative;
+    width: max-content;
+    :global(.Coins) {
+      position: absolute;
+      top: -14px;
+      left: -14px;
+    }
+    .coin {
+      background-image: url("/images/gifs/sprite-monedas-pequenas.png");
+      background-position-x: 0px;
+      background-position-y: 0px;
+      background-size: 210px;
+      display: inline-block;
+      height: 31px;
+      margin: 0;
+      transform: scale(0.8);
+      transition: 0.5s linear;
+      width: 31px;
+      position: absolute;
+      top: -4px;
+      left: -15px;
+    }
+
+    &:hover {
+      .apply_cashback .coin {
+        animation:
+          rotate 0.5s steps(6) infinite,
+          appear 1s steps(1);
+      }
+    }
+  }
+}

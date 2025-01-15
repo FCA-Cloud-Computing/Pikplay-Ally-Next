@@ -1,4 +1,4 @@
-import CustomFetch from "../../components/fetch/CustomFetch";
+import CustomFetch from '../../components/fetch/CustomFetch';
 const { get, post } = CustomFetch()
 
 const getComptSrv = async (ctx, slug = null) => {
@@ -7,12 +7,17 @@ const getComptSrv = async (ctx, slug = null) => {
 }
 
 const getEnvVariablesSrv = async (ctx, slug = null) => {
-  return get(ctx, "");
+  return get(ctx, '');
 }
 
 const postCompetitionMemberSrv = async (ctx, competitionID, number, uid) => {
-  const path = '/competition-members/register'
+  const path = `/competition-members/${competitionID}/register`
   return post(ctx, path, { competitionID, number, uid })
+}
+
+const setPaidNumberSrv = (ctx, competitionId, number, uid) => {
+  const path = '/competition-members/paid'
+  return post(ctx, path, { competitionId, number, uid })
 }
 
 const deleteCompetitionMemberSrv = async (competitionID, number) => {
@@ -31,5 +36,6 @@ export {
   deleteCompetitionMemberSrv,
   getComptSrv,
   getEnvVariablesSrv,
-  postCompetitionMemberSrv
+  postCompetitionMemberSrv,
+  setPaidNumberSrv
 }

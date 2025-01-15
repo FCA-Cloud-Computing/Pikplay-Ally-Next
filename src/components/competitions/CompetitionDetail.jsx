@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import styles from './competitions.module.scss'
 
 import React, { useEffect, useState, useRef } from 'react'
@@ -13,7 +14,7 @@ import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 // Customs
 import AdminActions from './AdminActions'
-import useCompetitions from './hooks/useCompetitions'
+import useCompetitions, { useCompetitionsStore } from './hooks/useCompetitions'
 import Button from '../button/Button'
 import Marquee from './Marquee'
 import { postCompetitionMemberSrv } from '../../services/competition/competitionService'
@@ -24,7 +25,7 @@ const CompetitionDetail = (props) => {
   const {
     competitionDetail,
     userPicture,
-    uidLogged,
+    uidLogged
   } = props
 
   const {
@@ -38,7 +39,7 @@ const CompetitionDetail = (props) => {
 
   const {
     handleUserMessage,
-    setIsvisible,
+    setIsvisible
   } = useIAStore((state => state))
 
   const {
@@ -46,8 +47,10 @@ const CompetitionDetail = (props) => {
     getCompetitions,
     isOnlyAvailableNumbers,
     selectedNumber,
-    setSelectedNumber,
+    setSelectedNumber
   } = useCompetitions()
+
+  const { set: setCompetitionStore } = useCompetitionsStore()
 
   var updatesQuantity = 0
   const MAX_REQUEST_UPDATE = 10
@@ -65,7 +68,9 @@ const CompetitionDetail = (props) => {
     { name: '', status: 'available', isPaid: false, number: null }
   ))
 
-  const handleClick = (item, number) => {
+  const handleClick = (item, number) => { // Evento de clic del número del sorteo
+    setCompetitionStore({ selectedNumber: number })
+    setSelectedNumber(number)
     if (seller.uid != uidLogged) {
       setIsvisible(true)
       // setnumberChosen(number)
@@ -76,12 +81,10 @@ const CompetitionDetail = (props) => {
         sellerPhone: competitionDetail.seller.phone,
       }
       handleUserMessage('competition', options)
-      setSelectedNumber(number)
     }
     else {
       handleUserMessage('competition/admin')
       setIsvisible(true)
-      setSelectedNumber(number)
     }
   }
 
@@ -125,7 +128,7 @@ const CompetitionDetail = (props) => {
   }
 
   useEffect(() => {
-    settingTakenNumbers(competitionDetail.members,)
+    settingTakenNumbers(competitionDetail.members)
     let myVisualInterval
     // const myFetchInterval = setInterval(() => {
     updatesQuantity++
@@ -152,13 +155,13 @@ const CompetitionDetail = (props) => {
         className={`${styles.item} ${styles[item.status]} ${selectedNumber == ind && styles.selected} ${takenByMeClass}`}
         onClick={() => handleClick(item, ind)}>
         {ind}
-        <div>{item.name}</div>
       </div>
     </Tooltip> : <></>
   }
 
   return <div className={styles.CompetitionDetail}>
     {/* competitionDetail: {JSON.stringify(competitionDetail)} */}
+    Numero seleccionado: {selectedNumber}
     <div className={styles.left}>
       <div className={styles.news}>
         <span>Últimos movimientos:</span>
@@ -192,7 +195,7 @@ const CompetitionDetail = (props) => {
           <img src="https://pikplay-bucket.nyc3.cdn.digitaloceanspaces.com/users/1716992297692-bluepanther-image.jpeg" alt="" />
         </div>
         <p>
-          <b>BluePanther&apos;s</b>
+          <b>{seller.name}</b>
           <div className={styles.calification}>
             {[1, 1, 1].map(item => <FontAwesomeIcon className='icon stars' icon={faStar} />)}
           </div>
@@ -219,7 +222,7 @@ const CompetitionDetail = (props) => {
           </span>
         </div>
         <div>
-          <small>Liberación de cupos el {competitionDetail?.dateReleaseQuotas}</small>
+          {competitionDetail?.description}
         </div>
       </p>
       <Divider />
@@ -229,7 +232,7 @@ const CompetitionDetail = (props) => {
           freeNumbers,
           paidNumbers,
           takenNumbers,
-          setShowMembersNames,
+          setShowMembersNames
         }}
       />}
     </div>

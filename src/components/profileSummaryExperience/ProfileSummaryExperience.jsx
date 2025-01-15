@@ -3,17 +3,34 @@ import styles from './profileSummaryExperience.module.scss'
 import React, { useEffect, useState } from 'react'
 import classNames from 'classnames'
 
+// Custom
 import { animatePrince, formatNumber } from '../../lib/utils'
 import CoinIcon from '../coinIcon/CoinIcon'
 import ProfileImage from '../profileImage/ProfileImage'
 import useSystemStore from '../../hooks/storeSystem'
+import MESSAGES from '../../consts/messages'
+import { useIAStore } from '../ia/IAstore'
+import Button from '../button/Button'
+
+// Servicios
+import { updateProfileSrv } from '../../services/user/userService'
+import { toast } from 'react-toastify'
 
 const ProfileSummaryExperience = (props) => {
+  const { DEFAULT_NAME } = MESSAGES
+  const [newNickname, setNewNickname] = useState(null)
   const { isEditProfile, userInfoData, setIsEditProfile, showDetails } = props
   // userInfoData: Props que se utiliza para mostrar la información de un usuario en particular
   const gainedCoins = 5
   const currentUserCoins = 10
-  const userLogged = useSystemStore(state => state.userLogged)
+  const { userLogged, setUserLogged } = useSystemStore()
+  const { uid } = userLogged
+  const {
+    handleUserMessage,
+    setIAMessage,
+    setIAOptions,
+  } = useIAStore((state => state))
+
   const {
     backgroundColor,
     backgroundImage,
@@ -24,6 +41,26 @@ const ProfileSummaryExperience = (props) => {
     coins,
     league = 'oro',
   } = userInfoData ? userInfoData : userLogged
+
+  const handleBlurName = (e) => {
+    const { value } = e.target
+    setIAMessage(`Deseas cambiar tu nombre a ${value}?`)
+    setIAOptions(<>
+      <Button color='transparent'>Cancelar</Button>
+      <Button color='blue' realistic
+        onClick={() => {
+          updateProfileSrv(null, uid, { name: value })
+            .then(data => {
+              setUserLogged({ name: value })
+              setIAMessage(null)
+              toast("¡Perfil actualizado correctamente!")
+            })
+        }}>
+        Cambiar
+      </Button>
+    </>)
+  }
+
   useEffect(() => {
     const element = document.querySelector('.ProfileSummaryExperience .number-coins')
     const fromNumber = element?.innerHTML
@@ -38,7 +75,7 @@ const ProfileSummaryExperience = (props) => {
           Name
         </div> */}
         <div className={`shine ${styles[league]} ${league == 'oro' && 'starsFallingDown'} ${styles.full_name}`}>
-          <span>{name}</span>
+          <input value={name || newNickname || DEFAULT_NAME} onChange={e => setNewNickname(e.target.value)} onBlur={handleBlurName} />
           {/* <div className={styles.icons}>
             <Tooltip title="Plataforma más utilizada">
               <img width={40} className={styles.platform} src="/images/icons/ps-icon.png" />

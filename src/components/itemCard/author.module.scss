@@ -1,0 +1,97 @@
+.AuthorComponent {
+  align-items: center;
+  background: #f4f4f4;
+  border-radius: 5px;
+  box-shadow: 1px 1px #e7e7e7;
+  display: flex;
+  height: 40px;
+  left: 0;
+  margin: 10px auto;
+  max-width: max-content;
+  overflow: hidden;
+  padding: 0 5px 0 0px;
+  position: relative;
+  right: 0;
+  transition: 0.3s ease;
+  z-index: 1;
+  @media screen and (max-width: 480px) {
+    margin: 10px auto;
+  }
+  > div > * {
+    font-size: 12px;
+  }
+  img {
+    border-radius: 5px 0 0 5px;
+    // display: none;
+    position: relative;
+    width: initial;
+  }
+  span {
+    border-radius: 50%;
+    background-size: 40px;
+    // margin-right: 10px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .content {
+    align-items: center;
+    // display: flex;
+    font-size: 12px;
+    grid-gap: 5px;
+    // margin: 0 0 0 10px;
+    opacity: 1;
+    padding: 0 2px 6px 10px;
+    position: relative;
+    h3 {
+      font-size: 13px;
+    }
+    .calification {
+      display: block;
+      svg {
+        color: #fad426;
+        width: 16px;
+      }
+    }
+  }
+  h3 {
+    font-weight: 100;
+    margin: 2px;
+  }
+  .content-icon-store {
+    background: #bad5f0;
+    color: white;
+    height: 26px;
+    line-height: 30px;
+    padding: 0px 7px;
+    top: 0px;
+  }
+  .stars {
+    align-items: center;
+    display: flex;
+    font-size: 10px;
+    span {
+      height: initial;
+      margin: 0;
+    }
+  }
+
+  svg {
+    &.star {
+      color: #f7b000;
+      width: 16px;
+    }
+  }
+  &.CardDetalleProducto {
+    // height: 32px;
+    margin: 0 10px;
+    .content-icon-store {
+      // display: none;
+    }
+    img {
+      display: block;
+    }
+  }
+  &.HeaderSearch {
+    margin: 10px 0;
+  }
+}
