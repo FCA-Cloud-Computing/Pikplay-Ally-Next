@@ -7,7 +7,7 @@ import { faDiceFive } from '@fortawesome/free-solid-svg-icons'
 
 // Cutoms components
 import useSystemStore from '../../hooks/storeSystem'
-import { competitionsStore } from '../../components/competitions/hooks/competitionsStore'
+import { useCompetitionsStore } from '../../components/competitions/hooks/useCompetitions'
 import Layout from '../../components/layout/Layout'
 import CompetitionsList from '../../components/competitions/CompetitionsList'
 import useCompetitions from '../../components/competitions/hooks/useCompetitions'
@@ -36,7 +36,7 @@ const ConcursosPage = () => {
     isLoading
   } = useCompetitions()
 
-  const { competitionDetail, setCompetitionDetail } = competitionsStore()
+  const { competitionDetail, set } = useCompetitionsStore()
   const { userLogged: { picture: userPicture, uid: uidLogged } } = useSystemStore()
 
   const [value, setValue] = useState(0)

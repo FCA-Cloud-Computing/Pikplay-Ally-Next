@@ -13,7 +13,7 @@ import { ArrowBackIos } from '@mui/icons-material'
 import { ArrowBackIosNew } from '@mui/icons-material'
 import { ArrowBackIosNewOutlined } from '@mui/icons-material'
 import Link from 'next/link'
-import { competitionsStore } from '../../../components/competitions/hooks/competitionsStore'
+import { useCompetitionsStore } from '../../../components/competitions/hooks/useCompetitions'
 import { getComptSrv } from '../../../services/competition/competitionService'
 import useSystemStore from '../../../hooks/storeSystem'
 
@@ -29,10 +29,10 @@ const ConcursoDetailPage = (props) => {
     handleCompetitionClick,
     selectedNumber,
     setSelectedNumber,
-    setCompetitionMembers,
+    setCompetitionMembers
   } = useCompetitions()
 
-  const { setCompetitionDetail } = competitionsStore()
+  const { set } = useCompetitionsStore()
   const { userLogged: { picture: userPicture, uid: uidLogged } } = useSystemStore()
 
   const [value, setValue] = useState(0)
@@ -41,7 +41,7 @@ const ConcursoDetailPage = (props) => {
   }
 
   useEffect(() => {
-    setCompetitionDetail(competitionDetail)
+    set({ competitionDetail })
     getCompetitions(null)
   }, [])
 
@@ -82,7 +82,7 @@ const ConcursoDetailPage = (props) => {
               setSelectedNumber,
               selectedNumber,
               userPicture,
-              uidLogged,
+              uidLogged
             }}
           />
         </Card>

@@ -23,9 +23,8 @@
     "react/react-in-jsx-scope": "off", // Next.js ya importa React automáticamente
     "jsx-a11y/anchor-is-valid": "off", // Next.js gestiona los enlaces con <Link>
     "no-unused-vars": "warn",
-    "semi": ["error", "always"],
-    "quotes": ["error", "double"],
-    "indent": ["error", 2],
+    "semi": ["off"],
+    "quotes": ["error", "single"],
     "comma-dangle": ["error", "never"]
   }
 }
