@@ -11,8 +11,9 @@ const Message = () => {
 
 const Options = ({ handleUserMessage, set, options }) => {
   const { liberarNumero, setPaidNumber } = useCompetitions();
+  const { selectedNumbePhone } = useCompetitionsStore();
 
-  const habdleSendMessage = () => window.open('https://api.whatsapp.com/send?phone=573106614305', '_blank')
+  const habdleSendMessage = () => window.open('https://api.whatsapp.com/send?phone=' + selectedNumbePhone, '_blank')
 
   return <>
     <Button color='blue' onClick={setPaidNumber}>

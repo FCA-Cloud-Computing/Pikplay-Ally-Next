@@ -13,7 +13,7 @@ const ProfileImage = dynamic(() => import('../profileImage/ProfileImage'), { ssr
 const MenuMobileOptions = dynamic(() => import('./MenuMobileOptions'), { ssr: false })
 
 const PreviewUser = () => {
-  const { userLogged, leftMenuBar, leftMenuBar: { isShow }, setStoreValue } = useSystemStore((state => state))
+  const { userLogged, leftMenuBar, leftMenuBar: { isShow }, setStoreValue, leftBottomMenuContent } = useSystemStore((state => state))
   const { picture, name, coins } = userLogged || {}
 
   const handleClickImage = () => {
@@ -50,6 +50,7 @@ const PreviewUser = () => {
             <Button realistic className={styles.close_button} color="blue" onClick={() => setStoreValue('leftMenuBar', { isShow: false })}>Cerrar</Button>
           </>}
           {/* <div className={styles.elementToCloseBgBlack} onClick={() => setStoreValue('leftMenuBar', false)}></div> */}
+          {leftBottomMenuContent}
         </div>
       ) : (
         <Login />

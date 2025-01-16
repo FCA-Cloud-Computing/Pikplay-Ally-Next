@@ -46,8 +46,7 @@ const CompetitionDetail = (props) => {
     deleteNotPaidNumbers,
     getCompetitions,
     isOnlyAvailableNumbers,
-    selectedNumber,
-    setSelectedNumber
+    selectedNumber
   } = useCompetitions()
 
   const { set: setCompetitionStore } = useCompetitionsStore()
@@ -70,7 +69,6 @@ const CompetitionDetail = (props) => {
 
   const handleClick = (item, number) => { // Evento de clic del número del sorteo
     setCompetitionStore({ selectedNumber: number })
-    setSelectedNumber(number)
     if (seller.uid != uidLogged) {
       setIsvisible(true)
       // setnumberChosen(number)
@@ -78,11 +76,12 @@ const CompetitionDetail = (props) => {
         competitionID: competitionDetail.id,
         number,
         postCompetitionMemberSrv,
-        sellerPhone: competitionDetail.seller.phone,
+        sellerPhone: competitionDetail.seller.phone
       }
       handleUserMessage('competition', options)
     }
     else {
+      setCompetitionStore({ selectedNumbePhone: item.phone })
       handleUserMessage('competition/admin')
       setIsvisible(true)
     }
@@ -161,7 +160,6 @@ const CompetitionDetail = (props) => {
 
   return <div className={styles.CompetitionDetail}>
     {/* competitionDetail: {JSON.stringify(competitionDetail)} */}
-    Numero seleccionado: {selectedNumber}
     <div className={styles.left}>
       <div className={styles.news}>
         <span>Últimos movimientos:</span>

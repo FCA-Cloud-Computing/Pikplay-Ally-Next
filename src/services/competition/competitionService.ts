@@ -20,20 +20,19 @@ const setPaidNumberSrv = (ctx, competitionId, number, uid) => {
   return post(ctx, path, { competitionId, number, uid })
 }
 
-const deleteCompetitionMemberSrv = async (competitionID, number) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(true)
-    }, 2000)
-  })
-  // const url = path + '/delete-member'
-  // const params = { competitionID, number }
-  // const data = await post(null, path, params)
-  // return data
+const deleteCompetitionMemberSrv = async (ctx, competitionId, number) => {
+  const path = `/competition-members/${competitionId}/delete`
+  return post(ctx, path, { number })
+}
+
+const deleteNotPaidNumbersSrv = async (ctx, competitionId) => {
+  const path = `/competitions/${competitionId}/delete-not-paid`
+  return post(ctx, path, {})
 }
 
 export {
   deleteCompetitionMemberSrv,
+  deleteNotPaidNumbersSrv,
   getComptSrv,
   getEnvVariablesSrv,
   postCompetitionMemberSrv,

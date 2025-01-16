@@ -220,6 +220,7 @@
         background: #2eb4a769;
         border-radius: 8px;
         border: dashed 1px #3095b3;
+        box-shadow: 3px 3px #d9d9d9;
         cursor: pointer;
         display: flex;
         height: 40px;
@@ -269,6 +270,18 @@
       column-gap: 10px;
       display: flex;
       margin: 20px 10px 20px;
+    }
+
+    .btnLeftBottomMenu {
+      background: transparent;
+      border-radius: 50%;
+      border: none;
+      bottom: 30px;
+      box-shadow: 2px 1px 4px 0px #dadada;
+      color: grey;
+      padding: 4px 4px 2px 4px;
+      position: fixed;
+      right: 20px;
     }
   }
 

@@ -39,15 +39,16 @@ const useSystemStore = create((set, get) => ({
   experiences: [],
   isAwardSummaryModalOpen: false, // Modal de premios
   isOnboardingProcess: false,
+  leftBottomMenuContent: null,
   leftMenuBar: {
-    isShow: false,
+    isShow: false
   },
   messageTop: null, // Banner flotante que se muestra debajo del menu
   notifications: [initialNotification],
   newNotifications: true,
   userLogged: loadFromLocalStorage('userLogged') || defaultUserLogged,
   perfilPage: {
-    messageIA: null,
+    messageIA: null
   },
   logout: () => initialLoginStorage(set),
   setStoreValue: (property, value) => {
