@@ -21,17 +21,17 @@ export const handleUserMessage = async (mensaje, set, options) => {
   let IAMessageSelected;
   let loadingOptions = ['Hmmm...', 'Ya veo...', 'Que podria ser...', 'Ok, te entiendo...'];
   let seleccionAleatoria = loadingOptions[Math.floor(Math.random() * loadingOptions.length)];
-  const loadingMessage = <span>{seleccionAleatoria}</span>;
   let IAOptionsSelected = () => <></>;
   let containerHeightSelected;
   let IAExpressionSelected = 'happy';
   let IAHTMLMessageSelected;
   let IAHTMLSecondMessageSelected;
   var HTML, Message, Options;
+  const loadingMessage = <span>{seleccionAleatoria}</span>;
 
   switch (mensaje) {
     case 'competition/admin':
-      IAMessageSelected = 'Que deseas hacer?';
+      IAMessageSelected = `Número seleccionado: ${options?.selectedNumber}, que desea hacer?`;
       IAOptionsSelected = IAOptionsCompetition_Admin;
       break;
 
@@ -77,7 +77,7 @@ export const handleUserMessage = async (mensaje, set, options) => {
       break;
 
     case 'referrals':
-      var {} = ({ HTML, Message, Options } = await import('./responses/referrals/referrals.jsx'));
+      var { } = ({ HTML, Message, Options } = await import('./responses/referrals/referrals.jsx'));
       IAHTMLMessageSelected = HTML;
       IAMessageSelected = Message;
       IAOptionsSelected = Options;

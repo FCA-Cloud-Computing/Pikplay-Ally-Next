@@ -226,7 +226,7 @@
         height: 40px;
         justify-content: center;
         position: relative;
-        overflow: hidden;
+        // overflow: hidden;
         margin: 5px;
         width: 40px;
         &.selected {
@@ -245,43 +245,28 @@
           // text-align: center;
           // width: 60px;
         }
-        &.takenByMe::after {
-          background: #3095b3;
+
+        .paidIcon,
+        .takenMeIcon {
+          background: white;
           border-radius: 50%;
-          content: "";
-          font-size: 12px;
-          height: 8px;
+          bottom: -8px;
+          color: green;
+          font-size: 14px;
           position: absolute;
-          right: 3px;
-          top: 4px;
-          width: 8px;
-          // .number {
-          //   color: white;
-          //   left: 15px;
-          //   position: absolute;
-          //   text-align: center;
-          //   text-shadow: 1px 1px #818181;
-          //   top: 5px;
-          // }
+          right: 2px;
+          &.takenMeIcon {
+            color: orange;
+            right: 20px;
+          }
         }
       }
     }
+
     .actions {
       column-gap: 10px;
       display: flex;
       margin: 20px 10px 20px;
-    }
-
-    .btnLeftBottomMenu {
-      background: transparent;
-      border-radius: 50%;
-      border: none;
-      bottom: 30px;
-      box-shadow: 2px 1px 4px 0px #dadada;
-      color: grey;
-      padding: 4px 4px 2px 4px;
-      position: fixed;
-      right: 20px;
     }
   }
 

@@ -49,14 +49,13 @@ const AdminActions = ({
   const { setStoreValue } = useSystemStore()
 
   useEffect(() => {
-    setStoreValue('leftBottomMenuContent', <button className={styles.btnLeftBottomMenu} onClick={() => setIsShowOptions(true)}>
+    setStoreValue('leftBottomMenuContent', <button className="btnLeftBottomMenu" onClick={() => setIsShowOptions(true)}>
       <BuildIcon />
     </button>)
   }, [])
 
   return (
     <div className={`AdminActions ${styles.AdminActions}`}>
-
       <Grafica {...{
         freeNumbers,
         paidNumbers,

@@ -7,10 +7,12 @@ import { Gif } from '@mui/icons-material'
 import { GifBox } from '@mui/icons-material'
 import { GifBoxSharp } from '@mui/icons-material'
 import { CardGiftcard } from '@mui/icons-material'
-import { Money } from '@mui/icons-material'
+import Money from '@mui/icons-material/Money'
+import PaidIcon from '@mui/icons-material/Paid';
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
+import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 
 // Customs
 import AdminActions from './AdminActions'
@@ -82,7 +84,7 @@ const CompetitionDetail = (props) => {
     }
     else {
       setCompetitionStore({ selectedNumbePhone: item.phone })
-      handleUserMessage('competition/admin')
+      handleUserMessage('competition/admin', { selectedNumber: number })
       setIsvisible(true)
     }
   }
@@ -148,14 +150,18 @@ const CompetitionDetail = (props) => {
   }, [])
 
   const NumberComponent = ({ ind, item, number, uidNumber }) => {
-    const takenByMeClass = uidLogged && uidNumber == uidLogged ? styles.takenByMe : ''
-    return !item.hidden ? <Tooltip key={ind} title={`Reservar el número ${ind}`}>
+    const isTakenByMe = uidLogged && uidNumber == uidLogged
+    const { isPaid } = item
+    return !item.hidden ? // <Tooltip key={ind} title={`Reservar el número ${ind}`}>
       <div
-        className={`${styles.item} ${styles[item.status]} ${selectedNumber == ind && styles.selected} ${takenByMeClass}`}
+        className={`${styles.item} ${styles[item.status]} ${selectedNumber == ind && styles.selected}`}
         onClick={() => handleClick(item, ind)}>
         {ind}
+        {isTakenByMe && <EmojiPeopleIcon className={styles.takenMeIcon} />}
+        {!!isPaid && <PaidIcon className={styles.paidIcon} />}
       </div>
-    </Tooltip> : <></>
+      // </Tooltip> 
+      : <></>
   }
 
   return <div className={styles.CompetitionDetail}>
