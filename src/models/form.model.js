@@ -1,5 +1,11 @@
 import { z } from "zod";
 
+const parseNumber = (val, errorMessage) => {
+  const numberValue = parseFloat(val);
+  if (isNaN(numberValue)) throw new Error(errorMessage);
+  return numberValue;
+};
+
 export const schema = z.object({
   description: z
     .string()
@@ -7,39 +13,26 @@ export const schema = z.object({
   experience: z
     .string()
     .min(1, "La experiencia por la compra es obligatoria")
-    .transform((val) => {
-      const numberValue = parseFloat(val);
-      if (isNaN(numberValue)) throw new Error("El precio debe ser un número");
-      return numberValue;
-    }),
+    .transform((val) => parseNumber(val, "El precio debe ser un número")),
   credits: z
     .string()
     .min(1, "Los créditos son obligatorios")
-    .transform((val) => {
-      const numberValue = parseFloat(val);
-      if (isNaN(numberValue)) throw new Error("Los créditos deben ser un número");
-      return numberValue;
-    }),
-  purchase_date: z
+    .transform((val) => parseNumber(val, "Los créditos deben ser un número")),
+  purchaseDate: z
     .string()
     .refine(
       (date) => !isNaN(new Date(date).getTime()),
       "Debe ser una fecha válida"
     ),
-  client_document: z
+  clientDocument: z
     .string()
     .min(1, "El documento del cliente es obligatorio")
-    .transform((val) => {
-      const numberValue = parseFloat(val);
-      if (isNaN(numberValue)) throw new Error("El documento del cliente deben ser un número");
-      return numberValue;
-    }),
-    amount: z
+    .transform((val) => parseNumber(val, "El documento del cliente deben ser un número")),
+  amount: z
     .string()
     .min(1, "El monto total es obligatorio")
-    .transform((val) => {
-      const numberValue = parseFloat(val);
-      if (isNaN(numberValue)) throw new Error("El monto total debe ser un número");
-      return numberValue;
-    }),
+    .transform((val) => parseNumber(val, "El monto total debe ser un número")),
+  redemptionCode: z
+    .string()
+    .optional(),
 });

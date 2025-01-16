@@ -26,8 +26,6 @@ const IA = (props) => {
         }
     };
 
-    console.log(IAHTMLMessage);
-
     return <div className={`${styles.IAElement} ${!isVisible ? styles.hide : null} `}>
         <div className={styles.box}>
             <div className={styles.title}>

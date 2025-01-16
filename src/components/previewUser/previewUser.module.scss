@@ -198,6 +198,21 @@
   //   top: 75px;
   //   width: 30%;
   // }
+
+  :global(.btnLeftBottomMenu) {
+    background: white;
+    border-radius: 50%;
+    border: none;
+    bottom: 30px;
+    box-shadow: 2px 1px 4px 0px #dadada;
+    color: grey;
+    padding: 4px 4px 2px 4px;
+    position: fixed;
+    right: 20px;
+    svg {
+      font-size: 20px;
+    }
+  }
 }
 
 @keyframes like {

@@ -23,8 +23,11 @@ const Layout = (props) => {
   const { checkIAMessage, IAMessage, setIsvisible } = useIAStore()
 
   Router.onRouteChangeStart = url => {
+    // Restableciendo cosas
     setStoreValue('leftMenuBar', { isShow: false }) // Ocultando menu izquierdo cuando se cambia de URL
+    setStoreValue('leftBottomMenuContent', null) // Ocultando menu izquierdo cuando se cambia de URL
     setIsvisible(false) // Ocultando a la IA
+
     if (url.includes('perfil')) { // Si va al perfil y no esta logueado
       if (!userLogged?.uid) Router.push('/?action=play-button&origin=onboarding')
       // else Router.push('/perfil' + userLogged?.name)

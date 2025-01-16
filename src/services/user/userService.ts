@@ -15,23 +15,26 @@ const getUsersSrv = async (ctx, uid) => {
 const saveLeadSrv = (ctx, phone) => {
   const path = BASE_URL + '/lead/save';
   return post(ctx, path, {
-    phone,
+    phone
   });
 };
 
 const loginSrv = async (ctx: any, phone: string, code: number, name: string) => {
   const path = BASE_URL + '/login';
   try {
-    const data = await post(ctx, path, { code, phone, name });
-    const { token, uid } = data.data;
-    cookieCutter.set('X-Auth-Token', token);
-    cookieCutter.set('User-ID', uid);
+    const data = await post(ctx, path, { code, phone, name })
+    const { token, uid } = data.data
+    const oneYearFromNow = new Date()
+    oneYearFromNow.setFullYear(oneYearFromNow.getFullYear() + 1)
+    const cookieConfig = { expires: oneYearFromNow } // Definiendo las cookies de login sin expiración
+    cookieCutter.set('X-Auth-Token', token, cookieConfig);
+    cookieCutter.set('User-ID', uid, cookieConfig);
     return data;
   } catch (err) {
     return {
       data: null,
       status: 400,
-      message: 'Error al iniciar sesión',
+      message: 'Error al iniciar sesión'
     };
   }
 };
@@ -88,13 +91,14 @@ const getNotificationsSrv = async (uid) => {
   return data;
 };
 
-export { 
-  getExperiencesSrv, 
-  getNotificationsSrv, 
-  getUsersSrv, 
+export {
+  getExperiencesSrv,
+  getNotificationsSrv,
+  getUsersSrv,
   // getTopMessagesSrv,
-  saveLeadSrv, 
-  loginSrv, 
-  sendCodeSrv, 
-  validateTokenSrv, 
-  updateProfileSrv };
+  saveLeadSrv,
+  loginSrv,
+  sendCodeSrv,
+  validateTokenSrv,
+  updateProfileSrv
+};

@@ -195,3 +195,16 @@ export function logout() {
     cookieCutter.set('userLogged', { uid: 0 });
   }
 }
+export function formatCode(code) {
+  // transforma un string (código) en un string con guiones cada 3 caracteres -> 123456789 -> 123-456-789
+  const codeString = code.toString();
+  let formattedCode = "";
+  for (let i = 0; i < codeString.length; i++) {
+    formattedCode += codeString[i];
+    if ((i + 1) % 3 === 0 && i !== codeString.length - 1) {
+      formattedCode += "-";
+    }
+  }
+
+  return formattedCode;
+}

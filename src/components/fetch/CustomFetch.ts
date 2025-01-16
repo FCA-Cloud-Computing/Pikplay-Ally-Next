@@ -131,10 +131,47 @@ const CustomFetch = () => {
       });
   };
 
+  const del = async (ctx, path, extraHeaders = {}) => {
+    if (!API_URL)
+      return {
+        message: 'API_URL no esta definida en el archivo .env',
+        status: 404,
+      };
+    const url = API_URL + path;
+    console.log(API_URL + path);
+    const headers = {
+      credentials: 'include',
+      ...getCookies(ctx),
+      ...extraHeaders,
+    };
+
+    return fetch(url, {
+      method: 'DELETE',
+      headers,
+    })
+      .then(async (res) => {
+        if (res.ok) {
+          const json = await res.json();
+          const formated = convertResponse(json);
+          return formated;
+        }
+        const msg = `res.ok fue false, el path fue ${path}`
+        return {
+          msg,
+          error: true
+        }
+      })
+      .catch((error) => {
+        console.error(`Error al obtener datos desde el servicio para la ruta ${path} method DELETE}`);
+        throw error;
+      });
+  };
+
   return {
     get,
     post,
     put,
+    del,
   };
 };
 

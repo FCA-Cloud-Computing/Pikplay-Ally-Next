@@ -4,6 +4,7 @@ import { schema } from "../../models/form.model";
 import { InputTransactions } from "./InputTransactions";
 import { useTransactionsStore } from "../../store/transactions.store";
 import useSystemStore from "../../hooks/storeSystem";
+import Button from "../button/Button";
 
 export const FormAllied = () => {
   const { transactions, addTransactionStore } = useTransactionsStore();
@@ -20,14 +21,19 @@ export const FormAllied = () => {
       description: "",
       experience: "",
       credits: "",
-      purchase_date: "",
-      client_document: "",
+      purchaseDate: "",
+      clientDocument: "",
       amount: "",
+      redemptionCode: "",
     },
   });
 
   const onSubmit = (newTransaction) => {
-    addTransactionStore({ ...newTransaction, uid: userLogged.uid, client_document: 1234 });
+    addTransactionStore({
+      ...newTransaction,
+      uid: userLogged.uid,
+      clientDocument: 1234,
+    });
     reset();
   };
 
@@ -65,19 +71,19 @@ export const FormAllied = () => {
           placeholder="10, 5, 3.."
         />
         <InputTransactions
-          name="purchase_date"
+          name="purchaseDate"
           control={control}
           label="Fecha de compra"
           type="date"
-          error={errors.purchase_date}
+          error={errors.purchaseDate}
         />
         <InputTransactions
-          name="client_document"
+          name="clientDocument"
           control={control}
           label="Documento del cliente"
           placeholder="CC 103242252"
           type="number"
-          error={errors.client_document}
+          error={errors.clientDocument}
         />
         <InputTransactions
           name="amount"
@@ -87,12 +93,22 @@ export const FormAllied = () => {
           type="number"
           error={errors.amount}
         />
-        <button
+        <InputTransactions
+          name="redemptionCode"
+          control={control}
+          label="Código de redención (opcional)"
+          placeholder="123-AS3-24V-D22"
+          type="string"
+          error={errors.redemptionCode}
+        />
+        <Button
+          color="blue"
+          className="transition duration-300 w-full text-center text-sm"
           type="submit"
-          className="border-white/50 hover:bg-white transition duration-300 hover:text-black border py-2 w-full rounded-md mt-4"
+          realistic
         >
           Crear transacción
-        </button>
+        </Button>
       </form>
     </>
   );

@@ -3,6 +3,7 @@ import { Message as IAMessageWelcome, Options as IAOptionsWelcome, HTML as HTMLw
 import { HTMLOnboarding, Message as IAMessageOnboarding, Options as IAOptionsOnboarding, HTMLOnboardingNameSaved } from './responses/onboarding/onboarding';
 import { Message as IAMessageDefault, Options as IAOptionsDefault } from './responses/default';
 import { HtmlMessage as IAHtmlMessagePikcoins, Message as IAMessagePikcoins, Options as IAOptionsPikcoins, Height as IAcontainerHeightPikcoins } from './responses/pikcoins';
+import { HTML as IAHtmlMessageRedemption, Message as IAMessageRedemption, Options as IAOptionsRedemption } from './responses/redemption';
 
 // Competitions
 import { Message as IAMessageCompetition, Options as IAOptionsCompetition } from './responses/competition/competition';
@@ -20,17 +21,17 @@ export const handleUserMessage = async (mensaje, set, options) => {
   let IAMessageSelected;
   let loadingOptions = ['Hmmm...', 'Ya veo...', 'Que podria ser...', 'Ok, te entiendo...'];
   let seleccionAleatoria = loadingOptions[Math.floor(Math.random() * loadingOptions.length)];
-  const loadingMessage = <span>{seleccionAleatoria}</span>;
   let IAOptionsSelected = () => <></>;
   let containerHeightSelected;
   let IAExpressionSelected = 'happy';
   let IAHTMLMessageSelected;
   let IAHTMLSecondMessageSelected;
   var HTML, Message, Options;
+  const loadingMessage = <span>{seleccionAleatoria}</span>;
 
   switch (mensaje) {
     case 'competition/admin':
-      IAMessageSelected = 'Que deseas hacer?';
+      IAMessageSelected = `Número seleccionado: ${options?.selectedNumber}, que desea hacer?`;
       IAOptionsSelected = IAOptionsCompetition_Admin;
       break;
 
@@ -76,7 +77,7 @@ export const handleUserMessage = async (mensaje, set, options) => {
       break;
 
     case 'referrals':
-      var {} = ({ HTML, Message, Options } = await import('./responses/referrals/referrals.jsx'));
+      var { } = ({ HTML, Message, Options } = await import('./responses/referrals/referrals.jsx'));
       IAHTMLMessageSelected = HTML;
       IAMessageSelected = Message;
       IAOptionsSelected = Options;
@@ -93,6 +94,12 @@ export const handleUserMessage = async (mensaje, set, options) => {
       IAMessageSelected = IAMessagePikcoins;
       IAOptionsSelected = IAOptionsPikcoins;
       containerHeightSelected = IAcontainerHeightPikcoins;
+      break;
+
+    case 'redemption':
+      IAHTMLMessageSelected = IAHtmlMessageRedemption;
+      IAMessageSelected = IAMessageRedemption(options.credits);
+      IAOptionsSelected = IAOptionsRedemption;
       break;
 
     default:

@@ -1,16 +1,18 @@
 import styles from './competitions.module.scss'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from '../button/Button'
 import { Checkbox } from '@mui/material'
 import BottomSheets from '../bottomSheets/BottomSheets'
 import { PieChart } from '@mui/x-charts'
 import { pieArcLabelClasses } from '@mui/x-charts/PieChart'
+import BuildIcon from '@mui/icons-material/Build';
+import useSystemStore from '@/hooks/storeSystem'
 
 const Grafica = ({
   freeNumbers = 10,
   paidNumbers = 2,
-  takenNumbers = 3,
+  takenNumbers = 3
 }) => {
   return <PieChart
     legend={{ hidden: true }}
@@ -41,16 +43,23 @@ const AdminActions = ({
   paidNumbers,
   takenNumbers,
   deleteNotPaidNumbers,
-  setShowMembersNames,
+  setShowMembersNames
 }) => {
   const [isShowOptions, setIsShowOptions] = useState(false)
+  const { setStoreValue } = useSystemStore()
+
+  useEffect(() => {
+    setStoreValue('leftBottomMenuContent', <button className="btnLeftBottomMenu" onClick={() => setIsShowOptions(true)}>
+      <BuildIcon />
+    </button>)
+  }, [])
+
   return (
     <div className={`AdminActions ${styles.AdminActions}`}>
-      <Button color="blue" onClick={() => setIsShowOptions(true)}>Opciones de<br /> organizador</Button>
       <Grafica {...{
         freeNumbers,
         paidNumbers,
-        takenNumbers,
+        takenNumbers
       }} />
       {isShowOptions && <BottomSheets isBottomSheets setIsBottomSheets={setIsShowOptions}>
         <div className={styles.actions}>

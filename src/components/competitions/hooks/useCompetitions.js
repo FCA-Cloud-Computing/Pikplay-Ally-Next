@@ -4,14 +4,14 @@ import { create } from 'zustand';
 
 // Custom
 import { API_URL } from '../../../lib/variables';
-import { getComptSrv, setPaidNumberSrv } from '../../../services/competition/competitionService';
+import { deleteNotPaidNumbersSrv, getComptSrv, setPaidNumberSrv } from '../../../services/competition/competitionService';
 import { deleteCompetitionMemberSrv } from '../../../services/competition/competitionService';
 
 const useCompetitions = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const { competitionDetail } = useCompetitionsStore.getState()
+  const { competitionDetail, selectedNumber, set } = useCompetitionsStore.getState()
+  const { id: competitionId } = competitionDetail || {}
   const [competitions, setCompetitions] = useState([]);
-  const [selectedNumber, setSelectedNumber] = useState(null);
   const [competitionMembers, setCompetitionMembers] = useState([]);
   const [isOnlyAvailableNumbers, setIsOnlyAvailableNumbers] = useState(false);
 
@@ -32,15 +32,15 @@ const useCompetitions = () => {
 
   const handleCompetitionClick = (slug) => {
     getComptSrv(null, slug).then((data) => {
-      setCompetitionDetail(data);
+      set('competitionDetail', data);
     });
   };
 
   const liberarNumero = () => {
     toast.promise(
-      deleteCompetitionMemberSrv(1, 2).then((data) => {
-        // TODO Se libera el cupo
-      }),
+      // TODO Se libera el cupo
+      deleteCompetitionMemberSrv(null, competitionId, selectedNumber)
+        .then((data) => getCompetitions()),
       {
         pending: 'Liberando cupo',
         success: 'Cupo liberado 👌',
@@ -48,18 +48,13 @@ const useCompetitions = () => {
       },
       { position: 'top-left' }
     );
-
-    deleteCompetitionMemberSrv(1, 2).then((data) => {
-      // toast('No se pudo validar el cupón 😕')
-      // alert('Cupo liberado!')
-      getCompetitions();
-    });
   };
 
   const deleteNotPaidNumbers = () => {
+    if (!competitionId) return
     toast('Se liberaron los números no pagados 👌');
-    deleteCompetitionMemberSrv(3, null).then((data) => {
-      console.log('Cupo liberado!');
+    deleteNotPaidNumbersSrv(null, competitionId).then((data) => {
+      console.log('¡Cupos liberados!');
       getCompetitions();
     });
   };
@@ -92,7 +87,6 @@ const useCompetitions = () => {
     selectedNumber,
     setCompetitionMembers,
     setIsOnlyAvailableNumbers,
-    setSelectedNumber,
     setPaidNumber
   };
 };
@@ -100,6 +94,7 @@ const useCompetitions = () => {
 export const useCompetitionsStore = create((set, get) => ({
   competitionDetail: null,
   selectedNumber: null,
+  selectedNumbePhone: null,
   set
 }))
 
