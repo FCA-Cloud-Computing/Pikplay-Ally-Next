@@ -102,7 +102,7 @@ const MenuMobileOptions = () => {
     <motion.ol variants={item} onClick={() => handleLogout()}>
       Salir
     </motion.ol>
-    {userLogged.rol == 'admin' && <>
+    {userLogged.isAdmin && <>
       <motion.ol variants={item} onClick={changeToSellerUser}>
         Cambiar a Seller
       </motion.ol>

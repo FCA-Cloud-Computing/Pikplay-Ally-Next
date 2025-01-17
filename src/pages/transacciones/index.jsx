@@ -1,12 +1,12 @@
-import "./styles.scss";
-import { useEffect } from "react";
+import './styles.scss';
+import { useEffect } from 'react';
 import {
   ListTransactions,
   Header,
-  Statistics,
-} from "../../components/transactions";
-import Layout from "../../components/layout/Layout";
-import { useTransactionsStore } from "../../store/transactions.store";
+  Statistics
+} from '../../components/transactions';
+import Layout from '../../components/layout/Layout';
+import { useTransactionsStore } from '../../store/transactions.store';
 
 function Transactions() {
   const { transactions, getTransactionsStore } = useTransactionsStore();
@@ -16,7 +16,7 @@ function Transactions() {
   }, [getTransactionsStore]);
 
   const handleNotification = () => {
-    console.log("click");
+    console.log('click');
   };
 
   const totalCredits = transactions.reduce(
@@ -24,10 +24,10 @@ function Transactions() {
     0
   );
 
-  const image = "";
-  const descripcion = "";
-  const title = "Transacciones";
-  const url = "";
+  const image = '';
+  const descripcion = '';
+  const title = 'Transacciones';
+  const url = '';
 
   return (
     <Layout title={title} descripcion={descripcion} image={image} url={url}>

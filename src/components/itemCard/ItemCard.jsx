@@ -84,7 +84,7 @@ const ItemCard = (props) => {
                   <Image
                     alt="imagen del producto"
                     layout='fill'
-                    objectFit='cover'
+                    objectFit='contain'
                     src={image?.url}
                   />
                 ))
