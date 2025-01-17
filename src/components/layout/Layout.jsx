@@ -18,7 +18,7 @@ const Layout = (props) => {
     isAwardSummaryModalOpen,
     notifications,
     setStoreValue,
-    userLogged,
+    userLogged
   } = useSystemStore((state => state))
   const { checkIAMessage, IAMessage, setIsvisible } = useIAStore()
 

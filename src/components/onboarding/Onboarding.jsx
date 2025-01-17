@@ -175,6 +175,16 @@ const Onboarding = () => {
     <div className={styles.aliados}>
       <h2>Aliados</h2>
       <div className={styles.items}>
+        <Link href='/le-fragance'>
+          <div className="Card">
+            <img src='/images/le-fragance/le-fragance.jpeg' />
+            <p>
+              <b>LE-FRAGANCE</b>
+              <div>Perfumes</div>
+              Barranquilla, Colombia
+            </p>
+          </div>
+        </Link>
         <Link href='/blue-panther'>
           <div className="Card">
             <img src='/images/users/bluepanther.jpg' />
