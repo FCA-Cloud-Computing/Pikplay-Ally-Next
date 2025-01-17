@@ -33,6 +33,7 @@ const ItemCard = (props) => {
     following,
     handleFavorite,
     handleShare,
+    isAddi,
     iconFavorite = false,
     id: publicationId,
     images,
@@ -112,6 +113,7 @@ const ItemCard = (props) => {
               return <span key={ind}>{item.texto}</span>
             })}
           </div>
+          {cashback_available && <div className={styles.cashbackInformation}>Con esta compra obtienes <b>15% de creditos</b></div>}
           {
             <div className={styles.descripcion}>
               <div className={styles.icons}>
@@ -171,19 +173,20 @@ const ItemCard = (props) => {
                     Number(price) != 0 && (
                       <React.Fragment>
                         <span className={styles.nuevoPrecio}>
-                          ${formatNumber(price)}
+                          $ {formatNumber(price)}
                         </span>
                       </React.Fragment>
                     )
                   }
                 </div>
               </div>
-              <div className={styles.contentAddi}>
+              {/* Banner de ADDI */}
+              {isAddi && <div className={styles.contentAddi}>
                 <span>
                   Llévatelo con
                 </span>
                 <img src="https://finanzasplus.co/wp-content/uploads/2024/03/addi-1024x575.webp" />
-              </div>
+              </div>}
             </div>
           }
         </div>
