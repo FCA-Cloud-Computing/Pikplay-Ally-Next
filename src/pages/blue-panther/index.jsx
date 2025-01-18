@@ -101,26 +101,44 @@ const ConcursosPage = () => {
   }
 
   const authorInformation = {
+    dividerColor: '#cbcbcb',
     background: 'https://instagram.fbaq5-1.fna.fbcdn.net/v/t39.30808-6/454723787_18361896526109558_4048109518435842878_n.jpg?stp=dst-jpg_e35_p640x640_sh0.08_tt6&cb=30a688f7-cd073ddd&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xMjkweDIyOTMuc2RyLmYzMDgwOC5kZWZhdWx0X2ltYWdlIn0&_nc_ht=instagram.fbaq5-1.fna.fbcdn.net&_nc_cat=102&_nc_ohc=SBaMXu0ZfHMQ7kNvgGxH71O&_nc_gid=02ee83935d0d4f0e84bb6d63c8af7296&edm=AGFyKLkAAAAA&ccb=7-5&ig_cache_key=MzQzMDM0NDMyMzM0NTU0Mzc2Mw%3D%3D.3-ccb7-5-cb30a688f7-cd073ddd&oh=00_AYCmBCSoTpS6At3Z4SeUoBtE6-2OKzfu0JraN-Xp6-Tm8w&oe=6790662D&_nc_sid=5a0a6d',
+    instagram: 'https://www.instagram.com/bluepanthervideogames/',
+    facebook: 'https://www.facebook.com/profile.php?id=100064982311928',
     name: 'Blue Panther',
     place: 'Medellín',
     givenPikcoins: 3000,
-    picture: '/images/users/bluepanther.jpg'
+    picture: '/images/users/bluepanther.jpg',
+    whatsapp: 'https://api.whatsapp.com/send?phone=573106614305'
   }
+
+  const products = [{
+    images: [
+      { url: '/images/bluepanther/products/games.jpg' }
+    ],
+    is_new: true,
+    title: 'Juegos de Ps5, Ps4, Consolas, Accesorios y demás',
+    price: 130000,
+    cashback_available: true,
+    user: {
+      name: 'Blue Panther',
+      picture: '/images/users/bluepanther.jpg'
+    }
+  }]
 
   return (
     <div className={styles.CompetitionsComponent}>
       <Layout title="Concursos">
         <section className="page">
           <AuthorInformation authorInformation={authorInformation} />
-          <div className="contentTitle">
+          <div className="contentSubTitle">
             {/* <Link href='/'>
               <ArrowBackIosNew className='icon backIcon' />
             </Link> */}
-            <h1>
+            <h2>
               <FontAwesomeIcon className="icon" icon={faDiceFive} />
               &nbsp;Concursos
-            </h1>
+            </h2>
           </div>
           {/* competitionDetail: {JSON.stringify(competitionDetail)} */}
           <Card>
@@ -153,10 +171,17 @@ const ConcursosPage = () => {
             </TabPanel>
           </Card>
 
-          {/* Card para mostrar algunos productos del Seller */}
-          {/* <Card>
-            <ItemCard {...productData} />
-          </Card> */}
+          <br />
+          {/* Products list */}
+          <div className="contentSubTitle">
+            <h2>
+              <FontAwesomeIcon className="icon" icon={faDiceFive} />
+              &nbsp;Productos Top
+            </h2>
+          </div>
+          {products && products.map((item) => {
+            return <ItemCard key={item.slug} {...item} />
+          })}
         </section>
       </Layout>
     </div >

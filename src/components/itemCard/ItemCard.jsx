@@ -34,7 +34,6 @@ const ItemCard = (props) => {
     handleFavorite,
     handleShare,
     isAddi,
-    iconFavorite = false,
     id: publicationId,
     images,
     image_1,
@@ -120,9 +119,9 @@ const ItemCard = (props) => {
                 <Tooltip title='Seguir publicación'>
                   <a>
                     <FontAwesomeIcon
-                      icon={iconFavorite ? faHeart : faHeartBroken}
+                      icon={faHeart}
                       className={classNames(styles.faHeart, {
-                        [styles.active]: following || !iconFavorite,
+                        [styles.active]: following
                       })}
                       onClick={() => {
                         loggedUser?.id != 0
@@ -165,7 +164,7 @@ const ItemCard = (props) => {
                 &nbsp;-&nbsp;
                 {countryLabel}
               </small> */}
-              <p className={styles.quantity}>{quantity} unidades disponibles</p>
+              {quantity && <p className={styles.quantity}>{quantity} unidades disponibles</p>}
               <div className={styles['likes-precio']}>
                 <div className={styles.content_precio}>
                   {

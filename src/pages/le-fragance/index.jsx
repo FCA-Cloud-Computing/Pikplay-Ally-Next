@@ -21,6 +21,7 @@ const LeFragance = () => {
     }
 
     const authorInformation = {
+        dividerColor: '#707070',
         background: '/images/backgrounds/campo-bg.jpeg',
         name: 'Le Fragance',
         place: 'Barranquilla',

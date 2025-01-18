@@ -20,7 +20,6 @@
             }
         }
         hr {
-            background: #707070;
             border: none;
             height: 1px;
             margin: 20px auto 0 auto;
@@ -43,6 +42,14 @@
             small {
                 // left: 130px;
                 position: absolute;
+            }
+        }
+        .socialContent {
+            column-gap: 10px;
+            display: flex;
+            justify-content: center;
+            a {
+                color: white;
             }
         }
         .aboutMe {

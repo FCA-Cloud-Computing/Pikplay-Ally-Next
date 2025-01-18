@@ -191,7 +191,10 @@ h3.title_destacada {
         }
       }
       .faHeart {
-        color: #c93630;
+        color: grey;
+        &.active {
+          color: #c93630;
+        }
       }
       .faShare {
         color: #0196b3;
