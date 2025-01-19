@@ -1,39 +1,59 @@
-import './styles.scss';
+import styles from '../../components/transactions/transactions.module.scss'
+
 import { useEffect } from 'react';
+import { useState } from 'react';
 import {
   ListTransactions,
-  Header,
-  Statistics
 } from '../../components/transactions';
 import Layout from '../../components/layout/Layout';
 import { useTransactionsStore } from '../../store/transactions.store';
+import useSystemStore from '@/hooks/storeSystem';
+import { FormAllied } from '@/components/transactions/FormAllied';
+import ModalTransactions from '@/components/modal/ModalTransactions';
+import AddIcon from '@mui/icons-material/Add';
+import { Alert } from '@mui/material';
 
 function Transactions() {
   const { transactions, getTransactionsStore } = useTransactionsStore();
+  const { userLogged } = useSystemStore();
+  const image = '';
+  const descripcion = '';
+  const title = 'Transacciones';
+  const url = '';
+  const [isModalAddTransactionOpen, setIsModalAddTransactionOpen] = useState(false);
 
   useEffect(() => {
     getTransactionsStore();
   }, [getTransactionsStore]);
-
-  const handleNotification = () => {
-    console.log('click');
-  };
 
   const totalCredits = transactions.reduce(
     (acc, curr) => acc + curr.credits,
     0
   );
 
-  const image = '';
-  const descripcion = '';
-  const title = 'Transacciones';
-  const url = '';
+  const { setStoreValue } = useSystemStore()
+
+  useEffect(() => {
+    setStoreValue('leftBottomMenuContent', <button className="btnLeftBottomMenu" onClick={() => setIsModalAddTransactionOpen(true)}>
+      <AddIcon />
+    </button>)
+  }, [])
 
   return (
     <Layout title={title} descripcion={descripcion} image={image} url={url}>
-      <section className="page min-h-dvh max-w-screen-sm flex flex-col items-center bg-primary p-6 gap-5">
-        <Header handleNotification={handleNotification} />
-        <Statistics totalCredits={totalCredits} />
+      <section className={`${styles.TransactionsPage} page`}>
+        <div className="flex items-center justify-between">
+          <ModalTransactions {...{ open: isModalAddTransactionOpen, handleClose: () => setIsModalAddTransactionOpen(false) }}>
+            <FormAllied />
+          </ModalTransactions>
+        </div>
+        <div className={`${styles.topMessage}`}>
+          <p className={styles.message}>
+            <Alert severity="warning">
+              {<img src="/images/ia/3.png" />}
+              Actualmente tienes <b>58 Pikcoins</b> que no han sido abonados ya que no has evidenciado tu copmpra con su factura.</Alert>
+          </p>
+        </div>
         <ListTransactions transactions={transactions} />
       </section>
     </Layout>

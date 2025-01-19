@@ -1,4 +1,4 @@
-import { Controller } from "react-hook-form";
+import { Controller } from 'react-hook-form';
 
 export const InputTransactions = ({ name, control, label, type, error, placeholder }) => {
   return (
@@ -14,7 +14,7 @@ export const InputTransactions = ({ name, control, label, type, error, placehold
             placeholder={placeholder}
             {...field}
             className={`form-control ${
-              error ? "is-invalid" : ""
+              error ? 'is-invalid' : ''
             } bg-transparent border-b-white/40 border-b text-slate-300`}
           />
         )}

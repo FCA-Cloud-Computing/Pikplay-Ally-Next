@@ -1,20 +1,21 @@
-"use client";
+'use client';
 
-import { styled } from "@mui/material/styles";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-import { Button } from "@mui/material";
-import { useState } from "react";
-import uploadFile from "../../services/uploadFile";
-import { useRef } from "react";
+import { styled } from '@mui/material/styles';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import { Button } from '@mui/material';
+import { useState } from 'react';
+import uploadFile from '../../services/uploadFile';
+import { useRef } from 'react';
 
 export const FormClient = ({ uid, transactionId }) => {
+  // Formulario para subir el comprobante de pago de la transacción
   const [fileUploaded, setFileUploaded] = useState(false);
   const file = useRef(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!file.current) return
-    await uploadFile("invoices", file.current, `${uid}/${transactionId}`, transactionId);
+    await uploadFile('invoices', file.current, `${uid}/${transactionId}`, transactionId);
     file.current = null;
     setFileUploaded(false);
   };
@@ -24,16 +25,16 @@ export const FormClient = ({ uid, transactionId }) => {
     setFileUploaded(true);
   };
 
-  const VisuallyHiddenInput = styled("input")({
-    clip: "rect(0 0 0 0)",
-    clipPath: "inset(50%)",
+  const VisuallyHiddenInput = styled('input')({
+    clip: 'rect(0 0 0 0)',
+    clipPath: 'inset(50%)',
     height: 1,
-    overflow: "hidden",
-    position: "absolute",
+    overflow: 'hidden',
+    position: 'absolute',
     bottom: 0,
     left: 0,
-    whiteSpace: "nowrap",
-    width: 1,
+    whiteSpace: 'nowrap',
+    width: 1
   });
 
   return (
@@ -50,7 +51,7 @@ export const FormClient = ({ uid, transactionId }) => {
           className="w-full"
           tabIndex={-1}
           startIcon={<CloudUploadIcon />}>
-          {fileUploaded ? "Archivo cargado" : "Subir comprobante de pago"}
+          {fileUploaded ? 'Archivo cargado' : 'Subir comprobante de pago'}
           <VisuallyHiddenInput
             type="file"
             accept=".jpg, .jpeg, .png"

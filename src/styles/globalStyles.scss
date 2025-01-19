@@ -643,6 +643,18 @@ section.page {
   display: flex;
 }
 
+.justify-between {
+  justify-content: space-between;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
 .flex-center {
   display: flex;
   align-items: center;

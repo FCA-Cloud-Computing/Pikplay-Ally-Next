@@ -1,66 +1,85 @@
-"use client"
+import styles from './transactions.module.scss'
 
-import Image from "next/image";
-import ModalTransactions from "../modal/ModalTransactions";
-import { FormClient } from "./FormClient";
-import { TRANSACTION_STATUS } from "../../consts/transactions.js";
+import { useState } from 'react';
+import Image from 'next/image';
+import ScheduleIcon from '@mui/icons-material/Schedule';
+
+// Custom
+import ModalTransactions from '../modal/ModalTransactions';
+import { FormClient } from './FormClient';
+import { TRANSACTION_STATUS } from '../../consts/transactions.js';
+import Button from '../button/Button';
+import { formatNumber, timeAgo } from '@/lib/utils';
+import CoinIcon from '../coinIcon/CoinIcon';
 
 export function Transaction({ transaction }) {
+  const [open, setOpen] = useState(false);
+  const { credits } = transaction
+  const statusClass = transaction.status == 0 ? styles.pending : styles.success
+
   return (
     <article
       key={transaction.id}
-      className={`flex bg-[#1f6a9080] ${
-        transaction.status === TRANSACTION_STATUS.SUCCESS ? "opacity-70" : ""
-      } rounded-md`}
-    >
-      <section className="flex flex-col gap-1 bg-[#0d0e39d3] rounded-l-md p-2 items-center justify-between">
-        <Image
+      className={`Card ${styles.TransactionComponent} ${transaction.status === TRANSACTION_STATUS.SUCCESS ? 'opacity-70' : ''
+        } rounded-md`}>
+      <section className={styles.topSection}>
+        {/* <Image
           src="/images/users/hiro.jpeg"
           alt={`Avatar ${transaction.customer}`}
           className="rounded-full object-cover aspect-auto self-start"
           width={36}
           height={36}
-        />
+        /> */}
         <strong
-          className={`text-[0.75rem] font-bold bg-primary px-2 py-1 rounded-md w-fit`}
-        >
+          className={`${styles.status} ${statusClass}`}>
           {transaction.status === TRANSACTION_STATUS.PENDING
-            ? "Pendiente"
-            : "Completada"}
+            ? 'Pendiente'
+            : 'Completada'}
         </strong>
+        <div className={styles.time}>
+          <ScheduleIcon className='icon' />
+          &nbsp;{timeAgo(new Date(transaction.createdAt))}
+        </div>
       </section>
-      <section className="flex flex-col p-2 grow gap-2">
-        <header className="flex justify-between items-center">
+      <section>
+        <header className={`${statusClass}`}>
           <strong className="text-sm font-semibold">
-            {transaction.seller?.name}
+            T{transaction.id} | {transaction.description}
           </strong>
-          <div className="flex gap-2">
-            <span className="text-[0.7rem] text-green-500 font-semibold">
-              EXP {transaction.experience}
+          <div className='flex flex-col'>
+            <span className={styles.exp}>
+              {transaction.experience} EXP
             </span>
-            <span className="text-[0.7rem] text-green-500 font-semibold">
-              ${transaction.credits}
-            </span>
+            {credits && <span>
+              <CoinIcon coins={credits} />
+            </span>}
+            {transaction.amount && <span className="">
+              Valor total: ${formatNumber(transaction.amount)}
+            </span>}
           </div>
         </header>
-        <p className="text-[0.75rem]">
-          {transaction.description || "No tenemos descripción disponible"}
-        </p>
-        <footer className="flex justify-between items-center flex-wrap gap-2">
-          <span className="text-[0.7rem] text-gray-400 font-semibold rounded-md w-fit">
-            {transaction.seller?.city} {transaction.createdAt?.slice(0, 10)}
-          </span>
-          {transaction.status === TRANSACTION_STATUS.PENDING && (
+        <footer className="">
+          <div>
+            {transaction.seller?.city}
+          </div>
+          {transaction.status === TRANSACTION_STATUS.PENDING && (<>
+            <Button
+              color="blue"
+              onClick={() => setOpen(true)}>
+              Subir comprobante
+            </Button>
             <ModalTransactions
+              handleClose={() => setOpen(false)}
+              open={open}
+              setOpen={setOpen}
               label="Subir comprobante"
-              className="w-full text-[0.7rem] text-white bg-primary px-2 py-1 rounded-md"
-            >
+              className="w-full text-[0.7rem] text-white bg-primary px-2 py-1 rounded-md">
               <FormClient
                 transactionId={transaction.id}
                 uid={transaction.uid}
               />
             </ModalTransactions>
-          )}
+          </>)}
         </footer>
       </section>
     </article>

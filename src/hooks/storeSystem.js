@@ -34,7 +34,7 @@ const initialLoginStorage = (set) => {
 
 const useSystemStore = create((set, get) => ({
   awardsSummaryModalHTML: null,
-  darkMode: true,
+  darkMode: false,
   env: 'dev',
   experiences: [],
   isAwardSummaryModalOpen: false, // Modal de premios
