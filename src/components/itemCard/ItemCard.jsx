@@ -53,6 +53,7 @@ const ItemCard = (props) => {
     user_name,
     user_picture,
     user_transactions,
+    whatsappNumber
   } = props
 
   const usuario =
@@ -74,11 +75,14 @@ const ItemCard = (props) => {
         <div className={styles.descripcion_imagen}>
           <div className={styles.content_imagen}>
             {/* Image */}
-            <Link
+            <a
               as={slug ? `/publicacion/${slug}` : 'javascript:void(0)'}
               className={styles.image_wrapper}
+              href={`https://api.whatsapp.com/send?phone=${whatsappNumber}&text=¡Hola! me interesa este producto de Pikplay ${title}`}
               key={publicationId}
-              href={slug ? '/publicacion/[id]' : 'javascript:void(0)'}>
+              target='_blank'
+            // href={slug ? '/publicacion/[id]' : 'javascript:void(0)'}
+            >
               {
                 images && images.length > 0 && images.map(image => (
                   <Image
@@ -89,7 +93,7 @@ const ItemCard = (props) => {
                   />
                 ))
               }
-            </Link>
+            </a>
           </div>
           <div className={`tags ${styles.tags}`}>
             {!is_new && (
@@ -150,14 +154,17 @@ const ItemCard = (props) => {
                   </a>
                 </Tooltip>
               </div>
-              <Link
+              <a
                 as={slug ? `/publicacion/${slug}` : 'javascript:void(0)'}
                 className={publicationId == 1 ? styles.destacada_Card : ''}
-                href={slug ? '/publicacion/[id]' : 'javascript:void(0)'}>
+                // href={slug ? '/publicacion/[id]' : 'javascript:void(0)'}
+                href={`https://api.whatsapp.com/send?phone=${whatsappNumber}&text=¡Hola! me interesa este producto de Pikplay ${title}`}
+                target='_blank'
+              >
                 <h2>
                   {title ? title : 'Espacio para el título de la publicación'}
                 </h2>
-              </Link>
+              </a>
               {user?.name && <Author user={user} />}
               {/* <small className={styles.location}> // TODO Mostrar la ciudad
                 {cityLabel}
@@ -165,7 +172,7 @@ const ItemCard = (props) => {
                 {countryLabel}
               </small> */}
               {quantity && <p className={styles.quantity}>{quantity} unidades disponibles</p>}
-              <div className={styles['likes-precio']}>
+              {price && <div className={styles['likes-precio']}>
                 <div className={styles.content_precio}>
                   {
                     // Precio
@@ -178,7 +185,7 @@ const ItemCard = (props) => {
                     )
                   }
                 </div>
-              </div>
+              </div>}
               {/* Banner de ADDI */}
               {isAddi && <div className={styles.contentAddi}>
                 <span>

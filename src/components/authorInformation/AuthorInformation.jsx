@@ -12,12 +12,13 @@ export const AuthorInformation = (props) => {
     const {
         background,
         dividerColor,
-        facebook ,
+        facebook,
         givenPikcoins,
         instagram,
         name,
         picture,
         place,
+        secondaryColor,
         whatsapp,
     } = props?.authorInformation || {}
     const { setIAMessage } = useIAStore()
@@ -29,7 +30,7 @@ export const AuthorInformation = (props) => {
             <br />
             <div className={styles.namePlace}>
                 <b>{name}</b>
-                <small>{place}, Colombia</small>
+                <small style={{ color: dividerColor }}>{place}, Colombia</small>
             </div>
             <hr style={{ background: dividerColor }} />
             {givenPikcoins && <div className={styles.creditsGiven}>

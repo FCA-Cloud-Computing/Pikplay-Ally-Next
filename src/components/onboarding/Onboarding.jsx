@@ -185,6 +185,16 @@ const Onboarding = () => {
             </p>
           </div>
         </Link>
+        <Link href='/nataliatution'>
+          <div className="Card">
+            <img src='/images/nataliatution/logo.jpg' />
+            <p>
+              <b>Nataliatution</b>
+              <div>Ropa y Calzado</div>
+              Barranquilla, Colombia
+            </p>
+          </div>
+        </Link>
         <Link href='/blue-panther'>
           <div className="Card">
             <img src='/images/users/bluepanther.jpg' />
