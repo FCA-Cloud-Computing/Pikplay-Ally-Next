@@ -20,7 +20,6 @@ import useSystemStore from "@/hooks/storeSystem"
 import Button from "@/components/button/Button"
 import { InputTransactions } from "./InputTransactions"
 import { TabPanel } from "@/components/tabs/Tab"
-import { DatePicker } from "@mui/x-date-pickers/DatePicker"
 
 export function FormAllied() {
   const {
