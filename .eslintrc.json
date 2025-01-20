@@ -20,11 +20,11 @@
     }
   },
   "rules": {
-    "react/react-in-jsx-scope": "off", // Next.js ya importa React automáticamente
+    "comma-dangle": "off",
     "jsx-a11y/anchor-is-valid": "off", // Next.js gestiona los enlaces con <Link>
     "no-unused-vars": "warn",
-    "semi": ["off"],
     "quotes": ["error", "single"],
-    "comma-dangle": ["error", "never"]
+    "react/react-in-jsx-scope": "off", // Next.js ya importa React automáticamente
+    "semi": ["off"],
   }
 }

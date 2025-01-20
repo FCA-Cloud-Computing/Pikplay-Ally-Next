@@ -550,9 +550,6 @@ main {
       width: 100%;
       z-index: 0;
     }
-    .contentTitle h1 {
-      color: white;
-    }
     @media screen and (max-width: 480px) {
       // margin-top: 82px;
     }
@@ -581,8 +578,9 @@ section.page {
     margin: 70px auto 90px;
     width: calc(100% - 40px);
   }
-  .contentTitle {
-    margin: -8px 0 16px 0;
+  .contentTitle,
+  .contentSubTitle {
+    margin: 12px 0 16px 0;
     position: relative;
     .backIcon,
     .heartIcon {
@@ -594,10 +592,12 @@ section.page {
       // position: absolute;
       top: -6px;
     }
-    h1 {
+    h1,
+    h2 {
+      color: white;
       display: inline-block;
       margin-bottom: 0;
-      margin: 0px 0 0 40px;
+      margin: 0;
       padding-left: 20px;
       width: calc(100% - 60px);
     }
@@ -641,6 +641,18 @@ section.page {
 
 .flex {
   display: flex;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.flex-col {
+  flex-direction: column;
 }
 
 .flex-center {

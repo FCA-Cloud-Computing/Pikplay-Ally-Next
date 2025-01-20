@@ -115,8 +115,15 @@ h3.title_destacada {
       :global(.Coins) {
         position: absolute;
         top: -14px;
-        left: -14px;
+        left: -30px;
       }
+    }
+    .cashbackInformation {
+      color: #2d81a9;
+      display: block;
+      font-size: 12px;
+      margin: 16px 0 0 0;
+      text-align: center;
     }
     .content_precio {
       font-size: 16px;
@@ -184,7 +191,10 @@ h3.title_destacada {
         }
       }
       .faHeart {
-        color: #c93630;
+        color: grey;
+        &.active {
+          color: #c93630;
+        }
       }
       .faShare {
         color: #0196b3;
@@ -287,7 +297,8 @@ h3.title_destacada {
     position: relative;
     // width: 280px;
     &:hover :nth-of-type(2) {
-      left: 300px !important;
+      // Efecto de quitar la imagen para que se vea la de debajo. Solo PC. TODO: Descomentar left
+      // left: 300px !important;
       // margin-left: 200px;
       // transition-delay: 2s;
     }

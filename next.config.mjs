@@ -7,20 +7,20 @@ const nextConfig = {
     return config;
   },
   typescript: {
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: true
   },
   eslint: {
-    ignoreDuringBuilds: true,
+    ignoreDuringBuilds: true
   },
   images: {
     unoptimized: true,
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "**",
-      },
-    ],
-  },
+        protocol: 'https',
+        hostname: '*'
+      }
+    ]
+  }
 };
 
 export default nextConfig;

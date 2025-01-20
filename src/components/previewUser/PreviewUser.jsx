@@ -25,7 +25,7 @@ const PreviewUser = () => {
       className={`
       ${styles.PreviewUser} PreviewUser
       ${isShow ? styles.actived : null}
-      ${userLogged.uid ? styles.userLogged : null}
+      ${userLogged?.uid ? styles.userLogged : null}
       `}>
       {userLogged?.uid ? (
         <div>

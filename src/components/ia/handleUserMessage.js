@@ -1,6 +1,6 @@
 /* eslint-disable no-empty-pattern */
 import { Message as IAMessageWelcome, Options as IAOptionsWelcome, HTML as HTMLwelcome } from './responses/welcome';
-import { HTMLOnboarding, Message as IAMessageOnboarding, Options as IAOptionsOnboarding, HTMLOnboardingNameSaved } from './responses/onboarding/onboarding';
+import { Message as IAMessageOnboarding, Options as IAOptionsOnboarding } from './responses/onboarding/onboarding';
 import { Message as IAMessageDefault, Options as IAOptionsDefault } from './responses/default';
 import { HtmlMessage as IAHtmlMessagePikcoins, Message as IAMessagePikcoins, Options as IAOptionsPikcoins, Height as IAcontainerHeightPikcoins } from './responses/pikcoins';
 import { HTML as IAHtmlMessageRedemption, Message as IAMessageRedemption, Options as IAOptionsRedemption } from './responses/redemption';
@@ -67,13 +67,6 @@ export const handleUserMessage = async (mensaje, set, options) => {
     case 'onboarding':
       IAMessageSelected = IAMessageOnboarding;
       IAOptionsSelected = IAOptionsOnboarding;
-      IAHTMLSecondMessageSelected = <HTMLOnboarding />;
-      break;
-
-    case 'onboarding/name-saved':
-      // IAHTMLSecondMessageSelected = <HTMLOnboardingNameSaved />
-      IAMessageSelected = HTMLOnboardingNameSaved();
-      // IAOptionsSelected = <></>
       break;
 
     case 'referrals':

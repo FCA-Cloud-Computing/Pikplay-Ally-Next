@@ -9,7 +9,6 @@ import {
   faStar,
   faStore,
 } from '@fortawesome/free-solid-svg-icons'
-import Image from 'next/image'
 
 const Author = ({ user = {}, parentView }) => {
   return (

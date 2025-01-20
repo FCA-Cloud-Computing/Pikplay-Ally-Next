@@ -3,17 +3,13 @@ import styles from './itemCard.module.scss'
 
 import React, { } from 'react'
 import Link from 'next/link'
-import Grow from '@mui/material/Grow'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faHeart,
-  faHeartBroken,
-} from '@fortawesome/free-solid-svg-icons'
+import { faHeart, faHeartBroken } from '@fortawesome/free-solid-svg-icons'
+import Grow from '@mui/material/Grow'
 import { Tooltip } from '@mui/material'
+import { ShareOutlined } from '@mui/icons-material'
 import classNames from 'classnames'
 import Image from 'next/image'
-
-import { ShareOutlined } from '@mui/icons-material'
 
 // Custom
 import useSystemStore from '../../hooks/storeSystem'
@@ -23,8 +19,8 @@ import { formatNumber } from '../../lib/utils'
 
 const ItemCard = (props) => {
   const {
-    accept_changes,
-    cashback_available,
+    acceptChanges,
+    cashbackAvailable,
     certificate,
     city,
     description,
@@ -33,11 +29,11 @@ const ItemCard = (props) => {
     following,
     handleFavorite,
     handleShare,
-    iconFavorite = false,
+    isAddi,
     id: publicationId,
     images,
     image_1,
-    is_new,
+    isNew,
     likes,
     logDetalle,
     price,
@@ -53,6 +49,7 @@ const ItemCard = (props) => {
     user_name,
     user_picture,
     user_transactions,
+    whatsappNumber
   } = props
 
   const usuario =
@@ -74,25 +71,28 @@ const ItemCard = (props) => {
         <div className={styles.descripcion_imagen}>
           <div className={styles.content_imagen}>
             {/* Image */}
-            <Link
+            <a
               as={slug ? `/publicacion/${slug}` : 'javascript:void(0)'}
               className={styles.image_wrapper}
+              href={`https://api.whatsapp.com/send?phone=${whatsappNumber}&text=¡Hola! me interesa este producto de Pikplay ${title}`}
               key={publicationId}
-              href={slug ? '/publicacion/[id]' : 'javascript:void(0)'}>
+              target='_blank'
+            // href={slug ? '/publicacion/[id]' : 'javascript:void(0)'}
+            >
               {
                 images && images.length > 0 && images.map(image => (
                   <Image
                     alt="imagen del producto"
                     layout='fill'
-                    objectFit='cover'
+                    objectFit='contain'
                     src={image?.url}
                   />
                 ))
               }
-            </Link>
+            </a>
           </div>
           <div className={`tags ${styles.tags}`}>
-            {!is_new && (
+            {!isNew && (
               <span
                 title='El articulo es de segunda mano'
                 className={styles.condition}>
@@ -100,8 +100,8 @@ const ItemCard = (props) => {
               </span>
             )}
             {/* Si aplica cashback */}
-            {cashback_available && <CashbackTag />}
-            {accept_changes && (
+            {cashbackAvailable && <CashbackTag />}
+            {acceptChanges && (
               <span
                 className={styles.condition}
                 title='El vendedor acepta productos como parte de pago o incluso cambiar el producto por otro de su interés'>
@@ -112,15 +112,21 @@ const ItemCard = (props) => {
               return <span key={ind}>{item.texto}</span>
             })}
           </div>
+          {/* Si tiene precio y Cashback */}
+          {cashbackAvailable && price && <div className={styles.cashbackInformation}>
+            Con esta compra obtienes <b>{(price * 0.01) / 100} de EXP</b></div>}
+          {/* Si no tiene precio */}
+          {cashbackAvailable && !price && <div className={styles.cashbackInformation}>
+            Preguntale al vendedor sobre los creditos por esta compra</div>}
           {
             <div className={styles.descripcion}>
               <div className={styles.icons}>
                 <Tooltip title='Seguir publicación'>
                   <a>
                     <FontAwesomeIcon
-                      icon={iconFavorite ? faHeart : faHeartBroken}
+                      icon={faHeart}
                       className={classNames(styles.faHeart, {
-                        [styles.active]: following || !iconFavorite,
+                        [styles.active]: following
                       })}
                       onClick={() => {
                         loggedUser?.id != 0
@@ -149,41 +155,45 @@ const ItemCard = (props) => {
                   </a>
                 </Tooltip>
               </div>
-              <Link
+              <a
                 as={slug ? `/publicacion/${slug}` : 'javascript:void(0)'}
                 className={publicationId == 1 ? styles.destacada_Card : ''}
-                href={slug ? '/publicacion/[id]' : 'javascript:void(0)'}>
+                // href={slug ? '/publicacion/[id]' : 'javascript:void(0)'}
+                href={`https://api.whatsapp.com/send?phone=${whatsappNumber}&text=¡Hola! me interesa este producto de Pikplay ${title}`}
+                target='_blank'
+              >
                 <h2>
                   {title ? title : 'Espacio para el título de la publicación'}
                 </h2>
-              </Link>
+              </a>
               {user?.name && <Author user={user} />}
               {/* <small className={styles.location}> // TODO Mostrar la ciudad
                 {cityLabel}
                 &nbsp;-&nbsp;
                 {countryLabel}
               </small> */}
-              <p className={styles.quantity}>{quantity} unidades disponibles</p>
-              <div className={styles['likes-precio']}>
+              {quantity && <p className={styles.quantity}>{quantity} unidades disponibles</p>}
+              {price && <div className={styles['likes-precio']}>
                 <div className={styles.content_precio}>
                   {
                     // Precio
                     Number(price) != 0 && (
                       <React.Fragment>
                         <span className={styles.nuevoPrecio}>
-                          ${formatNumber(price)}
+                          $ {formatNumber(price)}
                         </span>
                       </React.Fragment>
                     )
                   }
                 </div>
-              </div>
-              <div className={styles.contentAddi}>
+              </div>}
+              {/* Banner de ADDI */}
+              {isAddi && <div className={styles.contentAddi}>
                 <span>
                   Llévatelo con
                 </span>
                 <img src="https://finanzasplus.co/wp-content/uploads/2024/03/addi-1024x575.webp" />
-              </div>
+              </div>}
             </div>
           }
         </div>
