@@ -20,6 +20,7 @@ import useSystemStore from "@/hooks/storeSystem"
 import Button from "@/components/button/Button"
 import { InputTransactions } from "./InputTransactions"
 import { TabPanel } from "@/components/tabs/Tab"
+import { DatePicker } from "@mui/x-date-pickers/DatePicker"
 
 export function FormAllied() {
   const {
@@ -140,13 +141,16 @@ export function FormAllied() {
             label="¿La compra se hizo hoy?"
           />
           {!checked && (
-            <InputTransactions
-              name="purchaseDate"
-              control={control}
-              label="Fecha de compra"
-              type="date"
-              error={errors.purchaseDate}
-            />
+            <>
+              {/* <DatePicker label="Basic date picker" /> */} // TODO: Implementar date picker
+              <InputTransactions
+                name="purchaseDate"
+                control={control}
+                label="Fecha de compra"
+                type="date"
+                error={errors.purchaseDate}
+              />
+            </>
           )}
           <Button
             color="blue"
