@@ -115,7 +115,14 @@
         }
         .coinContent {
           display: inline-block;
-          margin-left: 10px;
+          margin-right: 10px;
+        }
+        :global(.Coins) {
+          transform: scale(0.9);
+        }
+        img {
+          margin-right: 10px;
+          width: 30px;
         }
       }
 

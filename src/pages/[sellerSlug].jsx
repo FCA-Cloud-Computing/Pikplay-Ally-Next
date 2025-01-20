@@ -26,11 +26,11 @@ const DefaultSellerPage = (props) => {
         images: [
           { url: '/images/le-fragance/products/one-million.webp' }
         ],
-        is_new: true,
+        isNew: true,
         title: 'Paco Rabanne One million 1 Million Tradicional EDT 200 ml para hombre',
         quantity: 5,
         price: 130000,
-        cashback_available: true,
+        cashbackAvailable: true,
         user: {
           name: 'Le Fragance',
           picture: 'https://s.cafebazaar.ir/images/icons/com.manage.retail.store-35f341c0-a6ab-4cc5-889a-e9692024fa9e_512x512.png?x-img=v1/resize,h_256,w_256,lossless_false/optimize'
@@ -40,11 +40,11 @@ const DefaultSellerPage = (props) => {
         images: [
           { url: '/images/le-fragance/products/acgua di gio.avif' }
         ],
-        is_new: true,
+        isNew: true,
         title: 'Acgua di gio',
         quantity: 5,
-        price: 130000,
-        cashback_available: true,
+        price: 100000,
+        cashbackAvailable: true,
         user: {
           name: 'Le Fragance',
           picture: 'https://s.cafebazaar.ir/images/icons/com.manage.retail.store-35f341c0-a6ab-4cc5-889a-e9692024fa9e_512x512.png?x-img=v1/resize,h_256,w_256,lossless_false/optimize'
@@ -66,9 +66,9 @@ const DefaultSellerPage = (props) => {
         images: [
           { url: '/images/nataliatution/products/product1.jpeg' }
         ],
-        is_new: true,
+        isNew: true,
         title: 'Ropa, Calzado y Accesorios de Dama',
-        cashback_available: true,
+        cashbackAvailable: true,
         user: {
           name: 'Nataliatution',
           picture: '/images/nataliatution/logo.jpg'
@@ -78,9 +78,9 @@ const DefaultSellerPage = (props) => {
         images: [
           { url: '/images/nataliatution/products/deportiva.jpg' }
         ],
-        is_new: true,
+        isNew: true,
         title: 'Ropa Deportiva de Dama',
-        cashback_available: true,
+        cashbackAvailable: true,
         user: {
           name: 'Nataliatution',
           picture: '/images/nataliatution/logo.jpg'

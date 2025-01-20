@@ -3,17 +3,13 @@ import styles from './itemCard.module.scss'
 
 import React, { } from 'react'
 import Link from 'next/link'
-import Grow from '@mui/material/Grow'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faHeart,
-  faHeartBroken,
-} from '@fortawesome/free-solid-svg-icons'
+import { faHeart, faHeartBroken } from '@fortawesome/free-solid-svg-icons'
+import Grow from '@mui/material/Grow'
 import { Tooltip } from '@mui/material'
+import { ShareOutlined } from '@mui/icons-material'
 import classNames from 'classnames'
 import Image from 'next/image'
-
-import { ShareOutlined } from '@mui/icons-material'
 
 // Custom
 import useSystemStore from '../../hooks/storeSystem'
@@ -23,8 +19,8 @@ import { formatNumber } from '../../lib/utils'
 
 const ItemCard = (props) => {
   const {
-    accept_changes,
-    cashback_available,
+    acceptChanges,
+    cashbackAvailable,
     certificate,
     city,
     description,
@@ -37,7 +33,7 @@ const ItemCard = (props) => {
     id: publicationId,
     images,
     image_1,
-    is_new,
+    isNew,
     likes,
     logDetalle,
     price,
@@ -96,7 +92,7 @@ const ItemCard = (props) => {
             </a>
           </div>
           <div className={`tags ${styles.tags}`}>
-            {!is_new && (
+            {!isNew && (
               <span
                 title='El articulo es de segunda mano'
                 className={styles.condition}>
@@ -104,8 +100,8 @@ const ItemCard = (props) => {
               </span>
             )}
             {/* Si aplica cashback */}
-            {cashback_available && <CashbackTag />}
-            {accept_changes && (
+            {cashbackAvailable && <CashbackTag />}
+            {acceptChanges && (
               <span
                 className={styles.condition}
                 title='El vendedor acepta productos como parte de pago o incluso cambiar el producto por otro de su interés'>
@@ -116,7 +112,12 @@ const ItemCard = (props) => {
               return <span key={ind}>{item.texto}</span>
             })}
           </div>
-          {cashback_available && <div className={styles.cashbackInformation}>Con esta compra obtienes <b>15% de creditos</b></div>}
+          {/* Si tiene precio y Cashback */}
+          {cashbackAvailable && price && <div className={styles.cashbackInformation}>
+            Con esta compra obtienes <b>{(price * 0.01) / 100} de EXP</b></div>}
+          {/* Si no tiene precio */}
+          {cashbackAvailable && !price && <div className={styles.cashbackInformation}>
+            Preguntale al vendedor sobre los creditos por esta compra</div>}
           {
             <div className={styles.descripcion}>
               <div className={styles.icons}>

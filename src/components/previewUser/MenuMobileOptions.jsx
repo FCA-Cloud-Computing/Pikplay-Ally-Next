@@ -73,10 +73,10 @@ const MenuMobileOptions = () => {
     variants={container}>
     <motion.ol variants={item}>
       <Link href={`/perfil/${slugify(name || "User Name")}`}>
-        Mi cuenta
         <div className={styles.coinContent}>
           <CoinIcon coins={coins} />
         </div>
+        Mi cuenta
       </Link>
     </motion.ol>
     <motion.ol variants={item}>
@@ -95,13 +95,15 @@ const MenuMobileOptions = () => {
       </Link>
     </motion.ol>
     <motion.ol variants={item}>
-      <Link href="/blue-panther">
-        Blue Panther
+      <Link href="/redencion">
+        <img src="https://cdn-icons-png.flaticon.com/512/4213/4213958.png" />
+        Redimir
       </Link>
     </motion.ol>
     <motion.ol variants={item} onClick={() => handleLogout()}>
       Salir
     </motion.ol>
+    {/* Opciones de administrador */}
     {userLogged.isAdmin && <>
       <motion.ol variants={item} onClick={changeToSellerUser}>
         Cambiar a Seller

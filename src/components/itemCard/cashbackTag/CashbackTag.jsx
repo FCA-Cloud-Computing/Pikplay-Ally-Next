@@ -10,7 +10,7 @@ const CashbackTag = () => {
                 className={styles.apply_cashback}>
                 <picture className={styles.coin} />
                 ¡Cashback!
-                <CoinIcon hideNumber />
+                {/* <CoinIcon hideNumber /> */}
             </span>
         </div>
     );
