@@ -19,6 +19,11 @@ const saveLeadSrv = (ctx, phone) => {
   });
 };
 
+const saveReferralSrv = (ctx, item) => {
+  const path = BASE_URL + '/referral/save';
+  return post(ctx, path, item);
+};
+
 const loginSrv = async (ctx: any, phone: string, code: number, name: string) => {
   const path = BASE_URL + '/login';
   try {
@@ -92,13 +97,14 @@ const getNotificationsSrv = async (uid) => {
 };
 
 export {
+  // getTopMessagesSrv,
   getExperiencesSrv,
   getNotificationsSrv,
   getUsersSrv,
-  // getTopMessagesSrv,
-  saveLeadSrv,
   loginSrv,
+  saveLeadSrv,
+  saveReferralSrv,
   sendCodeSrv,
+  updateProfileSrv,
   validateTokenSrv,
-  updateProfileSrv
 };
