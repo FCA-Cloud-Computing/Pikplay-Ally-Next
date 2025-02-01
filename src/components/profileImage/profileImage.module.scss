@@ -1,26 +1,84 @@
-.ProfileImage {
-  align-items: center;
-  background: linear-gradient(180deg, #f4c376, #ba7821);
-  border-radius: 50%;
-  box-shadow: inset 3px 2px 4px #454545;
-  display: flex;
-  height: 120px;
-  justify-content: center;
-  margin: 10px auto 0;
-  padding: 3px;
-  width: 120px;
+.profileImageContainer {
+  position: relative;
 
-  &.previewUser {
-    height: 50px;
-    width: 50px;
+  .ProfileImage {
+    align-items: center;
+    background: linear-gradient(180deg, #f4c376, #ba7821);
+    border-radius: 50%;
+    box-shadow: inset 3px 2px 4px #454545;
+    display: flex;
+    height: 120px;
+    justify-content: center;
+    margin: 10px auto 0;
+    padding: 3px;
+    width: 120px;
+
+    &.previewUser {
+      height: 50px;
+      width: 50px;
+    }
+
+    img {
+      border-radius: 50%;
+      height: calc(100% - 2px);
+      left: 1px;
+      object-fit: fill;
+      position: relative;
+      width: calc(100% - 2px);
+    }
   }
 
-  img {
-    border-radius: 50%;
-    height: calc(100% - 2px);
-    left: 1px;
-    object-fit: fill;
-    position: relative;
-    width: calc(100% - 2px);
+  .circularProgress {
+    --size: 120px;
+    --half-size: calc(var(--size) / 2);
+    --stroke-width: 6px;
+    --radius: calc((var(--size) - var(--stroke-width)) / 2);
+    --circumference: calc(var(--radius) * 3.1416 * 2);
+    --dash: calc((var(--progress) * var(--circumference)) / 100);
+
+    position: absolute;
+    top: -1%;
+    left: -1%;
+    width: var(--size);
+    height: var(--size);
+    animation: progress-animation 5s linear 0s 1 forwards;
+  }
+
+  .circularProgress circle {
+    cx: var(--half-size);
+    cy: var(--half-size);
+    r: var(--radius);
+    stroke-width: var(--stroke-width);
+    fill: none;
+    stroke-linecap: round;
+  }
+
+  .circularProgress circle.bg {
+    stroke: transparent; /* fondo de la barra de carga */
+  }
+
+  .circularProgress circle.fg {
+    transform: rotate(90deg);
+    transform-origin: var(--half-size) var(--half-size);
+    stroke-dasharray: var(--dash) calc(var(--circumference) - var(--dash));
+    transition: stroke-dasharray 0.3s linear;
+    stroke: #454545; /* color de la barra de carga */
+    border-radius: 100%;
+    filter: drop-shadow(0 0 5px #454545 ) drop-shadow(0 0 10px #454545 );
+  }
+}
+
+@property --progress {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@keyframes progress-animation {
+  from {
+    --progress: 0;
+  }
+  to {
+    --progress: var(--progress-bar); /* Puedes ajustar este valor o utilizar la prop `progress` */
   }
 }
