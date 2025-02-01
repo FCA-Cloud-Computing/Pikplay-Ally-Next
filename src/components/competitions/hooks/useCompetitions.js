@@ -15,17 +15,19 @@ const useCompetitions = () => {
   const [competitionMembers, setCompetitionMembers] = useState([]);
   const [isOnlyAvailableNumbers, setIsOnlyAvailableNumbers] = useState(false);
 
-  const getCompetitions = (slug) => {
+  const getCompetitions = (slugs) => {
     setIsLoading(true);
+
     return new Promise((resolve, reject) => {
-      getComptSrv(null, slug).then((data) => {
+      const competitionsArray = []
+      return slugs && slugs.map(async (slug) => {
+        await getComptSrv(null, slug).then((data) => {
+          // setCompetitionMembers(data.competitionMembers);
+          competitionsArray.push(data);
+        });
         setIsLoading(false);
-        if (slug) {
-          setCompetitionMembers(data.competitionMembers);
-        } else {
-          setCompetitions(data);
-        }
-        resolve(data);
+        setCompetitions(competitionsArray);
+        resolve(competitionsArray);
       });
     });
   };

@@ -11,7 +11,15 @@ import MessagesTop from '../messagesTop/MessagesTop.jsx';
 
 const Layout = (props) => {
   const [isReady, setIsReady] = useState(false)
-  const { children, descripcion, image, title, url, mobileMenuHidden } = props
+  const {
+    children,
+    cssClassPage,
+    descripcion,
+    image,
+    mobileMenuHidden,
+    title,
+    url,
+  } = props
   const {
     darkMode,
     env,
@@ -68,6 +76,7 @@ const Layout = (props) => {
         <link rel='canonical' href={url} />
       </Head>
       <Body
+        cssClassPage={cssClassPage}
         isReady={isReady}
         mobileMenuHidden={mobileMenuHidden}
         notifications={notifications}

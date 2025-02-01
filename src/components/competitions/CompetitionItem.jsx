@@ -3,12 +3,14 @@ import styles from './competitions.module.scss'
 
 import Link from 'next/link'
 import { toast } from 'react-toastify'
-const { motion } = require('framer-motion')
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Zoom from 'react-medium-image-zoom'
+const { motion } = require('framer-motion')
 
 // Custom
 import Button from '../../components/button/Button'
+import { formatNumber } from '@/lib/utils'
 
 const CompetitionItem = ({ competition, ind }) => {
   const goToastNotAvailable = () => toast('Esta actividad ya ha pasado')
@@ -20,34 +22,35 @@ const CompetitionItem = ({ competition, ind }) => {
     initial={{ y: '100%' }}
     key={ind}
     // onClick={() => competition.isActive ? handleCompetitionClick(competition.slug) : goToastNotAvailable}
-    whileHover={{ scale: 1.1 }}
+    // whileHover={{ scale: 1.1 }}
     animate={{ y: 0 }}>
     <h2>
       <Link href={link}>{competition.title}</Link>
     </h2>
-    <div>
-      Números disponibles:
-      <span className={styles.availableNumbers}>
-        {competition.availableNumbers}
-      </span>
-    </div>
     <div className={styles.seller}>
       <div>
-        <img width={80} src={competition.seller.picture} />
+        <Zoom>
+          <img width={80} src={competition.picture} />
+        </Zoom>
       </div>
       <div>
-        {/* <img width={200} style={{ right: competition.right }} src={competition.image} /> */}
-        {competition.seller.name}
-        <div className={styles.calification}>
-          {[1, 1, 1].map(item => <FontAwesomeIcon className='icon' icon={faStar} />)}
+        <div>
+          Números disponibles:
+          <span className={styles.availableNumbers}>
+            {competition.availableNumbers}
+          </span>
         </div>
-        <div>Ha realizado 5 concursos en los últimos 3 meses</div>
+        {/* <img width={200} style={{ right: competition.right }} src={competition.image} /> */}
+        {/* <div className={styles.calification}>
+          Calificación: {[1, 1, 1].map(item => <FontAwesomeIcon className='icon' icon={faStar} />)}
+        </div> */}
+        <div>Precio: ${formatNumber(competition.price)}</div>
       </div>
     </div>
     <div className={styles.actions}>
-      <Link href={awardLink}>
+      {/* <Link href={awardLink}>
         <Button color='link' className={styles.award}>Ver premio</Button>
-      </Link>
+      </Link> */}
       <Link href={link}>
         <Button shine realistic color='blue' className={styles.award}>Participar</Button>
       </Link>

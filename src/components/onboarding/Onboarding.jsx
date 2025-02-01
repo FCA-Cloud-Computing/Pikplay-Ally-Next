@@ -175,9 +175,19 @@ const Onboarding = () => {
     <div className={styles.aliados}>
       <h2>Aliados</h2>
       <div className={styles.items}>
+        <Link href='/conversation-club'>
+          <div className="Card">
+            <img src='/images/users/conversation_club/logo.png' />
+            <p>
+              <b>English Club</b>
+              <div>Club de conversación</div>
+              Barranquilla, Colombia
+            </p>
+          </div>
+        </Link>
         <Link href='/le-fragance'>
           <div className="Card">
-            <img src='/images/le-fragance/le-fragance.jpeg' />
+            <img src='/images/users/le-fragance/le-fragance.jpeg' />
             <p>
               <b>LE-FRAGANCE</b>
               <div>Perfumes</div>
@@ -187,7 +197,7 @@ const Onboarding = () => {
         </Link>
         <Link href='/nataliatution'>
           <div className="Card">
-            <img src='/images/nataliatution/logo.jpg' />
+            <img src='/images/users/nataliatution/logo.jpg' />
             <p>
               <b>Nataliatution</b>
               <div>Ropa y Calzado</div>
@@ -205,14 +215,24 @@ const Onboarding = () => {
             </p>
           </div>
         </Link>
-        <div className="Card">
+        <Link href='/pikplay-store'>
+          <div className="Card">
+            <img src='/images/logos/pikplay_store_logo.png' />
+            <p>
+              <b>Pikplay Store</b>
+              <div>Accesorios</div>
+              Barranquilla, Colombia
+            </p>
+          </div>
+        </Link>
+        {/* <div className="Card">
           <img src='/images/users/hiro.jpeg' />
           <p>
             <b>Hiro</b>
             <div>Anime, Cosplay</div>
             Barranquilla, Colombia
           </p>
-        </div>
+        </div> */}
       </div>
     </div>
   </section>

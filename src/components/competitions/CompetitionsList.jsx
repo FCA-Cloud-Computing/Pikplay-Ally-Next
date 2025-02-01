@@ -28,14 +28,6 @@ const CompetitionsList = ({ competitions }) => {
       }} /> */}
     {/* Competitions: {JSON.stringify(competitions)} */}
     <div className={styles.content}>
-      <div id="adsItems" className={styles.ads}>
-        <div className={styles.item}>
-          <img src="/images/banners/banner-02.png" />
-        </div>
-        <div className={styles.item}>
-          <img src="/images/banners/banner-04.png" />
-        </div>
-      </div>
       <div className={styles.news}>
         <span>Últimos movimientos:</span>
         <Marquee />

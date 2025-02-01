@@ -46,7 +46,7 @@ const ConcursosPage = () => {
   }
 
   useEffect(() => {
-    getCompetitions(null)
+    getCompetitions([])
   }, [])
 
   function TabPanel(props) {
@@ -114,7 +114,7 @@ const ConcursosPage = () => {
 
   const products = [{
     images: [
-      { url: '/images/bluepanther/products/games.jpg' }
+      { url: '/images/users/bluepanther/products/games.jpg' }
     ],
     is_new: true,
     title: 'Juegos de Ps5, Ps4, Consolas, Accesorios y demás',
@@ -158,6 +158,14 @@ const ConcursosPage = () => {
             </Tabs>
 
             <TabPanel value={value} index={0}>
+              <div id="adsItems" className={styles.ads}>
+                <div className={styles.item}>
+                  <img src="/images/banners/banner-02.png" />
+                </div>
+                <div className={styles.item}>
+                  <img src="/images/banners/banner-04.png" />
+                </div>
+              </div>
               {!isLoading && competitions.length > 0 && <CompetitionsList
                 isLoading={isLoading}
                 competitions={competitions}

@@ -6,9 +6,16 @@ const { get, post } = CustomFetch();
 
 const BASE_URL = '/users';
 
-const getUsersSrv = async (ctx, uid) => {
+const getUserSrv = async (ctx, uid) => {
   const url = BASE_URL + (uid ? `/${uid}/info` : '');
   const data = await get(ctx, url);
+  return data;
+};
+
+const getUsersSrv = async (ctx, { phones, uids }) => { // No envía informacion PII, solo nombre, imagen, etc.
+  debugger;
+  const url = BASE_URL;
+  const data = await post(ctx, url, { phones, uids });
   return data;
 };
 
@@ -17,6 +24,11 @@ const saveLeadSrv = (ctx, phone) => {
   return post(ctx, path, {
     phone
   });
+};
+
+const saveReferralSrv = (ctx, item) => {
+  const path = BASE_URL + '/referral/save';
+  return post(ctx, path, item);
 };
 
 const loginSrv = async (ctx: any, phone: string, code: number, name: string) => {
@@ -92,13 +104,15 @@ const getNotificationsSrv = async (uid) => {
 };
 
 export {
+  // getTopMessagesSrv,
   getExperiencesSrv,
   getNotificationsSrv,
+  getUserSrv,
   getUsersSrv,
-  // getTopMessagesSrv,
-  saveLeadSrv,
   loginSrv,
+  saveLeadSrv,
+  saveReferralSrv,
   sendCodeSrv,
+  updateProfileSrv,
   validateTokenSrv,
-  updateProfileSrv
 };

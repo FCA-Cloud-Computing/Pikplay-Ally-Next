@@ -63,29 +63,30 @@
     }
   }
 
-  .CompetitionsList {
-    .ads {
-      column-gap: 20px;
-      display: flex;
-      margin: 0 0 15px 0;
+  .ads {
+    column-gap: 20px;
+    display: flex;
+    margin: 0 0 15px 0;
+    @media screen and (max-width: 480px) {
+      display: block;
+    }
+    .item {
       @media screen and (max-width: 480px) {
         display: block;
+        margin: 0 auto 10px;
+        width: max-content;
       }
-      .item {
-        @media screen and (max-width: 480px) {
-          display: block;
-          margin: 0 auto 10px;
-          width: max-content;
-        }
 
-        img {
-          border-radius: 10px;
-          display: block;
-          width: 260px;
-        }
+      img {
+        border-radius: 10px;
+        display: block;
+        width: 260px;
       }
     }
+  }
 
+  .CompetitionsList {
+    overflow: hidden;
     .CompetitionItem {
       margin: 0;
       padding: 10px;
@@ -98,8 +99,12 @@
         margin: 0 auto 20px;
       }
       h2 a {
-        color: white;
+        color: #fff;
+        display: block;
+        font-size: 16px;
+        font-weight: 600;
         line-height: 22px;
+        margin-bottom: 8px;
       }
       img {
         // bottom: -50px;
@@ -125,7 +130,7 @@
         position: relative;
         width: 100%;
         img {
-          border-radius: 50%;
+          border-radius: 10%;
           position: relative;
           top: 6px;
         }
@@ -166,16 +171,6 @@
     padding: 10px 20px;
     @media screen and (max-width: 480px) {
       flex-direction: column-reverse;
-    }
-    .seller {
-      margin-top: 10px;
-      img {
-        border-radius: 50%;
-        width: 60px;
-      }
-      :global(.fa-star) {
-        color: #fad426;
-      }
     }
 
     p {

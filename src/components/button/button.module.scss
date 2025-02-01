@@ -16,6 +16,11 @@
     cursor: pointer;
   }
 
+  &.fullWidth {
+    text-align: center;
+    width: 100%;
+  }
+
   &.realistic:active {
     transform: translateY(8px);
     box-shadow:
