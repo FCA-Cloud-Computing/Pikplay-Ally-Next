@@ -42,7 +42,7 @@ const RankingComponent = () => {
 
   return (
     <div className={styles.RankingComponent}>
-      <Button color="blue" fullWidth className="p-10">Quiero participar</Button>
+      {/* <Button color="blue" fullWidth className="p-10">Quiero participar</Button> */}
       <div className={styles.list}>
         {rankingData && rankingData.length > 0 && rankingData.sort((a, b) => b.points - a.points).map((member, index) => {
           return <motion.div
