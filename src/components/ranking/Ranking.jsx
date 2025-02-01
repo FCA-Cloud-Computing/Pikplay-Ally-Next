@@ -14,26 +14,27 @@ import { getRankingDetailSrv } from '@/services/rankings/rankings'
 const RankingComponent = () => {
   const [rankingData, setRankingData] = useState([])
 
-  useEffect(async () => {
+  useEffect(() => {
     try {
-      const rankingDataPoints = await getRankingDetailSrv()
-      const uids = rankingDataPoints.map(member => member.uid)
-      getUsersSrv(null, { uids: uids.join() })
-        .then(data => {
-          const pointsAndUserData = rankingDataPoints.map(member => {
-            debugger;
-            const user = data && data.find(user => user.uid === member.uid)
-            return {
-              ...user,
-              points: member.points,
-              below: 'Principiante'
-            }
+      getRankingDetailSrv().then(rankingDataPoints => {
+        const uids = rankingDataPoints.map(member => member.uid)
+        getUsersSrv(null, { uids: uids.join() })
+          .then(data => {
+            const pointsAndUserData = rankingDataPoints.map(member => {
+              debugger;
+              const user = data && data.find(user => user.uid === member.uid)
+              return {
+                ...user,
+                points: member.points,
+                below: 'Principiante'
+              }
+            })
+            setRankingData(pointsAndUserData)
           })
-          setRankingData(pointsAndUserData)
-        })
-        .catch(err => {
-          console.log('Error getting users', err)
-        })
+          .catch(err => {
+            console.log('Error getting users', err)
+          })
+      })
     } catch (error) {
       console.log('Error getting ranking data', error)
     }
