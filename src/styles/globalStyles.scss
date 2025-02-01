@@ -1,7 +1,9 @@
-@import "./variables.scss";
-
 @import url("https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap");
+
+// Custom
+@import "./variables.scss";
+@import "react-medium-image-zoom/dist/styles.css";
 
 @font-face {
   font-family: "Righteous";
@@ -322,6 +324,10 @@ span.MuiBadge-badge {
   padding: 0;
 }
 
+.pd-20 {
+  padding: 20px;
+}
+
 .miClub {
   z-index: 11;
   position: fixed;
@@ -539,7 +545,7 @@ span.MuiBadge-badge {
 main {
   min-height: 100vh;
   &.darkMode {
-    background-image: url(/images/backgrounds/bg-gamer.jpg);
+    // background-image: url(/images/backgrounds/bg-gamer.jpg);
     background-attachment: fixed;
     &::before {
       content: "";
@@ -1030,7 +1036,7 @@ a {
     background-image: url(/images/gifs/stars-colors.gif);
     background-size: 300px;
     content: "";
-    height: 100%;
+    height: calc(100% + 10px);
     left: 0;
     position: absolute;
     top: -10px;

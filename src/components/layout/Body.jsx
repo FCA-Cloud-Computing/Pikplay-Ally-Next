@@ -14,6 +14,7 @@ import MenuMovil from '../menuMovil/MenuMovil'
 import useSystemStore from '../../hooks/storeSystem.js'
 
 const Body = ({
+  cssClassPage,
   children,
   isReady,
 }) => {
@@ -21,7 +22,7 @@ const Body = ({
 
   return <>
     <main
-      className={classNames('App font-a', {
+      className={classNames(`App font-a ${cssClassPage || ''}`, {
         'darkMode': darkMode,
         [styles.main]: true,
         [styles.AppComponent]: true,

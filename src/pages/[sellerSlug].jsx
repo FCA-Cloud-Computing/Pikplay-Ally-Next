@@ -1,10 +1,21 @@
-'use client'
-import { AuthorInformation } from '@/components/authorInformation/AuthorInformation'
-import ItemCard from '@/components/itemCard/ItemCard'
-import Layout from '@/components/layout/Layout'
+import styles from '../components/competitions/competitions.module.scss'
+import sellerSlugStyles from './sellerSlug.module.scss'
+
+import { useEffect } from 'react'
 import { faDiceFive } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Skeleton } from '@mui/material'
 import { useRouter } from 'next/router'
+import StarIcon from '@mui/icons-material/Star';
+import { createGlobalStyle } from "styled-components";
+
+// Custom
+import { AuthorInformation } from '@/components/authorInformation/AuthorInformation'
+import CompetitionsList from '@/components/competitions/CompetitionsList'
+import useCompetitions from '@/components/competitions/hooks/useCompetitions'
+import ItemCard from '@/components/itemCard/ItemCard'
+import Layout from '@/components/layout/Layout'
+import RankingComponent from '@/components/ranking/Ranking'
 
 const DefaultSellerPage = (props) => {
   const { params } = props
@@ -12,6 +23,35 @@ const DefaultSellerPage = (props) => {
   const { sellerSlug } = router.query
 
   const DBTemp = {
+    'conversation-club': {
+      authorInformation: {
+        aboutHTML: '<div>English Club es un espacio para tener experiencias inmersivas en el idioma.</div>',
+        aboutHTMLButtonStyle: { color: 'white', textDecoration: 'underline' },
+        pageBackground: 'https://lonelinessandinternationalstudent.wordpress.com/wp-content/uploads/2015/10/language-exchange.jpg',
+        cssClassPage: 'conversationClubPage',
+        dividerColor: '#b0b0b0',
+        // background: '/images/logos/pikplay_store_logo.png',
+        name: 'English Club',
+        place: 'Barranquilla - Soledad',
+        givenPikcoins: 0,
+        picture: '/images/users/conversation_club/logo.png',
+        uid: 131,
+        whatsappNumber: 573204863547
+      },
+    },
+    'pikplay-store': {
+      authorInformation: {
+        dividerColor: '#b0b0b0',
+        // background: '/images/logos/pikplay_store_logo.png',
+        name: 'Pikplay Store',
+        place: 'Barranquilla',
+        givenPikcoins: 100,
+        picture: '/images/users/pikplay_store/logo.png',
+        uid: 131,
+        whatsappNumber: 573204863547
+      },
+      competitions: ['cadena-oro-italiano-18k-60cm']
+    },
     'le-fragance': {
       authorInformation: {
         dividerColor: '#b0b0b0',
@@ -24,7 +64,7 @@ const DefaultSellerPage = (props) => {
       },
       products: [{
         images: [
-          { url: '/images/le-fragance/products/one-million.webp' }
+          { url: '/images/users/le-fragance/products/one-million.webp' }
         ],
         isNew: true,
         title: 'Paco Rabanne One million 1 Million Tradicional EDT 200 ml para hombre',
@@ -38,7 +78,7 @@ const DefaultSellerPage = (props) => {
       },
       {
         images: [
-          { url: '/images/le-fragance/products/acgua di gio.avif' }
+          { url: '/images/users/le-fragance/products/acgua di gio.avif' }
         ],
         isNew: true,
         title: 'Acgua di gio',
@@ -57,55 +97,118 @@ const DefaultSellerPage = (props) => {
         dividerColor: 'white',
         givenPikcoins: 3000,
         name: 'Nataliatution',
-        picture: '/images/nataliatution/logo.jpg',
+        picture: '/images/users/nataliatution/logo.jpg',
         place: 'Barranquilla',
         secondaryColor: 'white',
         whatsappNumber: 573117504310
       },
       products: [{
         images: [
-          { url: '/images/nataliatution/products/product1.jpeg' }
+          { url: '/images/users/nataliatution/products/product1.jpeg' }
         ],
         isNew: true,
         title: 'Ropa, Calzado y Accesorios de Dama',
         cashbackAvailable: true,
         user: {
           name: 'Nataliatution',
-          picture: '/images/nataliatution/logo.jpg'
+          picture: '/images/users/nataliatution/logo.jpg'
         }
       },
       {
         images: [
-          { url: '/images/nataliatution/products/deportiva.jpg' }
+          { url: '/images/users/nataliatution/products/deportiva.jpg' }
         ],
         isNew: true,
         title: 'Ropa Deportiva de Dama',
         cashbackAvailable: true,
         user: {
           name: 'Nataliatution',
-          picture: '/images/nataliatution/logo.jpg'
+          picture: '/images/users/nataliatution/logo.jpg'
         }
       }]
     }
   }
 
-  const { authorInformation, products } = DBTemp[sellerSlug?.toLowerCase()] || {}
+  const {
+    authorInformation,
+    competitions: competitionsArray,
+    products,
+  } = DBTemp[sellerSlug?.toLowerCase()] || {}
 
-  return <Layout title="Concursos">
+  const GlobalStyle = createGlobalStyle`
+  .conversationClubPage {
+    background-image: url("${authorInformation?.pageBackground}");
+    background-size: cover;
+  }`;
+
+  const {
+    isLoading: isLoadingCompetition,
+    competitions,
+    getCompetitions,
+    handleCompetitionClick,
+    selectedNumber,
+    setSelectedNumber,
+  } = useCompetitions()
+
+  useEffect(() => {
+    competitionsArray && competitionsArray.length > 0 && getCompetitions(competitionsArray)
+  }, [])
+
+  useEffect(() => {
+    console.log('competitions', competitions)
+  }, [competitions])
+
+  return <Layout title="Concursos" cssClassPage={authorInformation?.cssClassPage}>
+    <GlobalStyle />
     <section className="page">
       <AuthorInformation authorInformation={authorInformation} />
-      <div className="contentTitle">
+      {/* competitions:{JSON.stringify(competitions)} */}
+      {competitions && competitions.length > 0 && <>
+        <div className="contentTitle">
+          <h1>
+            <FontAwesomeIcon className="icon" icon={faDiceFive} />
+            &nbsp;Sorteos
+          </h1>
+        </div>
+        {/* Competitions */}
+        <div className={`Card ${styles.CompetitionsComponent}`}>
+          {!isLoadingCompetition && competitions.length > 0 && <CompetitionsList
+            isLoading={isLoadingCompetition}
+            competitions={competitions}
+            handleCompetitionClick={handleCompetitionClick}
+            selectedNumber={selectedNumber}
+            setSelectedNumber={setSelectedNumber}
+          />}
+          {isLoadingCompetition && <div> {
+            new Array(3).fill(null).map((_, i) => (<Skeleton key={i} variant="rectangular" width='100%' height={120} className='Card' />))}
+          </div>}
+        </div>
+      </>}
+
+      {/* Ranking */}
+      <div className={`contentTitle ${sellerSlugStyles.Ranking}`}>
         <h1>
-          <FontAwesomeIcon className="icon" icon={faDiceFive} />
-          &nbsp;Productos
+          <StarIcon className={sellerSlugStyles.starIcon} />
+          &nbsp;Ranking
         </h1>
       </div>
-      {products && products.map(product =>
-        <ItemCard
-          {...product}
-          {...{ whatsappNumber: authorInformation.whatsappNumber }}
-        />
-      )}
+      <RankingComponent />
+
+      {/* Products */}
+      {products && <>
+        <div className="contentTitle">
+          <h1>
+            <FontAwesomeIcon className="icon" icon={faDiceFive} />
+            &nbsp;Productos
+          </h1>
+        </div>
+        {products && products.map(product =>
+          <ItemCard
+            {...product}
+            {...{ whatsappNumber: authorInformation.whatsappNumber }}
+          />
+        )}
+      </>}
     </section>
   </Layout>
 }

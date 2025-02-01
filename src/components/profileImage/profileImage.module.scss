@@ -9,7 +9,7 @@
   margin: 10px auto 0;
   padding: 3px;
   width: 120px;
-  
+
   &.previewUser {
     height: 50px;
     width: 50px;
@@ -17,8 +17,10 @@
 
   img {
     border-radius: 50%;
-    height: calc(94%);
+    height: calc(100% - 2px);
     left: 1px;
+    object-fit: fill;
     position: relative;
+    width: calc(100% - 2px);
   }
 }

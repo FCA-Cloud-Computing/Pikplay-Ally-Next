@@ -10,6 +10,8 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 
 export const AuthorInformation = (props) => {
     const {
+        aboutHTML,
+        aboutHTMLButtonStyle,
         background,
         dividerColor,
         facebook,
@@ -22,7 +24,6 @@ export const AuthorInformation = (props) => {
         whatsapp,
     } = props?.authorInformation || {}
     const { setIAMessage } = useIAStore()
-    const aboutBluepanther = '<b>Bluepanther</b> <br/>Somos una marca de venta/compra de videojuegos, tenemos local en Medellín y en Bogotá'
 
     return <div className={`${styles.AuthorComponentPage}`} style={{ ['--backgroundImage']: `url(${background})` }}>
         <div className={styles.content}>
@@ -33,7 +34,7 @@ export const AuthorInformation = (props) => {
                 <small style={{ color: dividerColor }}>{place}, Colombia</small>
             </div>
             <hr style={{ background: dividerColor }} />
-            {givenPikcoins && <div className={styles.creditsGiven}>
+            {<div className={styles.creditsGiven}>
                 <CoinIcon />
                 <div>
                     <b>{formatNumber(givenPikcoins)}</b>
@@ -52,7 +53,7 @@ export const AuthorInformation = (props) => {
                 </a>
             </div>
             <div className={styles.aboutMe}>
-                <Button color='yellow' onClick={() => setIAMessage(aboutBluepanther)}>
+                <Button color='link' style={aboutHTMLButtonStyle} onClick={() => setIAMessage(aboutHTML)}>
                     Acerca de {name}
                 </Button>
             </div>

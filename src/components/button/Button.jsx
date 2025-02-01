@@ -12,6 +12,7 @@ const Button = ({
   color,
   databutton,
   disabled,
+  fullWidth,
   isLink,
   id,
   onClick,
@@ -19,6 +20,7 @@ const Button = ({
   style,
   shine,
   realistic,
+  textColor,
 }) => {
   className = `${className} ${animation ? styles.animation : null}`
 
@@ -33,6 +35,7 @@ const Button = ({
       ${className}
       ${outline ? styles.outline : ''}
       ${isLink ? styles.link : ''}
+      ${fullWidth ? styles.fullWidth : ''}
     `}
       databutton={databutton}
       id={id}

@@ -192,54 +192,6 @@ const CompetitionDetail = (props) => {
         }
       </div>
     </div>
-
-    <div className={`Card ${styles.seller}`}>
-      <div className="flex">
-        <div>
-          <img src="https://pikplay-bucket.nyc3.cdn.digitaloceanspaces.com/users/1716992297692-bluepanther-image.jpeg" alt="" />
-        </div>
-        <p>
-          <b>{seller.name}</b>
-          <div className={styles.calification}>
-            {[1, 1, 1].map(item => <FontAwesomeIcon className='icon stars' icon={faStar} />)}
-          </div>
-        </p>
-      </div>
-
-      <p className={`flex ${styles.description}`}>
-        <div>
-          <CardGiftcard />
-          <Link href={`/publicacion/nuevas-figuritas-de-kimetsu-no-yaiba-pregunta-por-tu-favorita?origin=/concursos/${competitionSlug}`}>
-            &nbsp;&nbsp;{competitionDetail?.award}
-          </Link>
-        </div>
-        <div>
-          <span className={styles.availableNumbers}>
-            {availableNumbers}
-          </span>
-          &nbsp;Números disponibles
-        </div>
-        <div>
-          <Money />
-          <span>
-            &nbsp;&nbsp;${formatNumber(price)}
-          </span>
-        </div>
-        <div>
-          {competitionDetail?.description}
-        </div>
-      </p>
-      <Divider />
-      {(uidLogged && uidLogged == seller?.uid) && <AdminActions
-        {...{
-          deleteNotPaidNumbers,
-          freeNumbers,
-          paidNumbers,
-          takenNumbers,
-          setShowMembersNames
-        }}
-      />}
-    </div>
   </div>
 }
 
