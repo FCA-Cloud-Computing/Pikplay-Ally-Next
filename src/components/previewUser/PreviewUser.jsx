@@ -1,7 +1,10 @@
 import styles from './previewUser.module.scss'
 
+import { createGlobalStyle } from "styled-components";
 import React, { useState } from 'react'
 import dynamic from 'next/dynamic'
+
+// Custom
 import Login from '../login/Login'
 import CoinIcon from '../coinIcon/CoinIcon'
 import { IS_MOBILE } from '../../lib/variables'
@@ -33,7 +36,8 @@ const PreviewUser = () => {
             suppressHydrationWarning={true}
             className="previewUser"
             handleClickImage={IS_MOBILE ? handleClickImage : null}
-            picture={picture} />
+            picture={picture}
+            small />
           {/* TODO */}
           {/* Icono */}
           <div className={styles.coins} id="PreviewProfile--Coins">

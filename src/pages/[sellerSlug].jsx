@@ -136,6 +136,9 @@ const DefaultSellerPage = (props) => {
   } = DBTemp[sellerSlug?.toLowerCase()] || {}
 
   const GlobalStyle = createGlobalStyle`
+  section.page {
+    padding: 60px 20px;
+  }
   .conversationClubPage {
     background-image: url("${authorInformation?.pageBackground}");
     background-size: cover;

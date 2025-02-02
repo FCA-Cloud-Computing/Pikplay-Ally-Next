@@ -5,7 +5,8 @@
   background: #edeef2;
   // border-bottom: 1px solid #dcdcdcb5;
   // border-bottom: 2px solid #1d1d1db5;
-  padding: 5px 0 14px;
+  max-width: 420px;
+  padding: 8px 0 8px;
   position: fixed;
   text-align: center;
   top: 0;
@@ -21,9 +22,6 @@
     top: 0;
     z-index: 5;
     width: 100%;
-  }
-  @media screen and (min-width: 1024px) {
-    height: 70px;
   }
   &.sticked {
   }
