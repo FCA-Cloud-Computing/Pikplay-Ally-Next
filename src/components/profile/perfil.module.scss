@@ -112,11 +112,11 @@
   }
 
   .ProfileSummaryExperience__UserNotifications__Content {
-    display: flex;
-    justify-content: space-between;
-    column-gap: 40px;
+    // display: flex;
+    // justify-content: space-between;
+    // column-gap: 40px;
     @media screen and (max-width: 480px) {
-      flex-direction: column;
+      // flex-direction: column;
     }
 
     :global(.Card) {

@@ -21,7 +21,6 @@ const RankingComponent = () => {
         getUsersSrv(null, { uids: uids.join() })
           .then(data => {
             const pointsAndUserData = rankingDataPoints.map(member => {
-              debugger;
               const user = data && data.find(user => user.uid === member.uid)
               return {
                 ...user,
@@ -58,7 +57,7 @@ const RankingComponent = () => {
               </span>
             </div>
             <div className={styles.picture}>
-              <ProfileImage picture={member.picture} />
+              <ProfileImage picture={member.picture} small progress={member.points} />
             </div>
             <div className={styles.name}>
               <span>
