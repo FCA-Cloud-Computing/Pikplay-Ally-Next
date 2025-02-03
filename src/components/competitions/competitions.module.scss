@@ -87,9 +87,18 @@
   .CompetitionsList {
     overflow: hidden;
     .CompetitionItem {
+      font-family: "Righteous";
+      letter-spacing: 1px;
+
+      // background-image: url(https://firebasestorage.googleapis.com/v0/b/pikplay-72843.firebasestorage.app/o/products%2Fone-million.jpg?alt=media&token=5111f5b4-6e50-4384-941b-aeaa751d9b28);
+      background-size: cover;
+      background-color: rgb(38 34 47 / 70%);
+      background-blend-mode: darken;
+      background-position: center;
+
       margin: 0;
       padding: 10px;
-      background: linear-gradient(90deg, #6098fb 0%, #76a2ea 100%);
+      // background: linear-gradient(90deg, #6098fb 0%, #76a2ea 100%);
       color: white;
       font-size: 14px;
       position: relative;
@@ -105,19 +114,27 @@
         line-height: 22px;
         margin-bottom: 8px;
       }
+      .news {
+        width: 100%;
+        :global(marquee) {
+          :nth-of-type(2) {
+            font-weight: 100;
+          }
+        }
+      }
       img {
         // bottom: -50px;
         // position: absolute;
       }
-      &:nth-of-type(2) {
-        background: linear-gradient(90deg, #fab674 0%, #efba89 100%);
-        .availableNumbers {
-          background-color: #e27d2e;
-        }
-      }
+      // &:nth-of-type(2) {
+      //   background: linear-gradient(90deg, #fab674 0%, #efba89 100%);
+      //   .availableNumbers {
+      //     // background-color: #e27d2e;
+      //   }
+      // }
 
       .availableNumbers {
-        background-color: #3c68b1;
+        background-color: #3095b3;
         border-radius: 50%;
         margin-left: 5px;
         padding: 5px;
@@ -144,7 +161,7 @@
       .actions {
         column-gap: 10px;
         display: flex;
-        justify-content: center;
+        justify-content: end;
         margin-top: 15px;
       }
     }
@@ -265,7 +282,7 @@
   }
 
   .news {
-    background: #f4f4f4;
+    // background: #f4f4f4;
     font-size: 12px;
     height: 18px;
     margin: 10px 0 10px;
@@ -287,7 +304,7 @@
       display: inline;
     }
     .user {
-      color: green;
+      color: #3c68b1;
       margin-right: 10px;
     }
     .item {

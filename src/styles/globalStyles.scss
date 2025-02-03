@@ -582,9 +582,9 @@ main {
 section.page {
   // margin: 20px auto;
   box-sizing: border-box;
-  margin: 70px auto 90px;
+  margin: 44px auto 90px;
   overflow: hidden;
-  padding: 0px 20px 80px;
+  padding: 20px 30px 80px;
   position: relative;
   @media screen and (max-width: 480px) {
     width: calc(100% - 40px);

@@ -62,10 +62,12 @@ const ItemCard = (props) => {
   if (usuario) like = likes ? !!likes.find(like => like == usuario) : false
   const isDestacada = publicationId == 1 ? true : false
   const { loggedUser } = useSystemStore()
+  const shareLink = `https://api.whatsapp.com/send?phone=&text=Revisa%20esta%20publicacion%20en%20Pikplay%20que%20esta%20potente%20https://pikplay.com.co/${user.slug}%23${slug}`
 
   return (
     <Grow key={publicationId} in={true} style={{ opacity: 1 }}>
       <div
+        id={slug}
         key={publicationId}
         className={`${styles.ItemCard} ${isDestacada ? styles.isDestacada : ''}`}>
         <div className={styles.descripcion_imagen}>
@@ -143,7 +145,7 @@ const ItemCard = (props) => {
                 </Tooltip>
                 <Tooltip title='Compartir'>
                   <a
-                    href={`https://api.whatsapp.com/send?phone=&text=Revisa%20esta%20publicacion%20en%20Pikplay%20que%20esta%20potente%20https://pikplay.co/publicacion/${slug}`}
+                    href={`${shareLink}`}
                     rel="noreferrer"
                     target='_BLANK'>
                     <ShareOutlined

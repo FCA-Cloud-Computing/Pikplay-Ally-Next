@@ -55,6 +55,8 @@ const DefaultSellerPage = (props) => {
     },
     'le-fragance': {
       authorInformation: {
+        aboutHTML: `<div>Le Fragance es una tienda de perfumes premium, con más de 2 años de experiencia en el mercado.`,
+        aboutHTMLButtonStyle: { color: 'white', textDecoration: 'underline' },
         dividerColor: '#b0b0b0',
         background: '/images/backgrounds/campo-bg.jpeg',
         name: 'Le Fragance',
@@ -63,6 +65,7 @@ const DefaultSellerPage = (props) => {
         picture: 'https://s.cafebazaar.ir/images/icons/com.manage.retail.store-35f341c0-a6ab-4cc5-889a-e9692024fa9e_512x512.png?x-img=v1/resize,h_256,w_256,lossless_false/optimize',
         whatsappNumber: 573016815784
       },
+      competitions: ['sorteo-paco-rabanne-one-million-1-million-tradicional'],
       products: [{
         images: [
           { url: '/images/users/le-fragance/products/one-million.webp' }
@@ -72,9 +75,11 @@ const DefaultSellerPage = (props) => {
         quantity: 5,
         price: 130000,
         cashbackAvailable: true,
+        slug: 'paco-rabanne-one-million-1-million-tradicional',
         user: {
           name: 'Le Fragance',
-          picture: 'https://s.cafebazaar.ir/images/icons/com.manage.retail.store-35f341c0-a6ab-4cc5-889a-e9692024fa9e_512x512.png?x-img=v1/resize,h_256,w_256,lossless_false/optimize'
+          picture: 'https://s.cafebazaar.ir/images/icons/com.manage.retail.store-35f341c0-a6ab-4cc5-889a-e9692024fa9e_512x512.png?x-img=v1/resize,h_256,w_256,lossless_false/optimize',
+          slug: 'le-fragance'
         }
       },
       {
@@ -86,9 +91,11 @@ const DefaultSellerPage = (props) => {
         quantity: 5,
         price: 100000,
         cashbackAvailable: true,
+        slug: 'acgua-di-gio',
         user: {
           name: 'Le Fragance',
-          picture: 'https://s.cafebazaar.ir/images/icons/com.manage.retail.store-35f341c0-a6ab-4cc5-889a-e9692024fa9e_512x512.png?x-img=v1/resize,h_256,w_256,lossless_false/optimize'
+          picture: 'https://s.cafebazaar.ir/images/icons/com.manage.retail.store-35f341c0-a6ab-4cc5-889a-e9692024fa9e_512x512.png?x-img=v1/resize,h_256,w_256,lossless_false/optimize',
+          slug: 'le-fragance'
         }
       }],
     },
@@ -196,7 +203,7 @@ const DefaultSellerPage = (props) => {
           </h1>
         </div>
         {/* Competitions */}
-        <div className={`Card ${styles.CompetitionsComponent}`}>
+        <div className={`${styles.CompetitionsComponent}`}>
           {!isLoadingCompetition && competitions.length > 0 && <CompetitionsList
             isLoading={isLoadingCompetition}
             competitions={competitions}
@@ -210,6 +217,7 @@ const DefaultSellerPage = (props) => {
         </div>
       </>}
 
+      <br />
       {/* Ranking */}
       {rankingId && <>
         <div className={`contentTitle ${sellerSlugStyles.Ranking}`}>
