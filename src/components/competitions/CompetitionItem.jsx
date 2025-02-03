@@ -14,7 +14,7 @@ import { formatNumber } from '@/lib/utils'
 
 const CompetitionItem = ({ competition, ind }) => {
   const goToastNotAvailable = () => toast('Esta actividad ya ha pasado')
-  const link = `/blue-panther/${competition.slug}`
+  const linkToDetail = `/${competition.seller?.slug}/${competition.slug}`
   const awardLink = competition?.awardLink ? competition?.awardLink + '?origin=/concursos' : ''
 
   return <motion.article
@@ -25,7 +25,7 @@ const CompetitionItem = ({ competition, ind }) => {
     // whileHover={{ scale: 1.1 }}
     animate={{ y: 0 }}>
     <h2>
-      <Link href={link}>{competition.title}</Link>
+      <Link href={linkToDetail}>{competition.title}</Link>
     </h2>
     <div className={styles.seller}>
       <div>
@@ -49,9 +49,9 @@ const CompetitionItem = ({ competition, ind }) => {
     </div>
     <div className={styles.actions}>
       {/* <Link href={awardLink}>
-        <Button color='link' className={styles.award}>Ver premio</Button>
+        <Button color='linkToDetail' className={styles.award}>Ver premio</Button>
       </Link> */}
-      <Link href={link}>
+      <Link href={linkToDetail}>
         <Button shine realistic color='blue' className={styles.award}>Participar</Button>
       </Link>
     </div>

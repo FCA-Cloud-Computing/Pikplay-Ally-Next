@@ -23,7 +23,7 @@
         z-index: -1;
     }
     &.hide {
-        right: -510px;
+        right: -100vw;
         @media screen and (max-width: 480px) {
             // left: calc(-100vw + 40px);
         }

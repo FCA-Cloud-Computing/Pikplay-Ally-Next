@@ -9,9 +9,8 @@
   }
 
   .left {
-    width: 800px;
+    max-width: 100%;
     @media screen and (max-width: 480px) {
-      width: auto;
     }
     .alert {
       .btnUpdateDashboard {
@@ -168,7 +167,7 @@
   .CompetitionDetail {
     column-gap: 40px;
     display: flex;
-    padding: 10px 20px;
+    padding: 10px 20px 20px;
     @media screen and (max-width: 480px) {
       flex-direction: column-reverse;
     }
@@ -269,12 +268,9 @@
     background: #f4f4f4;
     font-size: 12px;
     height: 18px;
-    margin: 20px 0 10px 0;
+    margin: 10px 0 10px;
     position: relative;
     width: 600px;
-    @media screen and (max-width: 480px) {
-      margin: 10px 0 20px;
-    }
     > span:nth-of-type(1) {
       position: absolute;
       // background: white;

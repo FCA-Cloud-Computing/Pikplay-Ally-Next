@@ -11,17 +11,17 @@ import Button from '../button/Button'
 import { getUsersSrv } from '@/services/user/userService'
 import { getRankingDetailSrv } from '@/services/rankings/rankings'
 
-const RankingComponent = () => {
+const RankingComponent = (props) => {
+  const { rankingId } = props
   const [rankingData, setRankingData] = useState([])
 
   useEffect(() => {
     try {
-      getRankingDetailSrv().then(rankingDataPoints => {
+      getRankingDetailSrv(null, rankingId).then(rankingDataPoints => {
         const uids = rankingDataPoints.map(member => member.uid)
         getUsersSrv(null, { uids: uids.join() })
           .then(data => {
             const pointsAndUserData = rankingDataPoints.map(member => {
-              debugger;
               const user = data && data.find(user => user.uid === member.uid)
               return {
                 ...user,
@@ -58,7 +58,7 @@ const RankingComponent = () => {
               </span>
             </div>
             <div className={styles.picture}>
-              <ProfileImage picture={member.picture} />
+              <ProfileImage picture={member.picture} small progress={member.points} />
             </div>
             <div className={styles.name}>
               <span>

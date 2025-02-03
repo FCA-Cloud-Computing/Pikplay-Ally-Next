@@ -207,7 +207,7 @@ const Onboarding = () => {
         </Link>
         <Link href='/blue-panther'>
           <div className="Card">
-            <img src='/images/users/bluepanther.jpg' />
+            <img src='/images/users/bluepanther/logo.jpg' />
             <p>
               <b>Bluepanther</b>
               <div>Gaming</div>

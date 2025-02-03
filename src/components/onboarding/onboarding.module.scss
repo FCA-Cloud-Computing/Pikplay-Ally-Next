@@ -4,12 +4,15 @@ section.Onboarding {
     margin: 40px auto 90px;
     width: calc(100%);
     &::after {
-        content: "";
-        position: fixed;
-        top: 56px;
-        left: 0;
         background: #0b2c5aad;
+        content: "";
         height: 100%;
+        left: 0;
+        margin: 0 auto;
+        max-width: 420px;
+        position: fixed;
+        right: 0;
+        top: 56px;
         width: 100%;
     }
     .cta {
