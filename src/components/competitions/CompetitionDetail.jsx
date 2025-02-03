@@ -118,11 +118,11 @@ const CompetitionDetail = (props) => {
   }
 
   const handleUpodateDashboard = () => {
-    getCompetitions(competitionDetail.slug, true)
+    getCompetitions([competitionDetail.slug], true)
       .then(competitionDetailUpdated => { // TODO: get competition id from url
         // setCompetitionDetail({ ...competitionDetailUpdated })
-        setCompetitionMembers(competitionDetailUpdated.members)
-        settingTakenNumbers(competitionDetailUpdated.members)
+        setCompetitionMembers(competitionDetailUpdated[0].members)
+        settingTakenNumbers(competitionDetailUpdated[0].members)
       }).catch(err => {
         console.log(err)
       })
@@ -168,7 +168,6 @@ const CompetitionDetail = (props) => {
     {/* competitionDetail: {JSON.stringify(competitionDetail)} */}
     <div className={styles.left}>
       <div className={styles.news}>
-        <span>Últimos movimientos:</span>
         <Marquee />
       </div>
       <Alert severity="info" className={styles.alert}>

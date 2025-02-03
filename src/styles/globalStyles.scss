@@ -580,13 +580,13 @@ main {
 }
 
 section.page {
-  box-sizing: border-box;
   // margin: 20px auto;
+  box-sizing: border-box;
+  margin: 70px auto 90px;
   overflow: hidden;
-  padding-bottom: 60px;
+  padding: 0px 20px 80px;
   position: relative;
   @media screen and (max-width: 480px) {
-    margin: 70px auto 90px;
     width: calc(100% - 40px);
   }
   .contentTitle,

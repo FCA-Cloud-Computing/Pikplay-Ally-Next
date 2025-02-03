@@ -12,7 +12,7 @@ const handleTalkToOwner = (sellerPhone, number) => {
 }
 
 const HTMLMessage = <center>
-    <Image src='/images/bluepanther/gracias-cupo-blue-panther.webp' width={120} height={120} />
+    <Image src='/images/users/bluepanther/gracias-cupo-blue-panther.webp' width={120} height={120} />
 </center>
 
 const whastappStyles = { margin: '0 4px 0 4px', width: '20px' }

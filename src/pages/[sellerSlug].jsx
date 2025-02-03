@@ -35,6 +35,7 @@ const DefaultSellerPage = (props) => {
         place: 'Barranquilla - Soledad',
         givenPikcoins: 0,
         picture: '/images/users/conversation_club/logo.png',
+        rankingId: 1,
         uid: 131,
         whatsappNumber: 573204863547
       },
@@ -58,7 +59,7 @@ const DefaultSellerPage = (props) => {
         background: '/images/backgrounds/campo-bg.jpeg',
         name: 'Le Fragance',
         place: 'Barranquilla',
-        givenPikcoins: 3000,
+        givenPikcoins: 0,
         picture: 'https://s.cafebazaar.ir/images/icons/com.manage.retail.store-35f341c0-a6ab-4cc5-889a-e9692024fa9e_512x512.png?x-img=v1/resize,h_256,w_256,lossless_false/optimize',
         whatsappNumber: 573016815784
       },
@@ -95,7 +96,7 @@ const DefaultSellerPage = (props) => {
       authorInformation: {
         background: 'https://www.perfumesbogota.com.co/cdn/shop/products/fleur-orientica_580x.jpg?v=1677872919',
         dividerColor: 'white',
-        givenPikcoins: 3000,
+        givenPikcoins: 0,
         name: 'Nataliatution',
         picture: '/images/users/nataliatution/logo.jpg',
         place: 'Barranquilla',
@@ -126,6 +127,27 @@ const DefaultSellerPage = (props) => {
           picture: '/images/users/nataliatution/logo.jpg'
         }
       }]
+    },
+    'blue-panther': {
+      authorInformation: {
+        aboutHTML: `<div><video width="140" height="260" controls>
+        <source src="/images/users/bluepanther/video.mp4" type="video/mp4">
+        Tu navegador no soporta el elemento de video.
+        </video></div>`,
+        aboutHTMLButtonStyle: { color: 'white', textDecoration: 'underline' },
+        background: 'https://instagram.fbaq5-1.fna.fbcdn.net/v/t39.30808-6/454723787_18361896526109558_4048109518435842878_n.jpg?stp=dst-jpg_e35_p640x640_sh0.08_tt6&cb=30a688f7-cd073ddd&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xMjkweDIyOTMuc2RyLmYzMDgwOC5kZWZhdWx0X2ltYWdlIn0&_nc_ht=instagram.fbaq5-1.fna.fbcdn.net&_nc_cat=102&_nc_ohc=SBaMXu0ZfHMQ7kNvgGxH71O&_nc_gid=02ee83935d0d4f0e84bb6d63c8af7296&edm=AGFyKLkAAAAA&ccb=7-5&ig_cache_key=MzQzMDM0NDMyMzM0NTU0Mzc2Mw%3D%3D.3-ccb7-5-cb30a688f7-cd073ddd&oh=00_AYCmBCSoTpS6At3Z4SeUoBtE6-2OKzfu0JraN-Xp6-Tm8w&oe=6790662D&_nc_sid=5a0a6d',
+        dividerColor: '#cbcbcb',
+        facebook: 'https://www.facebook.com/profile.php?id=100064982311928',
+        givenPikcoins: 0,
+        instagram: 'https://www.instagram.com/bluepanthervideogames/',
+        name: 'Blue Panther',
+        pageBackground: 'images/users/bluepanther/bg-blue.jpg',
+        picture: '/images/users/bluepanther/logo.jpg',
+        place: 'Medellín',
+        rankingId: 2,
+        whatsapp: 'https://api.whatsapp.com/send?phone=573106614305'
+      },
+      competitions: ['act-4-sorteo-de-navidad']
     }
   }
 
@@ -134,14 +156,14 @@ const DefaultSellerPage = (props) => {
     competitions: competitionsArray,
     products,
   } = DBTemp[sellerSlug?.toLowerCase()] || {}
+  const { rankingId } = authorInformation || {}
 
   const GlobalStyle = createGlobalStyle`
-  section.page {
-    padding: 60px 20px;
-  }
-  .conversationClubPage {
+  main.App {
     background-image: url("${authorInformation?.pageBackground}");
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
   }`;
 
   const {
@@ -189,13 +211,15 @@ const DefaultSellerPage = (props) => {
       </>}
 
       {/* Ranking */}
-      <div className={`contentTitle ${sellerSlugStyles.Ranking}`}>
-        <h1>
-          <StarIcon className={sellerSlugStyles.starIcon} />
-          &nbsp;Ranking
-        </h1>
-      </div>
-      <RankingComponent />
+      {rankingId && <>
+        <div className={`contentTitle ${sellerSlugStyles.Ranking}`}>
+          <h1>
+            <StarIcon className={sellerSlugStyles.starIcon} />
+            &nbsp;Ranking
+          </h1>
+        </div>
+        <RankingComponent {...{ rankingId }} />
+      </>}
 
       {/* Products */}
       {products && <>
