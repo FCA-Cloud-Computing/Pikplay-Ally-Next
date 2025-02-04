@@ -161,7 +161,7 @@ const Onboarding = () => {
       <p>
         Comprando con aliados de <br />
         <b>Pikplay</b> tienes la posibilidad de ganar <b>Cashback</b><CoinIcon />,
-        <br />esto basicamente es desuentos en otras tiendas aliadas.
+        <br />esto basicamente es descuentos en otras tiendas aliadas.
         <br /><br />
         Tambien invitar a tus amigos y tener un Ranking de puntos los cuales te serviran para aumentar de liga, obtener descuentos
         y participar en concursos.

@@ -46,15 +46,17 @@ const Options = ({ handleUserMessage, set, options }) => {
   if (!uid && element) element.click()
   const { liberarNumero, getCompetitions } = useCompetitions();
   return <>
-    <Button color='blue' onClick={() => handleYes(handleUserMessage, set, options, setStoreValue)}>
-      Si
-    </Button>
-    <Link target='_BLANK' href='https://api.whatsapp.com/send?phone=573204863547&text=Quisiera adquirir este número de ahora y próximos sorteos'>
+    <a href="#">
+      <Button color='blue' onClick={() => handleYes(handleUserMessage, set, options, setStoreValue)}>
+        Si
+      </Button>
+    </a>
+    {/* <Link target='_BLANK' href='https://api.whatsapp.com/send?phone=573204863547&text=Quisiera adquirir este número de ahora y próximos sorteos'>
       <Button color='transparent' disabled border>
         &nbsp;Casar número
         <WorkspacePremium style={{ color: '#fad426' }} />
       </Button>
-    </Link>
+    </Link> */}
     <Link target='_BLANK' href='https://api.whatsapp.com/send?phone=573204863547&text=Tengo dudas sobre el sorteo'>
       <Button color='transparent' border>
         &nbsp;Envíar mensaje&nbsp;

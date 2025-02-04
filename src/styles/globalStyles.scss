@@ -586,9 +586,6 @@ section.page {
   overflow: hidden;
   padding: 20px 30px 80px;
   position: relative;
-  @media screen and (max-width: 480px) {
-    width: calc(100% - 40px);
-  }
   .contentTitle,
   .contentSubTitle {
     margin: 12px 0 16px 0;
