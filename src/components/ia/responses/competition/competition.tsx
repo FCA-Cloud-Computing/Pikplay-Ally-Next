@@ -49,13 +49,13 @@ const Options = ({ handleUserMessage, set, options }) => {
     <Button color='blue' onClick={() => handleYes(handleUserMessage, set, options, setStoreValue)}>
       Si
     </Button>
-    <Link target='_BLANK' href='https://api.whatsapp.com/send?phone=573113306911&text=Quisiera adquirir este número de ahora y próximos sorteos'>
+    <Link target='_BLANK' href='https://api.whatsapp.com/send?phone=573204863547&text=Quisiera adquirir este número de ahora y próximos sorteos'>
       <Button color='transparent' disabled border>
         &nbsp;Casar número
         <WorkspacePremium style={{ color: '#fad426' }} />
       </Button>
     </Link>
-    <Link target='_BLANK' href='https://api.whatsapp.com/send?phone=573113306911&text=Tengo dudas sobre el sorteo'>
+    <Link target='_BLANK' href='https://api.whatsapp.com/send?phone=573204863547&text=Tengo dudas sobre el sorteo'>
       <Button color='transparent' border>
         &nbsp;Envíar mensaje&nbsp;
         <MessageOutlined className='icon' />
