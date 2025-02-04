@@ -155,7 +155,7 @@ const CompetitionDetail = (props) => {
     return !item.hidden ? // <Tooltip key={ind} title={`Reservar el número ${ind}`}>
       <div
         className={`${styles.item} ${styles[item.status]} ${selectedNumber == ind && styles.selected}`}
-        onClick={() => handleClick(item, ind)}>
+        onClick={() => item.status == 'available' && handleClick(item, ind)}>
         {ind}
         {isTakenByMe && <EmojiPeopleIcon className={styles.takenMeIcon} />}
         {!!isPaid && <PaidIcon className={styles.paidIcon} />}
