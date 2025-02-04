@@ -17,9 +17,9 @@ const handleYes = async (handleUserMessage, set, options, setStoreValue) => {
     return
   }
   try {
-    const { data: { messageTop }, message } = await postCompetitionMemberSrv(null, competitionID, number, uid);
-    setStoreValue('messageTop', messageTop)
-
+    const resp = await postCompetitionMemberSrv(null, competitionID, number, uid)
+    const { status } = resp
+    // Abriendo la modal con los premios obtenidos
     // const { htmlChallengeObtained, nowCompleted } = resp.challengeUpdated
     // if (nowCompleted) {
     //   // Setting on true the award modal
@@ -28,13 +28,15 @@ const handleYes = async (handleUserMessage, set, options, setStoreValue) => {
     //     setStoreValue('isAwardSummaryModalOpen', true)
     //   }, 4000)
     // }
-    if (message == 'Number already taken') {
+    if (status == 400) { // Number already taken
       handleUserMessage('competition/yes/taken', set, options)
     } else {
+      const { data: { messageTop }, message, status } = resp
       handleUserMessage('competition/yes', set, options)
+      messageTop && setStoreValue('messageTop', messageTop)
     }
-  } catch {
-    alert('Error 500')
+  } catch (err) {
+    console.log(err)
   }
 }
 

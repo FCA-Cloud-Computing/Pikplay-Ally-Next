@@ -82,7 +82,7 @@ const CompetitionDetail = (props) => {
       }
       handleUserMessage('competition', options)
     }
-    else {
+    else { // Admin del sorteo
       setCompetitionStore({ selectedNumbePhone: item.phone })
       handleUserMessage('competition/admin', { selectedNumber: number })
       setIsvisible(true)
@@ -155,7 +155,7 @@ const CompetitionDetail = (props) => {
     return !item.hidden ? // <Tooltip key={ind} title={`Reservar el número ${ind}`}>
       <div
         className={`${styles.item} ${styles[item.status]} ${selectedNumber == ind && styles.selected}`}
-        onClick={() => item.status == 'available' && handleClick(item, ind)}>
+        onClick={() => (item.status == 'available' || isTakenByMe) ? handleClick(item, ind) : null} >
         {ind}
         {isTakenByMe && <EmojiPeopleIcon className={styles.takenMeIcon} />}
         {!!isPaid && <PaidIcon className={styles.paidIcon} />}

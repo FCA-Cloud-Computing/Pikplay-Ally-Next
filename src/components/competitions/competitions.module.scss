@@ -261,14 +261,16 @@
         .takenMeIcon {
           background: white;
           border-radius: 50%;
+          border: 1px solid;
           bottom: -8px;
           color: green;
           font-size: 14px;
+          padding: 0.8px 1px;
           position: absolute;
           right: 2px;
           &.takenMeIcon {
-            color: orange;
-            right: 20px;
+            color: #3095b3;
+            right: 18px;
           }
         }
       }
