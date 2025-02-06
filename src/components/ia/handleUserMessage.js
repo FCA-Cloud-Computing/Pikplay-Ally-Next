@@ -1,5 +1,5 @@
 /* eslint-disable no-empty-pattern */
-import { Message as IAMessageWelcome, Options as IAOptionsWelcome, HTML as HTMLwelcome } from './responses/welcome';
+import { Message as IAMessageWelcome, Options as IAOptionsWelcome } from './responses/welcome';
 import { Message as IAMessageOnboarding, Options as IAOptionsOnboarding } from './responses/onboarding/onboarding';
 import { Message as IAMessageDefault, Options as IAOptionsDefault } from './responses/default';
 import { HtmlMessage as IAHtmlMessagePikcoins, Message as IAMessagePikcoins, Options as IAOptionsPikcoins, Height as IAcontainerHeightPikcoins } from './responses/pikcoins';
@@ -24,10 +24,11 @@ export const handleUserMessage = async (mensaje, set, options) => {
   let IAOptionsSelected = () => <></>;
   let containerHeightSelected;
   let IAExpressionSelected = 'happy';
-  let IAHTMLMessageSelected;
+  let IAHTMLMessageSelected = <></>;
   let IAHTMLSecondMessageSelected;
   var HTML, Message, Options;
   const loadingMessage = <span>{seleccionAleatoria}</span>;
+
   switch (mensaje) {
     case 'competition/admin':
       IAMessageSelected = IAMessageCompetition_Admin;
@@ -83,7 +84,6 @@ export const handleUserMessage = async (mensaje, set, options) => {
     case 'guide':
       IAMessageSelected = IAMessageWelcome;
       IAOptionsSelected = IAOptionsWelcome;
-      IAHTMLMessageSelected = HTMLwelcome;
       break;
 
     case 'pikcoins':

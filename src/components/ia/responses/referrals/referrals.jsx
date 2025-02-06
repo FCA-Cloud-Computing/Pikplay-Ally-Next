@@ -28,8 +28,9 @@ async function getContacts(handleUserMessage, set) {
 
 const HTML = <></>
 
-const Message = `Con cada referido ganas Pikcoins. <br /><br />
-Recuerdale a tus referidos aceptar la invitacion enviada por wsp ó por mensaje de texto.`
+const Message = () => <p>Con cada referido ganas Pikcoins. <br /><br />
+  Recuerdale a tus referidos aceptar la invitacion enviada por wsp ó por mensaje de texto.</p>
+
 const Options = ({ handleUserMessage, set }) => {
   return <>
     <Button color='blue' realistic onClick={() => getContacts(handleUserMessage, set)}>
