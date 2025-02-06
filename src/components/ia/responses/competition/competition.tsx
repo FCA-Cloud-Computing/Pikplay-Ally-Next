@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Button from '../../../button/Button'
 import useCompetitions from '../../../competitions/hooks/useCompetitions'
 import useSystemStore from '../../../../hooks/storeSystem'
-import { MessageOutlined, WorkspacePremium } from '@mui/icons-material'
+import { DeleteOutlined, MessageOutlined, WorkspacePremium } from '@mui/icons-material'
 import { postCompetitionMemberSrv } from '../../../../services/competition/competitionService'
 
 const Message = (props) => {
@@ -69,7 +69,26 @@ const Options = ({ handleUserMessage, set, options }) => {
   </>
 }
 
+const MyNumberMessage = () => {
+  return <p>¿Quieres liberar el número?</p>
+}
+
+const MyNumberOptions = ({ handleUserMessage, set, options }) => {
+  const { liberarNumero } = useCompetitions();
+  return <a href="#">
+    <Button style={{ color: 'white' }} color='red' onClick={() => {
+      liberarNumero();
+      handleUserMessage('hideIA', set);
+    }}>
+      <DeleteOutlined className='icon' />
+      &nbsp;Liberar número
+    </Button>
+  </a>
+}
+
 export {
   Message,
+  MyNumberOptions,
+  MyNumberMessage,
   Options,
 }

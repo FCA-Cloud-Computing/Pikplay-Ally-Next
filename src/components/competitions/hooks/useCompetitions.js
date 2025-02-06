@@ -42,7 +42,11 @@ const useCompetitions = () => {
     toast.promise(
       // TODO Se libera el cupo
       deleteCompetitionMemberSrv(null, competitionId, selectedNumber)
-        .then((data) => getCompetitions()),
+        .then((data) => {
+          setTimeout(() => {
+            getCompetitions();
+          }, 1000);
+        }),
       {
         pending: 'Liberando cupo',
         success: 'Cupo liberado 👌',

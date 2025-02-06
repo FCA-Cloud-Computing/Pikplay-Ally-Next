@@ -33,9 +33,6 @@ const DefaultSellerPage = (props) => {
   const GlobalStyle = createGlobalStyle`
   main.App {
     background-image: url("${authorInformation?.pageBackground}");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
   }`;
 
   const {

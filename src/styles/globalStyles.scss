@@ -544,6 +544,11 @@ span.MuiBadge-badge {
 
 main {
   min-height: 100vh;
+  &.App {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
   &.darkMode {
     // background-image: url(/images/backgrounds/bg-gamer.jpg);
     background-attachment: fixed;

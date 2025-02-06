@@ -6,7 +6,7 @@ import { HtmlMessage as IAHtmlMessagePikcoins, Message as IAMessagePikcoins, Opt
 import { HTML as IAHtmlMessageRedemption, Message as IAMessageRedemption, Options as IAOptionsRedemption } from './responses/redemption';
 
 // Competitions
-import { Message as IAMessageCompetition, Options as IAOptionsCompetition } from './responses/competition/competition';
+import { Message as IAMessageCompetition, Options as IAOptionsCompetition, MyNumberOptions, MyNumberMessage } from './responses/competition/competition';
 import { Message as IAMessageCompetition_Yes, Options as IAOptionsCompetition_Yes, HTMLMessage as HTMLMEssage_Competition_Yes } from './responses/competition/yes/yes';
 import { Message as IAMessageCompetition_Yes_Taken, Options as IAOptionsCompetition_Yes_Taken } from './responses/competition/yes/taken';
 import { Message as IAMessageCompetition_List, Options as IAOptionsCompetition_List } from './responses/competition/list';
@@ -28,7 +28,6 @@ export const handleUserMessage = async (mensaje, set, options) => {
   let IAHTMLSecondMessageSelected;
   var HTML, Message, Options;
   const loadingMessage = <span>{seleccionAleatoria}</span>;
-
   switch (mensaje) {
     case 'competition/admin':
       IAMessageSelected = IAMessageCompetition_Admin;
@@ -38,6 +37,11 @@ export const handleUserMessage = async (mensaje, set, options) => {
     case 'competition':
       IAMessageSelected = IAMessageCompetition;
       IAOptionsSelected = IAOptionsCompetition;
+      break;
+
+    case 'competition/my-number':
+      IAMessageSelected = MyNumberMessage;
+      IAOptionsSelected = MyNumberOptions;
       break;
 
     case 'competition/list':

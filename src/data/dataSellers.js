@@ -1,6 +1,22 @@
 import { slugify } from '@/lib/utils'
 
 const sellersInformation = {
+    'fundacion-codigo-abierto': {
+        authorInformation: {
+            aboutHTML: <div>Construyendo un epicentro tech en el Caribe</div>,
+            aboutHTMLButtonStyle: { color: 'white', textDecoration: 'underline' },
+            pageBackground: '/images/users/fca/bg.jpeg',
+            cssClassPage: '',
+            dividerColor: '#b0b0b0',
+            // background: '/images/logos/pikplay_store_logo.png',
+            name: 'Fundación Código Abierto',
+            place: 'Barranquilla',
+            givenPikcoins: 0,
+            picture: '/images/users/fca/logo.jpg',
+            uid: 131,
+            whatsappNumber: 573204863547
+        },
+    },
     'conversation-club': {
         authorInformation: {
             aboutHTML: '<div>English Club es un espacio para tener experiencias inmersivas en el idioma.</div>',

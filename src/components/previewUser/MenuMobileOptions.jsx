@@ -84,11 +84,11 @@ const MenuMobileOptions = () => {
         Transacciones
       </Link>
     </motion.ol>
-    <motion.ol variants={item}>
+    {/* <motion.ol variants={item}>
       <a>
         Configuración
       </a>
-    </motion.ol>
+    </motion.ol> */}
     <motion.ol variants={item}>
       <Link href="/onboarding">
         Onboarding
