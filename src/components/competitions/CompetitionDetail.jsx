@@ -54,6 +54,7 @@ const CompetitionDetail = (props) => {
   const { set: setCompetitionStore } = useCompetitionsStore()
 
   var updatesQuantity = 0
+  const isAdmin = seller.uid == uidLogged // Admin del sorteo
   const MAX_REQUEST_UPDATE = 10
   const [showMembersNames, setShowMembersNames] = useState(false)
   const [competitionMembers, setCompetitionMembers] = useState(competitionDetail.members)
@@ -70,20 +71,20 @@ const CompetitionDetail = (props) => {
   ))
 
   const handleClick = (item, number) => { // Evento de clic del número del sorteo
-    setCompetitionStore({ selectedNumber: number })
+    setCompetitionStore({ selectedNumber: number, selectedNumberName: item.name })
     if (seller.uid != uidLogged) {
       setIsvisible(true)
       // setnumberChosen(number)
       const options = {
         competitionID: competitionDetail.id,
         number,
-        postCompetitionMemberSrv,
+        // postCompetitionMemberSrv,
         sellerPhone: competitionDetail.seller.phone
       }
       handleUserMessage('competition', options)
     }
     else { // Admin del sorteo
-      setCompetitionStore({ selectedNumbePhone: item.phone })
+      setCompetitionStore({ selectedNumberPhone: item.phone })
       handleUserMessage('competition/admin', { selectedNumber: number })
       setIsvisible(true)
     }
@@ -152,10 +153,12 @@ const CompetitionDetail = (props) => {
   const NumberComponent = ({ ind, item, number, uidNumber }) => {
     const isTakenByMe = uidLogged && uidNumber == uidLogged
     const { isPaid } = item
+
     return !item.hidden ? // <Tooltip key={ind} title={`Reservar el número ${ind}`}>
       <div
         className={`${styles.item} ${styles[item.status]} ${selectedNumber == ind && styles.selected}`}
-        onClick={() => (item.status == 'available' || isTakenByMe) ? handleClick(item, ind) : null} >
+        onClick={() => ((!isAdmin && item.status == 'available') || isTakenByMe || (isAdmin && item.status != 'available')) ? handleClick(item, ind) : null} >
+        {item?.name && <span className={styles.name}>{item?.name}</span>}
         {ind}
         {isTakenByMe && <EmojiPeopleIcon className={styles.takenMeIcon} />}
         {!!isPaid && <PaidIcon className={styles.paidIcon} />}

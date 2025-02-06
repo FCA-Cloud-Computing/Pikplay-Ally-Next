@@ -8,6 +8,7 @@ import { faHeart, faHeartBroken } from '@fortawesome/free-solid-svg-icons'
 import Grow from '@mui/material/Grow'
 import { Tooltip } from '@mui/material'
 import { ShareOutlined } from '@mui/icons-material'
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import classNames from 'classnames'
 import Image from 'next/image'
 
@@ -116,7 +117,7 @@ const ItemCard = (props) => {
           </div>
           {/* Si tiene precio y Cashback */}
           {cashbackAvailable && price && <div className={styles.cashbackInformation}>
-            Con esta compra obtienes <b>{(price * 0.01) / 100} de EXP</b></div>}
+            Con esta compra obtienes <b>{(price * 0.01) / 100} Points</b></div>}
           {/* Si no tiene precio */}
           {cashbackAvailable && !price && <div className={styles.cashbackInformation}>
             Preguntale al vendedor sobre los creditos por esta compra</div>}
@@ -174,7 +175,7 @@ const ItemCard = (props) => {
                 &nbsp;-&nbsp;
                 {countryLabel}
               </small> */}
-              {quantity && <p className={styles.quantity}>{quantity} unidades disponibles</p>}
+              {/* {quantity && <p className={styles.quantity}>{quantity} unidades disponibles</p>} */}
               {price && <div className={styles['likes-precio']}>
                 <div className={styles.content_precio}>
                   {
@@ -189,6 +190,13 @@ const ItemCard = (props) => {
                   }
                 </div>
               </div>}
+
+              {/* Envio */}
+              <div className={styles.shipping}>
+                <LocalShippingIcon className='icon' />
+                <span>Envío gratis</span>
+              </div>
+
               {/* Banner de ADDI */}
               {isAddi && <div className={styles.contentAddi}>
                 <span>

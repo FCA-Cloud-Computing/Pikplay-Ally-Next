@@ -240,6 +240,22 @@
         // overflow: hidden;
         margin: 5px;
         width: 40px;
+        &:hover {
+          .name {
+            background: #353535;
+            border-radius: 6px;
+            font-size: 12px;
+            opacity: 1;
+            padding: 1px 4px 2px;
+            top: -8px;
+            transition: all 0.3s;
+          }
+        }
+        .name {
+          opacity: 0;
+          position: absolute;
+          width: max-content;
+        }
         &.selected {
           background: #f89b52;
           border: 1px solid #f89b52;

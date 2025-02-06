@@ -96,7 +96,8 @@ const useCompetitions = () => {
 export const useCompetitionsStore = create((set, get) => ({
   competitionDetail: null,
   selectedNumber: null,
-  selectedNumbePhone: null,
+  selectedNumberPhone: null, // Datos del número seleccionado
+  selectedNumberName: null,
   set
 }))
 

@@ -18,7 +18,7 @@ const renderMiddleWare = (Component, set, options = {}) => {
 };
 
 export const handleUserMessage = async (mensaje, set, options) => {
-  let IAMessageSelected;
+  let IAMessageSelected = () => <> </>;
   let loadingOptions = ['Hmmm...', 'Ya veo...', 'Que podria ser...', 'Ok, te entiendo...'];
   let seleccionAleatoria = loadingOptions[Math.floor(Math.random() * loadingOptions.length)];
   let IAOptionsSelected = () => <></>;
@@ -31,12 +31,12 @@ export const handleUserMessage = async (mensaje, set, options) => {
 
   switch (mensaje) {
     case 'competition/admin':
-      IAMessageSelected = `Número seleccionado: ${options?.selectedNumber}, que desea hacer?`;
+      IAMessageSelected = IAMessageCompetition_Admin;
       IAOptionsSelected = IAOptionsCompetition_Admin;
       break;
 
     case 'competition':
-      IAMessageSelected = IAMessageCompetition(options);
+      IAMessageSelected = IAMessageCompetition;
       IAOptionsSelected = IAOptionsCompetition;
       break;
 
@@ -109,7 +109,7 @@ export const handleUserMessage = async (mensaje, set, options) => {
   setTimeout(() => {
     set({
       isVisible: true,
-      IAMessage: IAMessageSelected ? IAMessageSelected : null,
+      IAMessage: renderMiddleWare(IAMessageSelected, set, options),
       IAOptions: renderMiddleWare(IAOptionsSelected, set, options),
       IAExpression: IAExpressionSelected,
       IAHTMLMessage: IAHTMLMessageSelected,

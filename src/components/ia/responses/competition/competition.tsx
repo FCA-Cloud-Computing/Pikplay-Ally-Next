@@ -6,8 +6,9 @@ import useSystemStore from '../../../../hooks/storeSystem'
 import { MessageOutlined, WorkspacePremium } from '@mui/icons-material'
 import { postCompetitionMemberSrv } from '../../../../services/competition/competitionService'
 
-const Message = ({ number }) => {
-  return `Estarás jugando con el número <span class='highlighted'>${number}</span>, deseas reservarlo?`
+const Message = (props) => {
+  const { options: { number } } = props
+  return <p>Estarás jugando con el número <span className='highlighted'>{number}</span>, deseas reservarlo?</p>
 }
 
 const handleYes = async (handleUserMessage, set, options, setStoreValue) => {
